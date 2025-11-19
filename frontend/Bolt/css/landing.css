@@ -78,6 +78,13 @@ nav ul li a:hover {
     margin-bottom: 2rem;
 }
 
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;       
+    margin-top: 1rem;
+}
+
 .cta-button {
     background: #04923a;
     color: #fff;
@@ -97,10 +104,13 @@ nav ul li a:hover {
     padding: 4rem 0;
     background: #f9f9f9;
     text-align: center;
+    color: #000000;
 }
 
 #how-it-works h2 {
     margin-bottom: 2rem;
+    font-size: 2.0rem;   /* Increase this value */
+    font-weight: 700;    /* Optional: makes it bolder */
 }
 
 .steps {
@@ -120,19 +130,21 @@ nav ul li a:hover {
 }
 
 .step img {
-    width: 80px;
-    margin-bottom: 1rem;
+    width: 100%;
+    height: 200px;   /* Adjust this height to what looks best */
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .step h3 {
     margin-bottom: 0.5rem;
-    color: #04923a;
 }
 
 /* Features */
 #features {
     padding: 4rem 0;
     text-align: center;
+    color: #000000;
 }
 
 .features-container {
@@ -156,9 +168,17 @@ nav ul li a:hover {
     margin-bottom: 1rem;
 }
 
+#features h2 {
+    margin-bottom: 2rem;
+    color: #000000;
+    font-size: 2.0rem;
+    font-weight: 700;
+    text-align: center;
+}
+
 .feature h3 {
     margin-bottom: 0.5rem;
-    color: #04923a;
+    
 }
 
 /* Promo Section */
@@ -175,6 +195,7 @@ nav ul li a:hover {
     padding: 4rem 0;
     background: #f9f9f9;
     text-align: center;
+    color: #000000;
 }
 
 .testimonial-cards {
@@ -193,8 +214,9 @@ nav ul li a:hover {
 }
 
 .testimonial img {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
     border-radius: 50%;
     margin-bottom: 1rem;
 }
