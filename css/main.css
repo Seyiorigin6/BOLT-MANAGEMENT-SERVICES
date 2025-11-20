@@ -1,0 +1,216 @@
+/* 
+   main.css are the shared styles and it is so be linked on every page
+*/
+
+/* --------- Variables --------- */
+:root {
+    --green: #04923a;
+    --black: #000000;
+    --muted: #f9f9f9;
+    --hero-text: #fffefe;
+    --white: #ffffff;
+    /* --dark-grey: #444; */
+    --shadow: rgba(0,0,0,0.1);
+    --container-width: 1200px;
+
+    --gap-sm: 8px;
+    --gap-md: 16px;
+    --gap-lg: 24px;
+}
+
+/* --------- Reset / Base --------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--black);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------- Layout / Container --------- */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Utility spacing helpers */
+.u-mb-sm { margin-bottom: var(--gap-sm); }
+.u-mb-md { margin-bottom: var(--gap-md); }
+.u-mb-lg { margin-bottom: var(--gap-lg); }
+
+/* --------- Header (shared) --------- */
+header {
+    background: var(--white);
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    color: var(--green);
+    font-size: 1.8rem;
+}
+
+/* Nav */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--green);
+}
+
+/* --------- Buttons (shared) --------- */
+.cta-button {
+    background: var(--green);
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 6px;
+    display: inline-block;
+    transition: background 0.2s, transform 0.12s;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    transform: translateY(-1px);
+}
+
+/* secondary button variant */
+.cta-button.secondary {
+    background: var(--white);
+    color: var(--green);
+    font-weight: 600;
+}
+
+.cta-button.secondary:hover,
+.cta-button.secondary:focus {
+    background: #eaf7ee;
+}
+
+/* small helper for centered groups of buttons */
+.button-group {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* --------- Cards (shared card style) --------- */
+.card {
+    background: var(--white);
+    padding: 1.25rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+/* --------- Footer (shared) --------- */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+footer a {
+    color: var(--green);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: var(--white);
+}
+
+footer .footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.footer-cta {
+    margin-top: 1rem;
+}
+
+.footer-cta .cta-button {
+    margin: 0 0.5rem;
+}
+
+/* --------- Forms (basic shared styling) --------- */
+input, textarea, select, button {
+    font-family: inherit;
+    font-size: 1rem;
+    color: inherit;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+    background: #fff;
+    box-shadow: none;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 4px rgba(4,146,58,0.06);
+}
+
+/* --------- Responsive helpers --------- */
+@media (max-width: 992px) {
+    .container { width: 94%; }
+}
+
+@media (max-width: 768px) {
+    nav ul { flex-direction: column; gap: 0.5rem; }
+    header { padding: 1rem; }
+}
+
+@media (max-width: 420px) {
+    .container { width: 96%; }
+}
