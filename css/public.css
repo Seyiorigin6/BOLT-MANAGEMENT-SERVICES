@@ -409,3 +409,116 @@ help, etc. */
         align-items: flex-start;
     }
 }
+
+/* ------------------------------ HELP / FAQ (scoped to #help-page) ------------------------------ */
+#help-page #help-hero {
+  background: var(--green);
+  padding: 3.5rem 1rem;
+  text-align: center;
+}
+
+#help-page #help-hero h1 {
+  font-size: 2.2rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+#help-page #help-hero p {
+  color: var(--muted);
+  opacity: 0.95;
+}
+
+/* Search box */
+#help-page #faq-search {
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+#help-page #faq-search-box {
+  width: 95%;
+  max-width: 640px;
+  padding: 0.9rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* FAQ list */
+#help-page #faq-list {
+  padding: 2rem 0;
+}
+
+#help-page #faq-list h2 {
+  color: var(--green);
+  font-size: 1.6rem;
+  margin: 1.2rem 0 0.75rem;
+}
+
+/* FAQ item (accordion style) */
+#help-page .faq-item {
+  margin-bottom: 1rem;
+}
+
+#help-page .faq-q {
+  width: 100%;
+  text-align: left;
+  background: var(--white);
+  border: 1px solid #e6e6e6;
+  padding: 0.95rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  display: block;
+}
+
+#help-page .faq-a {
+  max-height: 0;
+  overflow: hidden;
+  background: #fff;
+  border-left: 4px solid rgba(4,146,58,0.06);
+  padding: 0 1rem;
+  transition: max-height 0.32s ease, padding 0.32s ease;
+}
+
+/* when open */
+#help-page .faq-item.open .faq-a {
+  max-height: 400px; /* enough for paragraphs — can be adjusted */
+  padding: 0.75rem 1rem 1rem;
+}
+
+/* contact support */
+#help-page #contact-support {
+  padding: 2rem 0;
+  background: var(--muted);
+  text-align: center;
+}
+
+#help-page #contact-support h2 {
+  color: var(--green);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* contact form (card already styled by .card in main.css) */
+#help-page #support-form {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+#help-page #support-form input,
+#help-page #support-form textarea {
+  padding: 0.9rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* small screens */
+@media (max-width: 768px) {
+  #help-page #help-hero h1 { font-size: 1.8rem; }
+  #help-page #faq-search-box { max-width: 100%; }
+}
+
