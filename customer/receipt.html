@@ -1,0 +1,238 @@
+<<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Receipts - Bolt Management System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#3B82F6",
+              "background-light": "#FFFFFF",
+              "background-dark": "#101622",
+              "content-light": "#F9FAFB",
+              "content-dark": "#182131",
+              "text-light": "#1F2937",
+              "text-dark": "#FFFFFF",
+              "subtext-light": "#6B7280",
+              "subtext-dark": "#9CA3AF",
+              "border-light": "#E5E7EB",
+              "border-dark": "#374151"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="flex h-screen w-full">
+<aside class="flex w-64 flex-col border-r border-border-light dark:border-border-dark bg-white dark:bg-content-dark">
+<div class="flex h-full flex-col justify-between p-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 p-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQBaDl1ArHCatPq7hdvNBSJ3toZH8MB3Nf1zY7SPusakt9OFQ5NJKhUQus50PeR9AO2i65ljc0SKiYlTIMBWCfL2yYzJIBJ_k1By6yOuFmH7FuQ8VUSQ8iwF9yt0_aUUD6hfOgyuvOF3i_6IJmTs7KyRF7-M5jg2sM84T6UNHoilOGiIbew93Z7twvoC2EKJwpo9lFdKLhvU3IOMDR2YBEg-JDnWFOnojTKWIUHWkEQCIBd9s3gPBxtvIlD2ShbC7xap7jAfkSHwPo");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-light dark:text-text-dark text-sm font-semibold leading-normal">Alex Doe</h1>
+<p class="text-subtext-light dark:text-subtext-dark text-xs font-normal leading-normal">alex.doe@email.com</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">directions_car</span>
+<p class="text-sm font-medium leading-normal">Rides</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<p class="text-sm font-medium leading-normal">Receipts</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">credit_card</span>
+<p class="text-sm font-medium leading-normal">Payment</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<p class="text-sm font-medium leading-normal">Profile</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-primary/10 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">logout</span>
+<p class="text-sm font-medium leading-normal">Log Out</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto">
+<div class="p-6 md:p-8 lg:p-10">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+<div class="flex flex-col gap-1">
+<p class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight">Ride History &amp; Receipts</p>
+<p class="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal">View and manage your past ride receipts.</p>
+</div>
+</div>
+<div class="mb-6 flex flex-col md:flex-row gap-4">
+<div class="flex-grow">
+<label class="flex flex-col h-11 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-border-light dark:border-border-dark bg-white dark:bg-content-dark focus-within:ring-2 focus-within:ring-primary">
+<div class="text-subtext-light dark:text-subtext-dark flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-subtext-light placeholder:dark:text-subtext-dark px-2 text-base font-normal leading-normal" placeholder="Search by destination or ride ID" value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex h-11 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-content-dark pl-4 pr-3 border border-border-light dark:border-border-dark hover:border-primary/50 dark:hover:border-primary/50">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Last 30 Days</p>
+<span class="material-symbols-outlined text-xl text-subtext-light dark:text-subtext-dark">expand_more</span>
+</button>
+<button class="flex h-11 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-content-dark pl-4 pr-3 border border-border-light dark:border-border-dark hover:border-primary/50 dark:hover:border-primary/50">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">All Statuses</p>
+<span class="material-symbols-outlined text-xl text-subtext-light dark:text-subtext-dark">expand_more</span>
+</button>
+</div>
+</div>
+<div class="overflow-hidden rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-content-dark">
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead class="bg-content-light dark:bg-background-dark">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase tracking-wider">Date</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase tracking-wider">Ride Details</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase tracking-wider">Amount</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase tracking-wider">Payment</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase tracking-wider">Status</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light dark:divide-border-dark">
+<tr class="hover:bg-content-light dark:hover:bg-background-dark/50">
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Oct 12, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-light dark:text-text-dark">ID: #83720 / Airport to Downtown</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">$25.50</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Visa **** 1234</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">Paid</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<div class="flex items-center space-x-3 text-subtext-light dark:text-subtext-dark">
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">visibility</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">download</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">mail</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-content-light dark:hover:bg-background-dark/50">
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Oct 10, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-light dark:text-text-dark">ID: #83611 / Central Park to Met Museum</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">$15.00</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Visa **** 1234</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">Paid</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<div class="flex items-center space-x-3 text-subtext-light dark:text-subtext-dark">
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">visibility</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">download</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">mail</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-content-light dark:hover:bg-background-dark/50">
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Oct 9, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-light dark:text-text-dark">ID: #83504 / Brooklyn Bridge to Times Square</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">$32.75</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Amex **** 5678</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">Paid</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<div class="flex items-center space-x-3 text-subtext-light dark:text-subtext-dark">
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">visibility</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">download</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">mail</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-content-light dark:hover:bg-background-dark/50">
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Oct 7, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-light dark:text-text-dark">ID: #83498 / JFK Airport to Hotel</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">$65.20</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Visa **** 1234</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">Refunded</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<div class="flex items-center space-x-3 text-subtext-light dark:text-subtext-dark">
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">visibility</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">download</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">mail</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-content-light dark:hover:bg-background-dark/50">
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Oct 5, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-light dark:text-text-dark">ID: #83412 / Grand Central to SoHo</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">$18.90</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-subtext-light dark:text-subtext-dark">Visa **** 1234</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">Paid</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+<div class="flex items-center space-x-3 text-subtext-light dark:text-subtext-dark">
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">visibility</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">download</span></button>
+<button class="hover:text-primary"><span class="material-symbols-outlined text-xl">mail</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="flex items-center justify-between mt-6 px-1">
+<p class="text-sm text-subtext-light dark:text-subtext-dark">
+                            Showing <span class="font-medium text-text-light dark:text-text-dark">1</span> to <span class="font-medium text-text-light dark:text-text-dark">5</span> of <span class="font-medium text-text-light dark:text-text-dark">25</span> results
+                        </p>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center h-9 w-9 rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-content-dark hover:bg-content-light dark:hover:bg-background-dark disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-xl text-subtext-light dark:text-subtext-dark">chevron_left</span>
+</button>
+<button class="flex items-center justify-center h-9 w-9 rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-content-dark hover:bg-content-light dark:hover:bg-background-dark">
+<span class="material-symbols-outlined text-xl text-subtext-light dark:text-subtext-dark">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

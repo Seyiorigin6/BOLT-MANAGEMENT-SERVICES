@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bolt - Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#16a34a",
+              "background-light": "#ffffff",
+              "background-dark": "#101622",
+              "neutral-dark": "#232f48",
+              "border-dark": "#324467",
+              "text-light": "#1f2937",
+              "text-dark": "#ffffff",
+              <!-- "subtext-light": "#6b7280", -->
+              "subtext-dark": "#92a4c9",
+              "success": "#0bda5e",
+              "warning": "#FFC107",
+              "danger": "#DC3545"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+          },
+        },
+      }
+    </script>
+  </head>
+
+  <body class="bg-background-light font-display text-text-light">
+    <div class="flex h-screen">
+      <div class="hidden lg:flex flex-col w-64 bg-background-light border-r border-gray-200">
+        <div class="flex h-full flex-col justify-between p-4">
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-3 px-3 py-2">
+              <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="CityRide company logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBsBYACxfnqchevZVQRGo20iXna0ptrpVyxoRavyv82MCnJol84MW1jkGZRRabP3S1YSOEP8Q9TFzZcetHXamjLYMvMh5VSoFM1T4QhUJW1c9MFYFdN81yJWqowpQLJ8Vz9MFzc5O2NX1c1ejS14SCTfaXdBpvjqaU2oCYfDRhAbAakR4x9_Km465d5yOMwvWsC-7RcnvP831KCuGKxmzr3m16Pq7lU3tP40qvmUgzCKI25NiQxHBlXiB5Xc8cYswEivK9D4MRKFuY-");'></div>
+              <div class="flex flex-col">
+                <h1 class="text-text-light text-base font-bold leading-normal">CityRide</h1>
+                <p class="text-subtext-light text-sm font-normal leading-normal">Customer Portal</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-2 mt-4">
+              <a href="customer-home.html" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary">
+                <span class="material-symbols-outlined">dashboard</span>
+                <p class="text-primary text-sm font-medium leading-normal">Dashboard</p>
+              </a>
+
+              <a href="reciept.html" class="flex items-center gap-3 px-3 py-2 text-subtext-light hover:bg-gray-100 rounded-lg cursor-pointer">
+                <span class="material-symbols-outlined">receipt_long</span>
+                <p class="text-sm font-medium leading-normal">Receipts</p>
+              </a>
+
+              <a href="ride-history.html" class="flex items-center gap-3 px-3 py-2 text-subtext-light hover:bg-gray-100 rounded-lg cursor-pointer">
+                <span class="material-symbols-outlined">history</span>
+                <p class="text-sm font-medium leading-normal">Ride History</p>
+              </a>
+
+              <a href="wallet.html" class="flex items-center gap-3 px-3 py-2 text-subtext-light hover:bg-gray-100 rounded-lg cursor-pointer">
+                <span class="material-symbols-outlined">account_balance_wallet</span>
+                <p class="text-sm font-medium leading-normal">Wallet</p>
+              </a>
+
+              <a href="#" class="flex items-center gap-3 px-3 py-2 text-subtext-light hover:bg-gray-100 rounded-lg cursor-pointer">
+                <span class="material-symbols-outlined">group</span>
+                <p class="text-sm font-medium leading-normal">Referrals</p>
+              </a>
+
+              <a href="settings.html" class="flex items-center gap-3 px-3 py-2 text-subtext-light hover:bg-gray-100 rounded-lg cursor-pointer">
+                <span class="material-symbols-outlined">settings</span>
+                <p class="text-sm font-medium leading-normal">Settings</p>
+              </a>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1 border-t border-gray-200 pt-4">
+            <a href="profile.html" class="flex items-center gap-3 px-3 py-2 text-subtext-light hover:bg-gray-100 rounded-lg cursor-pointer">
+              <span class="material-symbols-outlined">account_circle</span>
+              <p class="text-sm font-medium leading-normal">Alex Grim</p>
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-subtext-light hover:bg-gray-100 rounded-lg cursor-pointer">
+              <span class="material-symbols-outlined">logout</span>
+              <p class="text-sm font-medium leading-normal">Log Out</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1 flex flex-col overflow-hidden bg-gray-50">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 px-6 lg:px-10 py-3 bg-white">
+          <div class="flex-1">
+            <label class="flex flex-col min-w-40 !h-10 max-w-sm">
+              <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                <div class="text-subtext-light flex border border-gray-300 bg-gray-100 items-center justify-center pl-3 rounded-l-lg border-r-0">
+                  <span class="material-symbols-outlined">search</span>
+                </div>
+
+                <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light focus:outline-0 focus:ring-2 focus:ring-primary border border-gray-300 bg-gray-100 h-full placeholder:text-subtext-light px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search ride history..." value="" />
+              </div>
+            </label>
+          </div>
+
+          <div class="flex flex-none items-center justify-end gap-4">
+            <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg size-10 bg-gray-100 text-text-light hover:bg-gray-200">
+              <span class="material-symbols-outlined">notifications</span>
+            </button>
+
+            <a href="profile.html" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSOg8ez5rErHhs5olup2kxf6PnclSUebsAeuibyf75lP84ZBwfyGS7K3d-Qwbn9pFPmNdDg1aZPIFsZJIgLakRlz8fB9DI3imOHMSA76W7A4qZG_SsofL0lP-fwAmyhkx6Q2mfft5XF_PgoZRUviqal_C9Y6fgAwa3qI3kvzrp4HEdHMj1B9hjBN4uiw9tOJZINP6UBp_G1gJni8kAqpo6a_rKG58REd-CcqX7NfNCoSan9q0kIbDzroyqtveLwAGuBG-XfRJ2FH2W");'></a>
+          </div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto p-6 lg:p-10">
+          <div class="flex flex-wrap justify-between gap-4 items-center mb-6">
+            <div class="flex min-w-72 flex-col gap-1">
+              <p class="text-text-light text-3xl font-bold leading-tight tracking-tight">Dashboard</p>
+              <p class="text-subtext-light text-base font-normal leading-normal">Welcome back, here's an overview of your ride activity.</p>
+            </div>
+
+            <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide gap-2 hover:bg-primary/90">
+              <span class="material-symbols-outlined text-base">directions_car</span>
+              <span class="truncate">Book a Ride</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 bg-white">
+              <p class="text-subtext-light text-base font-medium leading-normal">Total Rides Taken</p>
+              <p class="text-text-light tracking-light text-3xl font-bold leading-tight">128</p>
+              <p class="text-success text-sm font-medium leading-normal">+5 rides this month</p>
+            </div>
+
+            <div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 bg-white">
+              <p class="text-subtext-light text-base font-medium leading-normal">Total Spent</p>
+              <p class="text-text-light tracking-light text-3xl font-bold leading-tight">₦1,450.75</p>
+              <p class="text-success text-sm font-medium leading-normal">-₦120.50 vs last month</p>
+            </div>
+
+            <div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 bg-white">
+              <p class="text-subtext-light text-base font-medium leading-normal">Wallet Balance</p>
+              <p class="text-text-light tracking-light text-3xl font-bold leading-tight">₦75.50</p>
+                            <a href="wallet.html" class="text-primary text-sm font-medium leading-normal cursor-pointer">Add Funds</a>
+            </div>
+
+            <div class="flex flex-col gap-2 rounded-xl p-6 border border-gray-200 bg-white">
+              <p class="text-subtext-light text-base font-medium leading-normal">Active Rewards</p>
+              <p class="text-text-light tracking-light text-3xl font-bold leading-tight">4</p>
+              <p class="text-success text-sm font-medium leading-normal">+1 new reward</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-6">
+            <div class="lg:col-span-3 flex flex-col gap-4 rounded-xl border border-gray-200 p-6 bg-white">
+              <div class="flex flex-col">
+                <p class="text-text-light text-lg font-semibold leading-normal">Rides Over Time</p>
+                <div class="flex gap-1">
+                  <p class="text-subtext-light text-sm font-normal leading-normal">Last 7 Days</p>
+                  <p class="text-success text-sm font-medium leading-normal">+15.2%</p>
+                </div>
+              </div>
+
+              <div class="grid min-h-[240px] grid-flow-col gap-6 grid-rows-[1fr_auto] items-end justify-items-center px-3">
+                <div class="bg-primary/20 hover:bg-primary/40 w-full rounded-t" style="height: 90%;"></div>
+                <p class="text-subtext-light text-xs font-medium tracking-wide">Mon</p>
+                <div class="bg-primary/20 hover:bg-primary/40 w-full rounded-t" style="height: 70%;"></div>
+                <p class="text-subtext-light text-xs font-medium tracking-wide">Tue</p>
+                <div class="bg-primary/20 hover:bg-primary/40 w-full rounded-t" style="height: 40%;"></div>
+                <p class="text-subtext-light text-xs font-medium tracking-wide">Wed</p>
+                <div class="bg-primary/20 hover:bg-primary/40 w-full rounded-t" style="height: 55%;"></div>
+                <p class="text-subtext-light text-xs font-medium tracking-wide">Thu</p>
+                <div class="bg-primary/20 hover:bg-primary/40 w-full rounded-t" style="height: 20%;"></div>
+                <p class="text-subtext-light text-xs font-medium tracking-wide">Fri</p>
+                <div class="bg-primary/20 hover:bg-primary/40 w-full rounded-t" style="height: 35%;"></div>
+                <p class="text-subtext-light text-xs font-medium tracking-wide">Sat</p>
+                <div class="bg-primary/20 hover:bg-primary/40 w-full rounded-t" style="height: 75%;"></div>
+                <p class="text-subtext-light text-xs font-medium tracking-wide">Sun</p>
+              </div>
+            </div>
+
+            <div class="lg:col-span-2 flex flex-col gap-4 rounded-xl border border-gray-200 p-6 bg-white">
+              <div class="flex flex-col">
+                <p class="text-text-light text-lg font-semibold leading-normal">Ride Types</p>
+                <div class="flex gap-1">
+                  <p class="text-subtext-light text-sm font-normal leading-normal">This Month</p>
+                  <p class="text-success text-sm font-medium leading-normal">+3.1%</p>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-center flex-1 py-3">
+                <div class="relative w-48 h-48">
+                  <svg class="w-full h-full" viewBox="0 0 36 36">
+                    <path class="stroke-current text-gray-200" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+                    <path class="stroke-current text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="70, 100" stroke-dashoffset="0" stroke-width="3"></path>
+                    <path class="stroke-current text-success" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="20, 100" stroke-dashoffset="-70" stroke-width="3"></path>
+                    <path class="stroke-current text-warning" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="10, 100" stroke-dashoffset="-90" stroke-width="3"></path>
+                  </svg>
+
+                  <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="text-3xl font-bold text-text-light">34</span>
+                    <span class="text-sm text-subtext-light">Total Rides</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex justify-center gap-4 text-xs">
+                <div class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-primary"></span><span>Standard</span></div>
+                <div class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-success"></span><span>Premium</span></div>
+                <div class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-warning"></span><span>XL</span></div>
+                <div class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-gray-300"></span><span>Eco</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-gray-200 bg-white">
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-text-light">Recent Activity</h3>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left">
+                <thead class="text-xs text-subtext-light uppercase bg-gray-50">
+                  <tr>
+                    <th class="px-6 py-3" scope="col">Ride ID</th>
+                    <th class="px-6 py-3" scope="col">Destination</th>
+                    <th class="px-6 py-3" scope="col">Date</th>
+                    <th class="px-6 py-3" scope="col">Status</th>
+                    <th class="px-6 py-3" scope="col">Fare</th>
+                    <th class="px-6 py-3" scope="col"><span class="sr-only">Actions</span></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr class="border-b border-gray-200 hover:bg-gray-50">
+                    <th class="px-6 py-4 font-medium whitespace-nowrap text-primary" scope="row">#RIDE-00745</th>
+                    <td class="px-6 py-4">123 Maple Street</td>
+                    <td class="px-6 py-4">2023-10-26</td>
+                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium rounded-full bg-success/20 text-success">Completed</span></td>
+                    <td class="px-6 py-4">₦24.50</td>
+                                        <td class="px-6 py-4 text-right"><a href="reciept.html" class="text-primary font-medium">View</a></td>
+                  </tr>
+
+                  <tr class="border-b border-gray-200 hover:bg-gray-50">
+                    <th class="px-6 py-4 font-medium whitespace-nowrap text-primary" scope="row">#RIDE-00744</th>
+                    <td class="px-6 py-4">Central City Airport</td>
+                    <td class="px-6 py-4">2023-10-25</td>
+                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium rounded-full bg-success/20 text-success">Completed</span></td>
+                    <td class="px-6 py-4">₦48.90</td>
+                                        <td class="px-6 py-4 text-right"><a href="reciept.html" class="text-primary font-medium">View</a></td>
+                  </tr>
+
+                  <tr class="border-b border-gray-200 hover:bg-gray-50">
+                    <th class="px-6 py-4 font-medium whitespace-nowrap text-primary" scope="row">#RIDE-00743</th>
+                    <td class="px-6 py-4">Downtown Mall</td>
+                    <td class="px-6 py-4">2023-10-25</td>
+                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium rounded-full bg-success/20 text-success">Completed</span></td>
+                    <td class="px-6 py-4">₦15.60</td>
+                                        <td class="px-6 py-4 text-right"><a href="reciept.html" class="text-primary font-medium">View</a></td>
+                  </tr>
+
+                  <tr class="border-b border-gray-200 hover:bg-gray-50">
+                    <th class="px-6 py-4 font-medium whitespace-nowrap text-primary" scope="row">#RIDE-00742</th>
+                    <td class="px-6 py-4">Riverfront Park</td>
+                    <td class="px-6 py-4">2023-10-24</td>
+                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium rounded-full bg-danger/20 text-danger">Cancelled</span></td>
+                    <td class="px-6 py-4">₦0.00</td>
+                                        <td class="px-6 py-4 text-right"><a href="reciept.html" class="text-primary font-medium">View</a></td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50">
+                    <th class="px-6 py-4 font-medium whitespace-nowrap text-primary" scope="row">#RIDE-00741</th>
+                    <td class="px-6 py-4">456 Oak Avenue</td>
+                    <td class="px-6 py-4">2023-10-23</td>
+                    <td class="px-6 py-4"><span class="px-2 py-1 text-xs font-medium rounded-full bg-success/20 text-success">Completed</span></td>
+                    <td class="px-6 py-4">₦32.00</td>
+                                        <td class="px-6 py-4 text-right"><a href="reciept.html" class="text-primary font-medium">View</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

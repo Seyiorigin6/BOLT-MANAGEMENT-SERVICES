@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ride History - Bolt Management System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-white">
+<div class="relative flex min-h-screen w-full flex-col">
+<div class="flex h-full w-full">
+<aside class="flex w-64 flex-col border-r border-gray-200 bg-gray-50 p-4">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-2 px-2 text-gray-900">
+<span class="material-symbols-outlined text-primary text-3xl">bolt</span>
+<h2 class="text-xl font-bold">Bolt</h2>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 hover:bg-gray-100" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 hover:bg-gray-100" href="#">
+<span class="material-symbols-outlined">electric_car</span>
+<p class="text-sm font-medium">Book a Ride</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-primary" href="#">
+<span class="material-symbols-outlined">history</span>
+<p class="text-sm font-medium">Ride History</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 hover:bg-gray-100" href="#">
+<span class="material-symbols-outlined">payment</span>
+<p class="text-sm font-medium">Payment</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 hover:bg-gray-100" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</a>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1 border-t border-gray-200 pt-4">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 hover:bg-gray-100" href="#">
+<span class="material-symbols-outlined">help</span>
+<p class="text-sm font-medium">Help Center</p>
+</a>
+</div>
+<div class="flex items-center gap-3 border-t border-gray-200 pt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar of Alex Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-Isyc98acrQzjHzQbbqGU_cWWXoov8wO81xq3-6OGnBnQglOKYaYv5up4X9vYayt9sm5WRPt3MW-I0cTgZvLJMfaXOXV3TLc81skDR88yz4YLVm_Sune5llHzr6JmdxpALrO_ul98xeaP00X9i9HGG5feyo1eLQC6GKB-OqAxGPITTxs7zCFgHoxq4KCJ3RsBQ1YNbFakVx4g6Z-i59TejCSqLWE0_1A_lcKOWirBDN2BNk6QEfqf_EnPGTyM6rU2sCGl7Xz89h4j");'></div>
+<div class="flex flex-col">
+<h1 class="text-base font-medium text-gray-900">Alex Doe</h1>
+<p class="text-sm font-normal text-gray-500">alex.doe@email.com</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto bg-white p-8">
+<div class="mx-auto max-w-7xl">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-4xl font-black tracking-tight text-gray-900">Ride History</p>
+<p class="text-base font-normal text-gray-500">View and manage your past rides.</p>
+</div>
+</div>
+<div class="my-6 flex flex-col gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="w-full rounded-lg border-gray-200 bg-white py-2 pl-10 pr-4 text-gray-900 focus:border-primary focus:ring-primary sm:min-w-[300px]" placeholder="Search by address or driver..." type="text"/>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 text-gray-700 hover:bg-gray-100">
+<span class="material-symbols-outlined text-base">calendar_today</span>
+<p class="text-sm font-medium">Date Range</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 text-gray-700 hover:bg-gray-100">
+<p class="text-sm font-medium">Status: All</p>
+<span class="material-symbols-outlined text-base">arrow_drop_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 text-gray-700 hover:bg-gray-100">
+<p class="text-sm font-medium">Sort by: Date</p>
+<span class="material-symbols-outlined text-base">arrow_drop_down</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col items-stretch justify-between gap-4 rounded-xl border border-gray-200 bg-white p-4 transition-shadow hover:shadow-lg md:flex-row">
+<div class="w-full bg-center bg-no-repeat aspect-[16/9] bg-cover rounded-lg flex-1 md:max-w-[240px]" data-alt="A map showing the ride route from Downtown to the Airport" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDphW5hQRPNaYA3fEXsrEYa91Cvi-HOh3PamdyNqGPZSJqWklHx0_cAacO75ReSFBz68lSQXOmKf0R8tPuJgD6-xi54LmsFGE8M4pZ-A2f-whIs1ZXMxKzasarQX9_Qk99HeFmo_zDQ7MttRdfLli9sx9lxCRlMhrmRoyUtu_3x1-FTdOmRZ1snmgNjG4lWBWBaslUljkb0ua43FAETVf_zJMWPCTLGHxRLDZpLZIT4c8Y2wIcI22_rjEmAp7YNWryvQfPSSDl2r5_z");'></div>
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-normal text-gray-500">Oct 26, 2023 - 08:15 AM</p>
+<div class="flex items-center gap-2 rounded-full bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-500">
+<div class="h-1.5 w-1.5 rounded-full bg-green-500"></div>
+                                            Completed
+                                        </div>
+</div>
+<p class="text-lg font-bold text-gray-900">Downtown to Airport</p>
+<p class="text-sm font-normal text-gray-500">From: 123 Main St, Downtown | To: Metro Airport, Terminal 4</p>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<p class="text-xl font-bold text-gray-900">Fare: $42.50</p>
+<div class="flex items-center gap-2">
+<button class="flex h-9 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-700 hover:bg-gray-200">Get Help</button>
+<button class="flex h-9 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-primary px-4 text-sm font-medium text-white hover:bg-primary/90">View Details</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-stretch justify-between gap-4 rounded-xl border border-gray-200 bg-white p-4 transition-shadow hover:shadow-lg md:flex-row">
+<div class="w-full bg-center bg-no-repeat aspect-[16/9] bg-cover rounded-lg flex-1 md:max-w-[240px]" data-alt="A map showing the ride route from Northside Mall to City Center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9Y70BnuLpDRPWb_zXthOL4joHK-nNHr7gyrP6AhIZpPULLfBVQyHu_G5sgMtIR1x6CNvCKXZkdeqSyPBPeGgXQwpe_to7kogBeoLh2ZPh24V-oop8jsUwC6yIQ99rEJU2ECgOfStRp71QU5chVaJaX8Bm_otyBlDQ6tw-tpHN4nDyxXXb8mDf3cUzVwfs0I25ug1xDyg6z0zP1XXhYGEoR0E8tMJjtVWZDUcnhmaYwk_q61Zh3UbsA44SyH1qhqJrAN0UjVGXsJlq");'></div>
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-normal text-gray-500">Oct 24, 2023 - 06:30 PM</p>
+<div class="flex items-center gap-2 rounded-full bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-500">
+<div class="h-1.5 w-1.5 rounded-full bg-green-500"></div>
+                                            Completed
+                                        </div>
+</div>
+<p class="text-lg font-bold text-gray-900">Northside Mall to City Center</p>
+<p class="text-sm font-normal text-gray-500">From: 789 Northside Mall | To: 456 Central Ave, City Center</p>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<p class="text-xl font-bold text-gray-900">Fare: $28.00</p>
+<div class="flex items-center gap-2">
+<button class="flex h-9 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-700 hover:bg-gray-200">Get Help</button>
+<button class="flex h-9 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-primary px-4 text-sm font-medium text-white hover:bg-primary/90">View Details</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-stretch justify-between gap-4 rounded-xl border border-gray-200 bg-white p-4 transition-shadow hover:shadow-lg md:flex-row">
+<div class="w-full bg-center bg-no-repeat aspect-[16/9] bg-cover rounded-lg flex-1 md:max-w-[240px]" data-alt="A map showing the ride route from Oakwood Park to the Business District" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJfJyMz3yUi5YG-EzIP9BtQtFx6tGHVUbcIckCAp0vydUDYy5p51N4LPbFCWOb_uEXgXlG709u87ORp821-fT5XhyVSFUf6091rYNTT1I99Iw1PWTQScmt7QXp1zvyMayFYZ6lZq5MEPNxH-DqPa_ICGdoQeoim2SyhYUcVgyYRLIUi-0kQSDhyxPLw2FlQF3qbGx0D0ECBNxXBETJfFM0lWMghxwdk_gTFY5xRPsdZ_JK9MjrdHdEQ_H8O88B_nRrrduahb1Cx6L1");'></div>
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<p class="text-sm font-normal text-gray-500">Oct 22, 2023 - 10:00 AM</p>
+<div class="flex items-center gap-2 rounded-full bg-red-500/10 px-2 py-0.5 text-xs font-medium text-red-500">
+<div class="h-1.5 w-1.5 rounded-full bg-red-500"></div>
+                                            Canceled
+                                        </div>
+</div>
+<p class="text-lg font-bold text-gray-900">Oakwood Park to Business District</p>
+<p class="text-sm font-normal text-gray-500">From: 321 Oak Ln, Oakwood Park | To: 987 Commerce St, Business District</p>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<p class="text-xl font-bold text-gray-900">Fare: $0.00</p>
+<div class="flex items-center gap-2">
+<button class="flex h-9 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-700 hover:bg-gray-200">Get Help</button>
+<button class="flex h-9 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-primary px-4 text-sm font-medium text-white hover:bg-primary/90">View Details</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex items-center justify-center gap-2">
+<button class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 hover:bg-gray-100">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<button class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font-medium text-white">1</button>
+<button class="flex h-9 w-9 items-center justify-center rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-100">2</button>
+<button class="flex h-9 w-9 items-center justify-center rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-100">3</button>
+<span class="text-gray-500">...</span>
+<button class="flex h-9 w-9 items-center justify-center rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-100">8</button>
+<button class="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-gray-500 hover:bg-gray-100">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

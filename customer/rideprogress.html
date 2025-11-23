@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bolt Management - Ride Progress</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 dark:border-b-gray-700 px-10 py-3 bg-white dark:bg-background-dark">
+<div class="flex items-center gap-4 text-gray-900 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Bolt Management</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<div class="flex items-center gap-8">
+<a class="text-gray-900 dark:text-white text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold leading-normal" href="#">My Rides</a>
+<a class="text-gray-900 dark:text-white text-sm font-medium leading-normal" href="#">Account</a>
+</div>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-gray-700 dark:text-gray-200" style="font-size: 20px;">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCL7SVb5DpqPDs0xBRkkud6Fu9W7dqqMPgVEbp2R9iKphwZ3v77E18QFaXEtUEjUD12hBj69UMYuhWctwVNpmvTANNutrKEKkB6y8vzPrtZsyJu16kcnMD4hEFBSXOg2jAb6aQRMEMuLYF6LBXMvP9qaGzEuqtzLDSvPHHdjt_x2wbZ5lk-AiWWuwRg7BHLLnam0BdAIIcOIb-E9at-qQztF8CxlPY5OxNtCRgM76BQZ0tUKmHwRPUjh-0_v6vqlOEo5caZwtwyZlU7");'></div>
+</div>
+</header>
+<main class="flex-1 px-10 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
+<!-- Left Column: Map -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<h1 class="text-gray-900 dark:text-white tracking-light text-[32px] font-bold leading-tight">Your ride is in progress</h1>
+<div class="w-full h-[600px] bg-center bg-no-repeat bg-cover rounded-xl object-cover shadow-sm" data-alt="Map showing a car route from a start point to a destination" data-location="City with route" style='background-image: url("https://placeholder.pics/svg/300");'></div>
+</div>
+<!-- Right Column: Details -->
+<div class="lg:col-span-1 flex flex-col gap-6">
+<!-- Ride Status Card -->
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal mb-1">Estimated Arrival</p>
+<p class="text-gray-900 dark:text-white text-4xl font-bold leading-tight">4:45 PM</p>
+<div class="mt-4">
+<div class="flex justify-between mb-1"><p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Trip Progress</p></div>
+<div class="rounded-full bg-gray-200 dark:bg-gray-600 h-2"><div class="h-2 rounded-full bg-primary" style="width: 60%;"></div></div>
+</div>
+</div>
+<!-- Driver Profile Card -->
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-16" data-alt="Driver profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLLUXb2gfV1cHiG0Yop-o1399V_FvvktmuuYclxUlUC-_mPVv2Wtu3Bdni9AvCc8lDJ2XRfprtegc_-GNxNlcu-cx59yULlXyfFtl7t-lwDgUJcOIO6CEm6hevJNdg-WH2nZ9lVIbTeJSkn5gBIoWF5oUKfvZluKhljZ0LJnTlEiB5k0YajcnR_keQkbrPdBXb4LpAm6pAvnA5mDYM2kM0Br4GNs4oo18dKTp3hBv-JHK32hqnBnbyK3BB7oYTeOaKf5BivLBSjh-c");'></div>
+<div class="flex-1">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Alex Johnson</h3>
+<div class="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-yellow-500" style="font-size: 16px; font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9 (231 trips)</span>
+</div>
+</div>
+</div>
+<div class="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4">
+<p class="text-gray-500 dark:text-gray-400 text-sm">Toyota Camry - <span class="font-mono text-gray-900 dark:text-white">LA-54321</span></p>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-3">
+<button class="flex w-full items-center justify-center gap-2 rounded-lg h-10 px-4 text-sm font-semibold bg-primary text-white">
+<span class="material-symbols-outlined" style="font-size: 18px;">call</span>
+                                Call
+                            </button>
+<button class="flex w-full items-center justify-center gap-2 rounded-lg h-10 px-4 text-sm font-semibold bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
+<span class="material-symbols-outlined" style="font-size: 18px;">chat_bubble</span>
+                                Message
+                            </button>
+</div>
+</div>
+<!-- Trip Details -->
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Trip Details</h3>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<div class="mt-1"><span class="material-symbols-outlined text-primary" style="font-size: 20px;">my_location</span></div>
+<div>
+<p class="text-xs text-gray-500 dark:text-gray-400">Pickup</p>
+<p class="text-sm font-medium text-gray-900 dark:text-white">123 Main Street, Downtown</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="mt-1"><span class="material-symbols-outlined text-red-500" style="font-size: 20px;">location_on</span></div>
+<div>
+<p class="text-xs text-gray-500 dark:text-gray-400">Destination</p>
+<p class="text-sm font-medium text-gray-900 dark:text-white">456 Oak Avenue, Uptown</p>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 mt-4 pt-4 flex justify-between items-center">
+<p class="text-sm text-gray-500 dark:text-gray-400">Estimated Fare</p>
+<p class="text-sm font-bold text-gray-900 dark:text-white">$24.50</p>
+</div>
+</div>
+<!-- Help section -->
+<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">help_outline</span>
+<div>
+<h3 class="font-semibold text-gray-900 dark:text-white">Need help?</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Visit our support center for assistance.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

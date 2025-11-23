@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bolt - Payment</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center py-5 sm:px-6 lg:px-8">
+<div class="layout-content-container flex flex-col w-full max-w-6xl flex-1">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-700 px-4 sm:px-6 lg:px-10 py-3">
+<div class="flex items-center gap-4 text-gray-900 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Bolt Management</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center gap-8">
+<div class="flex items-center gap-9">
+<a class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="#">Dashboard</a>
+<a class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="#">Rides</a>
+<a class="text-primary dark:text-primary text-sm font-bold leading-normal" href="#">Payments</a>
+<a class="text-gray-800 dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary dark:hover:text-primary" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="hidden sm:flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Book a Ride</span>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-gray-200/60 dark:bg-gray-700/50 text-gray-900 dark:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxnHh8_G-VdSHoBmpkZS55tIWN4t1BjoKNCkZcbM6qvv9hw-VsaVFs996rRaVYMgjvakRb6rYsVo7Pry2zNU3zLLqHKLgM2tD3Tm5zmtaypDe9x3RmitLoNbE2majXqD7cgqJQEbnxlAY2L76NAvkBbOPDURj100o2wj_syWjDr-YZr4R4wjCWzR3hul2JINaYNc4O6E7sQvdQFoH1F8czzubq2qBZgivpwU961rFWpSoy0Weu0-JqO-3oHq4ng41DjlQ1mi0X4jey");'></div>
+</div>
+</header>
+<main class="flex-grow p-4 sm:p-6 lg:p-8">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-4 mb-8">
+<div class="flex flex-col gap-2">
+<p class="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Complete Your Payment</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Please review the details below and select a payment method to complete your transaction.</p>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Payment Details -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Payment for Your Recent Ride</h2>
+<!-- Card -->
+<div class="w-full @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 overflow-hidden">
+<div class="w-full bg-center bg-no-repeat aspect-[2/1] sm:aspect-[3/1] bg-cover" data-alt="Map image showing a route from downtown to suburbia" data-location="San Francisco" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-WlCGDiPGOfUMvDjYlD1ga9821gdZC7AA-jWDdmMaNf5d915H0sv1NR45AWDqmi_pe9OhNbjTCNs1OMKFXtanyK76FDb5gdiwiS89H53dVrKfQkjjDWpoTVNisQOFbQ4nzrk5mSg2yAtb15hMRChthy6FxHqPzs6u4itS5Uq7-aylq9fBgKZpfx4vA3RTUNUCdAvLuLg9TjVOECnfIF2hnMoA7MfqwvDCvEp565XL2itJhTUSrR8F0yVztio7qCBoeKBPTfwDnDAv");'></div>
+<div class="flex flex-col lg:flex-row w-full grow items-start justify-between gap-4 p-6">
+<div class="flex flex-col gap-2 flex-grow">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Ride on Aug 15, 2024</p>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">From: 123 Main St, Downtown</p>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">To: 456 Oak Ave, Suburbia</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal mt-2">Base Fare: $15.00, Distance: $7.50, Fees: $2.00</p>
+</div>
+<div class="flex flex-col items-start lg:items-end w-full lg:w-auto bg-primary/10 dark:bg-primary/20 p-4 rounded-lg">
+<p class="text-gray-600 dark:text-gray-300 text-sm font-medium">Total Amount Due</p>
+<p class="text-primary text-3xl font-black leading-tight tracking-tighter">$24.50</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Payment Method -->
+<div class="lg:col-span-1 flex flex-col gap-6">
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Select Payment Method</h2>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-200 dark:border-gray-700 flex flex-col gap-4">
+<div class="space-y-4">
+<label class="flex items-center gap-4 p-4 rounded-lg border-2 border-primary bg-primary/10 dark:bg-primary/20 cursor-pointer">
+<input checked="" class="form-radio text-primary focus:ring-primary" name="payment-method" type="radio"/>
+<img alt="Visa Logo" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-wTP3dsF451Omt47xw47a6UYbhuf18MOiZlcp5IoaHZKYd7BFS1AD28koN1ZjQ_3dlwrfLRDFD62RnWJK6TrPzuEbvVNvC96CkIMdlk6wzwf4Qatwm7rA8JPyLrKf3eGImF9eQ_xsZ7TVA61sxRYEOaqJDP2QQfQaP0e6gnVcjyNScHdremtCEkJRlxTuJL1I4TPPekA_6TVm-JeYcyUHzTUFCwpnXPbEzBZesJj7xv_GjbzgXMjSUiqqey8Dn1mTuBwjkZqo1oM2"/>
+<span class="flex-grow text-gray-800 dark:text-gray-200 font-medium">Visa ending in 1234</span>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-primary/50 dark:hover:border-primary/50 cursor-pointer">
+<input class="form-radio text-primary focus:ring-primary" name="payment-method" type="radio"/>
+<img alt="PayPal Logo" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxIPptmfY0ibPMBlRW4nfxYEK5fIUvuOnPTCc4SADSpzTw0llIFuxDr4bxGEHIx0dM3MmCaMiq8pHV8XEGwRlPu3t25Casb65HGtqWC-rigYoVTzGwXST-6CKdQ6rNjgGEFzTYoUMXSe1yLiRwX4_sbMAzfOYzGPX_S3GiP_IZDn4Za7mEXqFMF1HcW4c7mKeqK4ZNPJRj44PjwSJ74QvQcrlejJPi_CcsqnsMzSQ0mn04MZu5G44P7DoitL6_BhrhPWTkayRqCLAt"/>
+<span class="flex-grow text-gray-800 dark:text-gray-200 font-medium">PayPal</span>
+</label>
+</div>
+<button class="w-full flex items-center justify-center gap-2 text-primary font-bold py-2 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+                                        Add New Payment Method
+                                    </button>
+<div class="border-t border-gray-200 dark:border-gray-700 pt-4 mt-2">
+<button class="w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity">
+<span class="truncate">Pay $24.50 Now</span>
+</button>
+</div>
+<div class="flex items-center justify-center gap-3 text-gray-500 dark:text-gray-400 mt-2">
+<span class="material-symbols-outlined text-base">lock</span>
+<p class="text-xs font-medium">Secure SSL Connection</p>
+<img alt="Mastercard Logo" class="h-4 opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP1LWI5T3BBBh2g6gLurXMa_lWYR4_cb4OWEWfxcF5g2vnBgF9Gnwh2oGP0gayYcpsocpEoOB76QQFpRG1rAQaszjS17ob3yw811DiAC7oScVg3vpStvhijA49_7zZnRMD-CQ_QZ1KCg7ISTJgHZdQv1l6uDKOY8VCScwgG87NWLxY-OXWlJaU7xlLp2cQZmefJBejIKRD7r7VrIENmG_MJEbNhaTQLjeg70FSQ2vnr9367eQLC5F3bmASot-NOLiPu0u6wAB5EtX4"/>
+<img alt="American Express Logo" class="h-4 opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfJUQxUA5ZjRBTPFTu-lngp2B9PJite6n6nImhZp9m-3VRgVWN4qjuzjMSK2SxsfdflGNP3_A4MIKfUKjYFkQd5YLqB9hX8HRzQG2WTkECYMUvWEiXnU9-OtHtB35_DvIlSGzc_1PT2LNzajwzrpXNu4CXJVjulcr_MuGSbXQYhilElI5a7Ge60UDoTYTC4o-HMboL4CEuaMWSth1BeSvvjfT_y2Uo5Y_yxk-SVcYZSWeqaa-pttR0O8RKX75jandhTsaZuojAdz0i"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Transaction History Section -->
+<div class="mt-12">
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">Transaction History</h2>
+<div class="bg-white dark:bg-background-dark rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-gray-200 dark:border-gray-700">
+<div class="border-b border-gray-200 dark:border-gray-700">
+<nav aria-label="Tabs" class="flex -mb-px">
+<a class="w-1/2 sm:w-auto py-4 px-6 text-center border-b-2 font-bold text-sm text-primary border-primary" href="#">Pending</a>
+<a class="w-1/2 sm:w-auto py-4 px-6 text-center border-b-2 font-medium text-sm text-gray-500 dark:text-gray-400 border-transparent hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600" href="#">Completed</a>
+</nav>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-gray-50 dark:bg-gray-800/50">
+<tr>
+<th class="p-4 font-semibold text-sm text-gray-600 dark:text-gray-300">Date</th>
+<th class="p-4 font-semibold text-sm text-gray-600 dark:text-gray-300">Ride Details</th>
+<th class="p-4 font-semibold text-sm text-gray-600 dark:text-gray-300 text-right">Amount</th>
+<th class="p-4 font-semibold text-sm text-gray-600 dark:text-gray-300 text-center">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+<tr>
+<td class="p-4 text-gray-700 dark:text-gray-300">Aug 15, 2024</td>
+<td class="p-4 text-gray-700 dark:text-gray-300">Downtown to Suburbia</td>
+<td class="p-4 text-gray-800 dark:text-gray-200 font-medium text-right">$24.50</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-300">Pending</span>
+</td>
+</tr>
+<tr>
+<td class="p-4 text-gray-700 dark:text-gray-300">Aug 12, 2024</td>
+<td class="p-4 text-gray-700 dark:text-gray-300">Airport to City Center</td>
+<td class="p-4 text-gray-800 dark:text-gray-200 font-medium text-right">$35.10</td>
+<td class="p-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-300">Failed</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>
