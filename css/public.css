@@ -1,6 +1,8 @@
 /* public.css is for specific pages under the public section like landing page, about us,
 help, etc. */
 
+/* ------------------------------Landing page section------------------------------------*/
+
 /* --------- Hero Section (landing) --------- */
 #hero {
     background-image: url('../images/hero-bg.jpg');
