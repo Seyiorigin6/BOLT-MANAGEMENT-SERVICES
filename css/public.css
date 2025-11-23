@@ -522,3 +522,272 @@ help, etc. */
   #help-page #faq-search-box { max-width: 100%; }
 }
 
+/* ------------------------------CONTACT PAGE------------------------------ */
+#contact-page #contact-hero {
+  background: var(--green);
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+#contact-page #contact-hero h1 {
+  font-size: 2.2rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+#contact-page #contact-hero p {
+  color: var(--muted);
+  opacity: 0.95;
+}
+
+/* Contact info + form layout */
+#contact-page #contact-info .card {
+  box-shadow: 0 6px 12px var(--shadow);
+}
+
+/* form inputs inherit global styles, but we can tweak spacing */
+#contact-page input[type="text"],
+#contact-page input[type="email"],
+#contact-page textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* contact status (success message) */
+#contact-page #contact-status {
+  display: inline-block;
+  min-width: 140px;
+}
+
+.map-caption {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--green); /* or your preferred color */
+  text-align: center;
+}
+
+/* responsive map */
+.map-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio — change to 75% for 4:3 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* map card */
+#contact-page #contact-map .card img {
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #contact-page #contact-info { padding: 0; }
+  #contact-page #contact-hero h1 { font-size: 1.8rem; }
+}
+
+/* --------- Terms & Conditions Page --------- */
+#terms-content {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: var(--black);
+}
+
+#terms-content h1 {
+  font-size: 2.5rem;
+  color: var(--green);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#terms-content h2 {
+  font-size: 1.8rem;
+  color: var(--green);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#terms-content p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+#terms-content a {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+#terms-content a:hover {
+  opacity: 0.8;
+}
+
+/* --------- Privacy Policy Page --------- */
+#privacy-content {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: var(--black);
+}
+
+#privacy-content h1 {
+  font-size: 2.5rem;
+  color: var(--green);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#privacy-content h2 {
+  font-size: 1.8rem;
+  color: var(--green);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#privacy-content p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+#privacy-content a {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+#privacy-content a:hover {
+  opacity: 0.8;
+}
+
+/* --------------------- Login Page --------------------------- */
+#login-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 2rem;
+    background: var(--green);
+    min-height: calc(100vh - 120px); /* leave space for header/footer */
+}
+
+.login-container {
+    background: var(--white);
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login-container h1 {
+    color: var(--green);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.login-container p {
+    color: var(--black);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.login-container label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--black);
+}
+
+.login-container input {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.login-container input:focus {
+    border-color: var(--green);
+    outline: none;
+}
+
+.login-container button.cta-button {
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.login-footer-text {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.login-footer-text a {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+.login-footer-text a:hover {
+    opacity: 0.8;
+}
+
+/* Inline error messages */
+.error-message {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+.forgot-password a {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+.forgot-password a:hover {
+    opacity: 0.8;
+}
+
+
+/* Responsive */
+@media (max-width: 500px) {
+    .login-container {
+        padding: 2rem 1rem;
+    }
+}
+
+

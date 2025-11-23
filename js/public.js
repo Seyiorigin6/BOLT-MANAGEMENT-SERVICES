@@ -221,5 +221,89 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
+  /* -------------------- CONTACT PAGE-------------------- */
+  (function contactPage() {
+    const root = document.getElementById('contact-page');
+    if (!root) return;
+
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('contact-status');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = (form.querySelector('input[name="name"]')?.value || '').trim();
+      const email = (form.querySelector('input[name="email"]')?.value || '').trim();
+      const message = (form.querySelector('textarea[name="message"]')?.value || '').trim();
+
+      // basic validation
+      if (!name || !email || !message) {
+        statusEl.style.color = '#d9534f';
+        statusEl.textContent = 'Please fill all fields.';
+        return;
+      }
+
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!emailOk) {
+        statusEl.style.color = '#d9534f';
+        statusEl.textContent = 'Please enter a valid email.';
+        return;
+      }
+
+      // show "sending" state and fake async submit
+      statusEl.style.color = 'var(--green)';
+      statusEl.textContent = 'Sending...';
+
+      // simulate network request (replace with fetch to real endpoint)
+      setTimeout(() => {
+        statusEl.style.color = 'var(--green)';
+        statusEl.textContent = 'Message sent — we will reply soon.';
+        form.reset();
+        setTimeout(() => { statusEl.textContent = ''; }, 5000);
+      }, 900); // short simulated delay
+    });
+  })();
+
+  /*--------------------Login Page----------------------*/
+  // login validation
+  const loginForm = document.getElementById('login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // Clear previous errors
+      document.getElementById('email-error').textContent = '';
+      document.getElementById('password-error').textContent = '';
+
+      const email = loginForm.email.value.trim();
+      const password = loginForm.password.value.trim();
+      let valid = true;
+
+      // Email validation
+      if (!email) {
+        document.getElementById('email-error').textContent = 'Email is required';
+        valid = false;
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById('email-error').textContent = 'Invalid email address';
+        valid = false;
+      }
+
+      // Password validation
+      if (!password) {
+        document.getElementById('password-error').textContent = 'Password is required';
+        valid = false;
+      } else if (password.length < 6) {
+        document.getElementById('password-error').textContent = 'Password must be at least 6  characters';
+        valid = false;
+      }
+
+      if (valid){
+        // Only redirect if both fields are valid
+      window.location.href = 'customer/customerhome.html';
+      }
+    });
+  }
+
 });
 
