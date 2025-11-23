@@ -92,5 +92,134 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
   });
 
+  /*---------------------------HELP PAGE-----------------------------*/
+  (function () {
+    const helpRoot = document.getElementById('help-page');
+    if (!helpRoot) return;
+
+    const faqItems = Array.from(helpRoot.querySelectorAll('.faq-item'));
+
+    // initialize answers collapsed
+    faqItems.forEach(item => {
+      const ans = item.querySelector('.faq-a');
+      if (!ans) return;
+      ans.style.maxHeight = '0';
+      ans.style.overflow = 'hidden';
+      ans.style.padding = '0 1rem';
+      ans.style.transition = 'max-height 0.32s ease, padding 0.32s ease';
+      item.classList.remove('open');
+    });
+
+    function setAnswerMaxHeight(ans) {
+      requestAnimationFrame(() => {
+        // small buffer to avoid clipping (margins, inline spacing)
+        const buffer = 20;
+        ans.style.maxHeight = (ans.scrollHeight + buffer) + 'px';
+      });
+    }
+
+    function openFaq(item) {
+      const ans = item.querySelector('.faq-a');
+      if (!ans) return;
+      item.classList.add('open');
+
+      // set padding first so scrollHeight accounts for it
+      ans.style.padding = '0.75rem 1rem 1rem';
+      setAnswerMaxHeight(ans);
+    }
+
+    function closeFaq(item) {
+      const ans = item.querySelector('.faq-a');
+      if (!ans) return;
+      item.classList.remove('open');
+
+      // collapse
+      ans.style.maxHeight = '0';
+      ans.style.padding = '0 1rem';
+    }
+
+    // Toggle handlers
+    const qButtons = Array.from(helpRoot.querySelectorAll('.faq-q'));
+    qButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        if (!item) return;
+        if (item.classList.contains('open')) {
+          closeFaq(item);
+        } else {
+          //close others first
+          faqItems.forEach(i => i !== item && closeFaq(i));
+          openFaq(item);
+        }
+      });
+    });
+
+    // Live search (unchanged)
+    const searchBox = helpRoot.querySelector('#faq-search-box');
+    if (searchBox) {
+      searchBox.addEventListener('input', (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        faqItems.forEach(item => {
+          const qText = (item.querySelector('.faq-q')?.textContent || '').toLowerCase();
+          const aText = (item.querySelector('.faq-a')?.textContent || '').toLowerCase();
+          const visible = q === '' || qText.includes(q) || aText.includes(q);
+          item.style.display = visible ? '' : 'none';
+          // if visible and open, recompute maxHeight (in case content changed)
+          if (visible && item.classList.contains('open')) {
+            const ans = item.querySelector('.faq-a');
+            if (ans) setAnswerMaxHeight(ans);
+          }
+        });
+      });
+    }
+
+    // Recompute maxHeight for open answers on resize
+    window.addEventListener('resize', () => {
+      faqItems.forEach(item => {
+        if (item.classList.contains('open')) {
+          const ans = item.querySelector('.faq-a');
+          if (ans) setAnswerMaxHeight(ans);
+        }
+      });
+    });
+
+    // Recompute when images inside answers load (images can change scrollHeight)
+    faqItems.forEach(item => {
+      const imgs = item.querySelectorAll('img');
+      imgs.forEach(img => {
+        if (!img.complete) {
+          img.addEventListener('load', () => {
+            if (item.classList.contains('open')) {
+              const ans = item.querySelector('.faq-a');
+              if (ans) setAnswerMaxHeight(ans);
+            }
+          });
+        }
+      });
+    });
+
+    // Contact form handling
+    const supportForm = helpRoot.querySelector('#support-form');
+    if (supportForm) {
+      supportForm.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        const name = (supportForm.querySelector('input[name="name"]')?.value || '').trim();
+        const email = (supportForm.querySelector('input[name="email"]')?.value || '').trim();
+        const message = (supportForm.querySelector('textarea[name="message"]')?.value || '').trim();
+        if (!name || !email || !message) {
+          alert('Please fill all fields before sending.');
+          return;
+        }
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!emailOk) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+        alert('Thanks — your message was sent. We will contact you shortly.');
+        supportForm.reset();
+      });
+    }
+  })();
+
 });
 

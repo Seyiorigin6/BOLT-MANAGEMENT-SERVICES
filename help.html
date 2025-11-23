@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bolt — Help / FAQ</title>
+
+  <!-- Global CSS first, then public.css -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/public.css">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="help-page">
+
+    <!-- Header -->
+    <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <h1>Bolt</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="help.html">Help</a></li>
+                        <li><a href="login.html" class="cta-button">Login</a></li>
+                        <li><a href="register.html" class="cta-button">Register</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+    <!-- Hero -->
+    <section id="help-hero">
+      <div class="container">
+        <h1>Help & Frequently Asked Questions</h1>
+        <p>Find fast answers, search the FAQ, or contact our support team.</p>
+      </div>
+    </section>
+
+    <!-- Search -->
+    <section id="faq-search">
+      <div class="container">
+        <input id="faq-search-box" type="text" placeholder="Search FAQs (try: booking, payment, safety)..." />
+      </div>
+    </section>
+
+    <!-- FAQ List -->
+    <section id="faq-list">
+      <div class="container">
+        <h2>General Questions</h2>
+
+        <div class="faq-topic">
+          <h3 class="topic-title">Getting Started</h3>
+
+          <div class="faq-item">
+            <button class="faq-q">How do I book a ride?</button>
+            <div class="faq-a">You can book a ride using the Bolt app or website — choose pickup & dropoff and confirm.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">How do I pay for rides?</button>
+            <div class="faq-a">Payment options include card, local mobile payments, or in-app wallet depending on your country.</div>
+          </div>
+        </div>
+
+        <h2>Account & Login</h2>
+
+        <div class="faq-topic">
+          <div class="faq-item">
+            <button class="faq-q">I forgot my password. What do I do?</button>
+            <div class="faq-a">Use the 'Forgot password' link on the login page and follow the reset steps sent to your email.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">How do I register as a driver?</button>
+            <div class="faq-a">Register via the Drivers app or the Driver registration page on the website.</div>
+          </div>
+        </div>
+
+        <h2>Safety & Support</h2>
+
+        <div class="faq-topic">
+          <div class="faq-item">
+            <button class="faq-q">What safety measures are in place?</button>
+            <div class="faq-a">Drivers are verified, trips are tracked, and 24/7 support is available.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">How do I contact support?</button>
+            <div class="faq-a">Use the contact form below or the in-app support chat for quick help.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Support -->
+    <section id="contact-support">
+      <div class="container">
+        <h2>Contact Support</h2>
+
+        <form id="support-form" class="card">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+          <textarea name="message" placeholder="Describe your issue" rows="5" required></textarea>
+          <button type="submit" class="cta-button">Send message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+            <div class="container footer-container">
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="help.html">Help</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-socials">
+                    <p>Follow us on:</p>
+                    <a href="https://www.tiktok.com/@bolt?lang=en" target="_blank">TikTok</a> |
+                    <a href="https://x.com/boltapp" target="_blank">X</a> |
+                    <a href="https://www.instagram.com/bolt_nigeria/?hl=en" target="_blank">Instagram</a>
+                </div>
+                <div class="footer-cta">
+                    <a href="https://play.google.com/store/apps/details?id=ee.mtakso.client&hl=en" class="cta-button" target="_blank">Get Bolt App</a>
+                    <a href="https://play.google.com/store/apps/details?id=ee.mtakso.driver&hl=en" class="cta-button" target="_blank">Get Bolt Drivers</a>
+                </div>
+                <p style="margin-top:1rem; opacity:0.8;">&copy; <span id="year"></span> Bolt Management Services</p>
+            </div>
+        </footer>
+
+  </div>
+
+  <!-- JS (use your public.js) -->
+  <script src="js/public.js" ></script>
+</body>
+</html>
