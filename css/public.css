@@ -193,3 +193,219 @@ help, etc. */
 .testimonial p {
     color: #444;
 }
+
+/*------------------------------------ABOUT PAGE-----------------------------*/
+/* --------- About Page Hero --------- */
+#about-hero {
+    position: relative; /* allows overlay and text positioning */
+    min-height: 400px;
+    background-image: url('../images/about-bolt.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-end;  /* aligns content to bottom */
+    justify-content: flex-start; /* aligns content to left */
+    color: var(--hero-text);
+}
+
+/* optional light overlay for readability */
+#about-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: 0;
+}
+
+/* Hero text container */
+#about-hero .hero-text {
+    position: relative; /* sits above overlay */
+    z-index: 1;
+    max-width: 600px;
+    margin-bottom: 2rem; /* space from bottom */
+    text-align: left; /* ensures text aligns left */
+}
+
+#about-hero .hero-text h1 {
+    font-size: 3.0rem;
+    margin-bottom: 0.5rem;
+    color: var(--hero-text); 
+}
+
+#about-hero .hero-text p {
+    font-size: 1.8rem;
+    max-width: 600px;
+    opacity: 0.95;
+    color: var(--hero-text);
+}
+
+/* --------- Company Overview --------- */
+#company .card {
+    background: var(--white);
+    box-shadow: 0 4px 6px var(--shadow);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+#company h2 {
+    color: var(--green);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+#company p {
+    color: var(--black);
+    line-height: 1.7;
+    text-indent: 30px;
+    margin-bottom: 1rem;
+}
+
+/* --------- Mission & Vision --------- */
+#mission-vision .card {
+    background: var(--white);
+    box-shadow: 0 4px 6px var(--shadow);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: left;
+}
+
+#mission-vision h3 {
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+#mission-vision p {
+    color: var(--black);
+    line-height: 1.6;
+}
+
+/* --------- Team Section --------- */
+#team h2 {
+    color: var(--green);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+#team .features-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+#team .feature.card {
+    flex: 1 1 250px;
+    max-width: 300px;
+    padding: 2rem;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 4px 6px var(--shadow);
+    text-align: center;
+}
+
+#team .feature.card img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+#team .feature.card h3 {
+    color: var(--black);
+    font-weight: 100;
+    margin-bottom: 0.5rem;
+}
+
+#team .feature.card p {
+    color: var(--green);
+    font-weight: 700;
+}
+
+/* --------- Our Values --------- */
+#values h2 {
+    color: var(--green);
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#values .steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+#values .step.card {
+    flex: 1 1 250px;
+    max-width: 300px;
+    padding: 2rem;
+    border-radius: 10px;
+    background: var(--white);
+    box-shadow: 0 4px 6px var(--shadow);
+    text-align: center;
+}
+
+#values .step.card h3 {
+    color: var(--black);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+#values .step.card p {
+    color: var(--black);
+}
+
+/* --------- About CTA --------- */
+#about-cta .card {
+    background: var(--white);
+    box-shadow: 0 4px 6px var(--shadow);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#about-cta h3 {
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+#about-cta p {
+    color: var(--black);
+    font-weight: 600;
+}
+
+/* --------- Images inside cards --------- */
+.card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --------- Responsive --------- */
+@media (max-width: 768px) {
+    #mission-vision .card,
+    #values .step.card,
+    #team .feature.card {
+        flex: 1 1 100%;
+    }
+
+    #about-cta .card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
