@@ -1,0 +1,144 @@
+:root{
+	--primary: #137fec;
+	--background-light: #f6f7f8;
+	--background-dark: #101922;
+	--text: #0d141b;
+	--muted: #64748b; /* slate-500 */
+	--success: #078838;
+	--danger: #e73908;
+	--card-bg: #ffffff;
+	--card-border: #e6eef8; /* light border */
+	--radius: 8px;
+}
+
+html,body{height:100%;}
+body.admin-body{
+	font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	margin:0;
+	background:var(--background-light);
+	color:var(--text);
+}
+
+.app-container{display:flex;min-height:100vh;width:100%;}
+
+/* Sidebar */
+.sidebar{
+	width:260px;
+	background:var(--card-bg);
+	border-right:1px solid var(--card-border);
+	display:flex;flex-direction:column;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:12px;padding:20px;border-bottom:1px solid var(--card-border)}
+.brand-logo svg{width:36px;height:36px;color:var(--primary)}
+.brand h2{font-size:18px;margin:0;font-weight:700}
+
+.nav{display:flex;flex-direction:column;padding:12px;gap:6px}
+.nav-link{display:flex;align-items:center;gap:10px;padding:10px;border-radius:8px;color:var(--muted);text-decoration:none}
+.nav-link span.material-symbols-outlined{font-size:20px}
+.nav-link:hover{background:#f2f6fb;color:var(--text)}
+.nav-link.active{background:rgba(19,127,236,0.08);color:var(--primary);font-weight:600}
+
+.sidebar-footer{padding:12px}
+
+/* Main area */
+.main{flex:1;display:flex;flex-direction:column;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--card-border);background:var(--card-bg);position:sticky;top:0;z-index:10}
+.topbar h1{margin:0;font-size:18px}
+.top-actions{display:flex;align-items:center;gap:18px}
+
+.search{position:relative;display:flex;align-items:center}
+.search .material-symbols-outlined{position:absolute;left:10px;color:var(--muted)}
+.search input{padding:10px 12px 10px 36px;border-radius:10px;border:1px solid #d9e6fb;background:var(--background-light);min-width:280px}
+
+.icon-btn{background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer;color:var(--muted)}
+.icon-btn:hover{background:#f2f6fb}
+
+.profile{display:flex;align-items:center;gap:12px}
+.avatar{width:40px;height:40px;border-radius:50%;background-size:cover;background-position:center}
+.profile-info h2{margin:0;font-size:14px}
+.profile-info p{margin:0;font-size:12px;color:var(--muted)}
+
+/* Content */
+.content{padding:24px}
+.stats-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:16px;margin-bottom:16px}
+@media(min-width:720px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1200px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.card-title{font-size:14px;margin:0;color:var(--muted)}
+.card-value{font-size:28px;margin:0;font-weight:700}
+.card-delta{font-size:13px;margin:0}
+.card-delta.success{color:var(--success)}
+.card-delta.danger{color:var(--danger)}
+
+/* Wide grid: map and rides */
+.wide-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:16px}
+@media(min-width:1200px){.wide-grid{grid-template-columns:2fr 1fr}}
+.map-card, .rides-card{border-radius:12px;border:1px solid var(--card-border);background:var(--card-bg);padding:18px}
+.map{min-height:380px;background-repeat:no-repeat;background-position:center;background-size:cover;border-radius:10px}
+
+.rides-header{display:flex;gap:8px;margin-bottom:8px}
+.tab{flex:1;padding:8px;border-radius:8px;border:0;background:transparent;cursor:pointer}
+.tab.active{background:rgba(19,127,236,0.08);color:var(--primary);font-weight:600}
+.rides-list{display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto;padding-right:6px}
+.ride-item{padding:12px;border-radius:8px}
+.ride-item:hover{background:#fbfdff}
+.ride-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.badge{padding:4px 8px;border-radius:999px;font-size:12px}
+.badge.success{background:rgba(7,136,56,0.08);color:var(--success)}
+.muted{color:var(--muted);font-size:13px}
+
+/* Charts grid */
+.charts-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.charts-grid{grid-template-columns:1fr 1fr}}
+.card.large{min-height:220px}
+.card-meta{display:flex;gap:12px;align-items:center}
+.card .chart{margin-top:12px}
+
+/* Bars */
+.bars{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:end;padding-top:18px}
+.bar{display:flex;flex-direction:column;align-items:center;gap:6px}
+.bar-fill{width:100%;background:rgba(19,127,236,0.12);border-top-left-radius:6px;border-top-right-radius:6px}
+.bar-fill.primary{background:var(--primary)}
+.bar p{font-size:12px;color:var(--muted);margin:0}
+.bar p.primary{color:var(--primary);font-weight:700}
+
+/* small utilities */
+.primary{color:var(--primary)}
+
+/* scrollbar tweak */
+.rides-list::-webkit-scrollbar{width:8px}
+.rides-list::-webkit-scrollbar-thumb{background:#d6def4;border-radius:8px}
+
+/* Responsive adjustments */
+@media(max-width:800px){
+	.sidebar{display:none}
+	.topbar{padding:12px}
+	.search input{min-width:160px}
+}
+
+/* Responsive sidebar overlay */
+.hamburger{display:none;background:transparent;border:0;padding:6px;border-radius:8px;cursor:pointer;color:var(--muted)}
+.hamburger .material-symbols-outlined{font-size:24px}
+
+.backdrop{display:none;position:fixed;inset:0;background:rgba(6,12,28,0.45);z-index:40;opacity:0;pointer-events:none;transition:opacity .22s ease}
+
+.app-container .sidebar{transition:transform .28s ease,left .28s ease,opacity .2s}
+
+/* When sidebar is opened on small screens */
+.app-container.sidebar-open .backdrop{display:block;opacity:1;pointer-events:auto}
+.app-container.sidebar-open .sidebar{display:block;position:fixed;left:0;top:0;height:100vh;z-index:50;transform:translateX(0);box-shadow:0 8px 30px rgba(0,0,0,0.12)}
+
+/* Mobile adjustments */
+@media(max-width:800px){
+	.hamburger{display:inline-flex}
+	.sidebar{position:fixed;left:-320px;top:0;height:100vh;width:260px;background:var(--card-bg);box-shadow:0 8px 30px rgba(0,0,0,0.08);transform:translateX(-100%);transition:transform .28s ease;z-index:50}
+	.main{flex:1;min-width:0}
+}
+
+/* Ensure content scrolls under overlay */
+@media(max-width:800px){
+	.content{padding:16px}
+	.map{min-height:240px}
+}
+

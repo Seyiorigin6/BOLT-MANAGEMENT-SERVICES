@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaxiDash - Management Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+  </style>
+</head>
+<body class="admin-body">
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" role="navigation" aria-label="Main">
+      <div class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#c)"><path d="M24 0.757L47.2426 24 24 47.243 0.757355 24 24 0.757355Z" fill="currentColor"/></g><defs><clipPath id="c"><rect width="48" height="48" fill="white"/></clipPath></defs></svg>
+        </div>
+        <h2>TaxiDash</h2>
+      </div>
+      <nav class="nav">
+        <a class="nav-link active" href="#"><span class="material-symbols-outlined fill">dashboard</span><span>Dashboard</span></a>
+        <a class="nav-link" href="#"><span class="material-symbols-outlined">directions_car</span><span>Drivers</span></a>
+        <a class="nav-link" href="#"><span class="material-symbols-outlined">group</span><span>Passengers</span></a>
+        <a class="nav-link" href="#"><span class="material-symbols-outlined">history</span><span>Rides History</span></a>
+        <a class="nav-link" href="#"><span class="material-symbols-outlined">monitoring</span><span>Analytics</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a class="nav-link" href="#"><span class="material-symbols-outlined">settings</span><span>Settings</span></a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+      <header class="topbar">
+        <button class="hamburger" aria-label="Toggle menu"><span class="material-symbols-outlined">menu</span></button>
+        <h1>Dashboard Overview</h1>
+        <div class="top-actions">
+          <label class="search">
+            <span class="material-symbols-outlined">search</span>
+            <input placeholder="Search drivers, passengers, rides..." />
+          </label>
+          <div class="icons">
+            <button class="icon-btn"><span class="material-symbols-outlined">notifications</span></button>
+            <button class="icon-btn"><span class="material-symbols-outlined">settings</span></button>
+          </div>
+          <div class="profile">
+            <div class="avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtifm9KYp00s9AeOUqqpmHgJ5Pj-cxFskmwwl0KRFlFnSZLIFhLCX1tBfb_c6Yn64eibsCdrynsw-fDlp078u0ItrErTioYRP_Sp0Bi3jSQ9AjDOaqfsJGvnN3bDxJOU-Cwaru5Z9MvLR4TtFM-W6JqP-L2aRzhtM9NhSwgv3qZ7N1HRKxWZ2IZSUokC9poQmQom-zI3HgKzccNBUIu_UG7uz8wsxoMZGI22lcP01txtMmACZx-WchNXym0mkKtBkp1s2h40xdtRaS");'></div>
+            <div class="profile-info"><h2>Admin User</h2><p>manager@taxidash.com</p></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="stats-grid">
+          <div class="card"><p class="card-title">Active Drivers</p><p class="card-value">1,204</p><p class="card-delta success">+2.5%</p></div>
+          <div class="card"><p class="card-title">Active Passengers</p><p class="card-value">850</p><p class="card-delta success">+1.8%</p></div>
+          <div class="card"><p class="card-title">Ongoing Rides</p><p class="card-value">156</p><p class="card-delta danger">-0.5%</p></div>
+          <div class="card"><p class="card-title">Total Revenue</p><p class="card-value">₦25,680.00</p><p class="card-delta success">+5.2%</p></div>
+        </section>
+
+        <section class="wide-grid">
+          <div class="map-card"><h3>Live Vehicle Tracking</h3><div class="map" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZGTkHSia30sLrzJbvoab_L_Wl81Hkv7AviYxJeE4ZDuic08XKhPViM3GA9GXt6F7YljQB6UC3_J_vtMcU14xF5ZvO8mcmbN3MB9AU9JZAbN4fmGStAFWDrxQUTuA9lR41L025-uAMesmU8Gp_5Hhxoz3DYuxGYHAbTKgTC1v9sQ-SVd1LEQrzNFU7CXZITxHV5bkCWP8hwZ2ADsKiuStwMPuCCUjRPOVThsB5_uH_5jJw1oERHWWDCtwHcRfBb8Z4-YtxYILFse2b");'></div></div>
+          <div class="rides-card">
+            <div class="rides-header"><button class="tab active">Live Rides (12)</button><button class="tab">Requests (3)</button></div>
+            <div class="rides-list">
+              <div class="ride-item"><div class="ride-top"><p>John Doe</p><span class="badge success">On Ride</span></div><p class="muted">To: 123 Main St, Anytown</p></div>
+              <div class="ride-item"><div class="ride-top"><p>Emily Ray</p><span class="badge success">On Ride</span></div><p class="muted">To: 456 Oak Ave, Anytown</p></div>
+              <div class="ride-item"><div class="ride-top"><p>Michael Smith</p><span class="badge success">On Ride</span></div><p class="muted">To: 789 Pine Ln, Anytown</p></div>
+              <div class="ride-item"><div class="ride-top"><p>Sarah Kim</p><span class="badge success">On Ride</span></div><p class="muted">To: 101 Maple Rd, Anytown</p></div>
+              <div class="ride-item"><div class="ride-top"><p>David Chen</p><span class="badge success">On Ride</span></div><p class="muted">To: 212 Birch Ct, Anytown</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="charts-grid">
+          <div class="card large"><p class="card-title">Rides Over Time</p><p class="card-value">1,890 Rides</p><div class="card-meta"><p class="muted">Last 24 Hours</p><p class="card-delta success">+8.1%</p></div><div class="chart"><svg fill="none" height="148" preserveAspectRatio="none" viewBox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#paint0_linear_1131_5935)"></path><path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#137fec" stroke-linecap="round" stroke-width="3"></path><defs><linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_1131_5935" x1="236" x2="236" y1="1" y2="149"><stop stop-color="#137fec" stop-opacity="0.2"></stop><stop offset="1" stop-color="#137fec" stop-opacity="0"></stop></linearGradient></defs></svg></div></div>
+          <div class="card large"><p class="card-title">Top Performing Drivers</p><p class="card-value">₦12,300</p><div class="card-meta"><p class="muted">This Week</p><p class="card-delta success">+4.7%</p></div><div class="bars"><div class="bar"><div class="bar-fill" style="height:40%"></div><p>J. Doe</p></div><div class="bar"><div class="bar-fill" style="height:30%"></div><p>M. Smith</p></div><div class="bar"><div class="bar-fill primary" style="height:100%"></div><p class="primary">L. Ray</p></div><div class="bar"><div class="bar-fill" style="height:80%"></div><p>S. Kim</p></div><div class="bar"><div class="bar-fill" style="height:90%"></div><p>P. Chen</p></div></div></div>
+        </section>
+      </main>
+    </div>
+    <div class="backdrop" aria-hidden="true"></div>
+  </div>
+
+  <script>
+    (function(){
+      const app = document.querySelector('.app-container');
+      const hamburger = document.querySelector('.hamburger');
+      const backdrop = document.querySelector('.backdrop');
+      function openSidebar(){ app.classList.add('sidebar-open'); document.body.style.overflow='hidden'; }
+      function closeSidebar(){ app.classList.remove('sidebar-open'); document.body.style.overflow=''; }
+      hamburger && hamburger.addEventListener('click', function(){ if(app.classList.contains('sidebar-open')) closeSidebar(); else openSidebar(); });
+      backdrop && backdrop.addEventListener('click', closeSidebar);
+      window.addEventListener('resize', function(){ if(window.innerWidth>800) closeSidebar(); });
+    })();
+  </script>
+</body>
+</html>
