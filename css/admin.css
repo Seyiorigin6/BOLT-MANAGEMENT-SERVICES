@@ -802,6 +802,7 @@ body {
 .system-settings .slider-container input[type="range"] {
     flex: 1;
     -webkit-appearance: none;
+    appearance: none;
     height: 5px;
     border-radius: 3px;
     background: #e9ecef;

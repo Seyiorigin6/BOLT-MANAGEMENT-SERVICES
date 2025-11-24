@@ -6,144 +6,70 @@
   <title>Register — Bolt Management Services</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/public.css">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    .password-strength {
-      margin-top: 0.5rem;
-      font-size: 14px;
-    }
-    .strength-bar {
-      height: 4px;
-      background: #ddd;
-      border-radius: 2px;
-      margin-top: 0.5rem;
-      overflow: hidden;
-    }
-    .strength-bar-fill {
-      height: 100%;
-      width: 0%;
-      transition: all 0.3s ease;
-    }
-    .strength-weak { background: #ef4444; width: 33%; }
-    .strength-medium { background: #f59e0b; width: 66%; }
-    .strength-strong { background: #34D399; width: 100%; }
-    
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      margin: 1rem 0;
-      gap: 0.5rem;
-    }
-    .checkbox-group input[type="checkbox"] {
-      margin-top: 0.25rem;
-      width: auto;
-    }
-    .checkbox-group label {
-      margin: 0;
-      font-size: 14px;
-    }
-    .success-message {
-      color: #34D399;
-      font-size: 14px;
-      margin-top: 0.5rem;
-    }
-  </style>
 </head>
 <body>
   <div id="register-page">
     
     <!-- Header -->
     <header>
-      <div class="container header-container">
-        <div class="logo">
-          <h1>Bolt</h1>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="help.html">Help</a></li>
-            <li><a href="login.html" class="cta-button">Login</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+            <div class="container header-container">
+                <div class="logo">
+                    <h1>Bolt</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="help.html">Help</a></li>
+                        <li><a href="login.html" class="cta-button">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-    <!-- Registration Form Section -->
+     <!-- Register Form Section -->
     <section id="register-form-section">
-      <div class="container login-container">
-        <h1>Create Your Account</h1>
-        <p>Join Bolt Management Services and start managing your rides today.</p>
-        
+      <div class="container register-container">
+        <h1>Register</h1>
+        <p>Create your account and join Bolt today.</p>
         <form id="register-form">
-          
-          <!-- Full Name -->
-          <label for="full-name">Full Name *</label>
-          <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
-          <small class="error-message" id="full-name-error"></small>
 
-          <!-- Email -->
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email" required>
-          <small class="error-message" id="email-error"></small>
+          <label for="user-type">User Type</label>
+          <select id="user-type" name="user-type">
+            <option value="">Select user type</option>
+            <option value="customer">Customer</option>
+            <option value="driver">Driver</option>
+            <option value="admin">Admin</option>
+          </select>
+          <small class="error-message" id="user-type-error"></small>
 
-          <!-- Phone Number -->
-          <label for="phone">Phone Number *</label>
-          <input type="tel" id="phone" name="phone" placeholder="+234 800 000 0000" required>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name">
+          <small class="error-message" id="name-error"></small>
+
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
           <small class="error-message" id="phone-error"></small>
 
-          <!-- Account Type -->
-          <label for="account-type">Account Type *</label>
-          <select id="account-type" name="account-type" required>
-            <option value="">Select account type</option>
-            <option value="rider">Rider</option>
-            <option value="driver">Driver</option>
-           
-          </select>
-          <small class="error-message" id="account-type-error"></small>
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob">
+          <small class="error-message" id="dob-error"></small>
 
-          <!-- Vehicle Type (shown for drivers) -->
-          <div id="vehicle-type-group" style="display: none;">
-            <label for="vehicle-type">Vehicle Type *</label>
-            <select id="vehicle-type" name="vehicle-type">
-              <option value="">Select vehicle type</option>
-              <option value="motorcycle">Motorcycle (Bike)</option>
-              <option value="car">Car (Sedan/Hatchback)</option>
-              <option value="suv">SUV</option>
-              <option value="van">Van/Minibus</option>
-            </select>
-            <small class="error-message" id="vehicle-type-error"></small>
-          </div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email">
+          <small class="error-message" id="email-error"></small>
 
-          <!-- City/Location -->
-          <label for="city">City/Location *</label>
-          <input type="text" id="city" name="city" placeholder="e.g., Lagos, Abuja, Port Harcourt" required>
-          <small class="error-message" id="city-error"></small>
-
-          <!-- Password -->
-          <label for="password">Password *</label>
-          <input type="password" id="password" name="password" placeholder="Create a strong password" required>
-        
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password">
           <small class="error-message" id="password-error"></small>
 
-          <!-- Confirm Password -->
-          <label for="confirm-password">Confirm Password *</label>
-          <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter your password" required>
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
           <small class="error-message" id="confirm-password-error"></small>
 
-          <!-- Terms and Conditions -->
-          <div class="checkbox-group">
-            <input type="checkbox" id="terms" name="terms" required>
-            <label for="terms">
-              I agree to the <a href="terms.html" target="_blank">Terms & Conditions</a> 
-              and <a href="privacy.html" target="_blank">Privacy Policy</a> *
-            </label>
-          </div>
-          <small class="error-message" id="terms-error"></small>
-
-         
-
-          <button type="submit" class="cta-button">Create Account</button>
+          <button type="submit" class="cta-button">Register</button>
 
           <p class="login-footer-text">
             Already have an account? <a href="login.html">Login here</a>
@@ -154,141 +80,32 @@
 
     <!-- Footer -->
     <footer>
-      <div class="container footer-container">
-        <div class="footer-links">
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="help.html">Help</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="terms.html">Terms & Conditions</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="footer-socials">
-          <p>Follow us on:</p>
-          <a href="https://www.tiktok.com/@bolt?lang=en" target="_blank">TikTok</a> |
-          <a href="https://x.com/boltapp" target="_blank">X</a> |
-          <a href="https://www.instagram.com/bolt_nigeria/?hl=en" target="_blank">Instagram</a>
-        </div>
-        <div class="footer-cta">
-          <a href="https://play.google.com/store/apps/details?id=ee.mtakso.client&hl=en" class="cta-button" target="_blank">Get Bolt App</a>
-          <a href="https://play.google.com/store/apps/details?id=ee.mtakso.driver&hl=en" class="cta-button" target="_blank">Get Bolt Drivers</a>
-        </div>
-        <p style="margin-top:1rem; opacity:0.8;">&copy; <span id="year"></span> Bolt Management Services</p>
-      </div>
-    </footer>
+            <div class="container footer-container">
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="help.html">Help</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-socials">
+                    <p>Follow us on:</p>
+                    <a href="https://www.tiktok.com/@bolt?lang=en" target="_blank">TikTok</a> |
+                    <a href="https://x.com/boltapp" target="_blank">X</a> |
+                    <a href="https://www.instagram.com/bolt_nigeria/?hl=en" target="_blank">Instagram</a>
+                </div>
+                <div class="footer-cta">
+                    <a href="https://play.google.com/store/apps/details?id=ee.mtakso.client&hl=en" class="cta-button" target="_blank">Get Bolt App</a>
+                    <a href="https://play.google.com/store/apps/details?id=ee.mtakso.driver&hl=en" class="cta-button" target="_blank">Get Bolt Drivers</a>
+                </div>
+                <p style="margin-top:1rem; opacity:0.8;">&copy; <span id="year"></span> Bolt Management Services</p>
+            </div>
+        </footer>
 
-    <script>
-      // Update year
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Show/hide vehicle type based on account type
-      document.getElementById('account-type').addEventListener('change', function() {
-        const vehicleGroup = document.getElementById('vehicle-type-group');
-        const vehicleType = document.getElementById('vehicle-type');
-        
-        if (this.value === 'driver') {
-          vehicleGroup.style.display = 'block';
-          vehicleType.required = true;
-        } else {
-          vehicleGroup.style.display = 'none';
-          vehicleType.required = false;
-          vehicleType.value = '';
-        }
-      });
-
-
-      // Form validation and submission
-      document.getElementById('register-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Clear all errors
-        document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
-        
-        let isValid = true;
-        
-        // Full name validation
-        const fullName = document.getElementById('full-name').value.trim();
-        if (fullName.length < 3) {
-          document.getElementById('full-name-error').textContent = 'Please enter your full name';
-          isValid = false;
-        }
-        
-        // Email validation
-        const email = document.getElementById('email').value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          document.getElementById('email-error').textContent = 'Please enter a valid email address';
-          isValid = false;
-        }
-        
-        // Phone validation
-        const phone = document.getElementById('phone').value.trim();
-        if (phone.length < 10) {
-          document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
-          isValid = false;
-        }
-        
-        // Account type validation
-        const accountType = document.getElementById('account-type').value;
-        if (!accountType) {
-          document.getElementById('account-type-error').textContent = 'Please select an account type';
-          isValid = false;
-        }
-        
-        // Vehicle type validation (if driver)
-        if (accountType === 'driver') {
-          const vehicleType = document.getElementById('vehicle-type').value;
-          if (!vehicleType) {
-            document.getElementById('vehicle-type-error').textContent = 'Please select a vehicle type';
-            isValid = false;
-          }
-        }
-        
-        // City validation
-        const city = document.getElementById('city').value.trim();
-        if (city.length < 2) {
-          document.getElementById('city-error').textContent = 'Please enter your city';
-          isValid = false;
-        }
-        
-        // Password validation
-        const password = document.getElementById('password').value;
-        if (password.length < 8) {
-          document.getElementById('password-error').textContent = 'Password must be at least 8 characters';
-          isValid = false;
-        }
-        
-        // Confirm password validation
-        const confirmPassword = document.getElementById('confirm-password').value;
-        if (password !== confirmPassword) {
-          document.getElementById('confirm-password-error').textContent = 'Passwords do not match';
-          isValid = false;
-        }
-        
-        // Terms validation
-        const terms = document.getElementById('terms').checked;
-        if (!terms) {
-          document.getElementById('terms-error').textContent = 'You must agree to the Terms & Conditions';
-          isValid = false;
-        }
-        
-        if (isValid) {
-          // Simulate registration
-          alert('Registration successful! Redirecting to login...');
-          window.location.href = 'login.html';
-        }
-      });
-
-      // Phone number formatting
-      document.getElementById('phone').addEventListener('input', function(e) {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.startsWith('234')) {
-          value = '+' + value;
-        }
-        e.target.value = value;
-      });
-    </script>
+    <!-- JS -->
+    <script src="js/public.js"></script>
   </div>
 </body>
 </html>
