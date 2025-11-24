@@ -39,6 +39,10 @@
                     <span class="nav-icon">📈</span>
                     <span>Reports</span>
                 </li>
+                <li class="nav-item" data-section="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Settings</span>
+                </li>
             </ul>
         </div>
 
@@ -236,8 +240,145 @@
                     </div>
                 </div>
             </div>
+             <!-- Settings Section -->
+            <div class="content-section" id="settings">
+                <div class="settings-wrapper">
+                    <section class="system-settings">
+                        <div class="container">
+                            <!-- Page Header -->
+                            <div class="section-header">
+                                <h1>System Settings</h1>
+                                <p>Manage fare, payment, and system configurations.</p>
+                            </div>
+
+                            <!-- Fare Management Section -->
+                            <section class="card">
+                                <header class="card-header">
+                                    <h2>Fare Management</h2>
+                                    <button class="btn-primary">Save Changes</button>
+                                </header>
+                                <div class="card-body">
+                                    <div class="input-grid">
+                                        <label class="input-group">
+                                            <p>Base Fare (₦)</p>
+                                            <input type="text" value="5000">
+                                        </label>
+                                        <label class="input-group">
+                                            <p>Per-Kilometer Rate (₦)</p>
+                                            <input type="text" value="200">
+                                        </label>
+                                        <label class="input-group">
+                                            <p>Per-Minute Rate (₦)</p>
+                                            <input type="text" value="50">
+                                        </label>
+                                    </div>
+                                    <div class="surge-pricing-container">
+                                        <div class="toggle-card">
+                                            <div class="toggle-info">
+                                                <p class="toggle-title">Enable Surge Pricing</p>
+                                                <p class="toggle-desc">Automatically adjust prices during peak demand.</p>
+                                            </div>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Commissions & Payments Section -->
+                            <section class="card">
+                                <header class="card-header">
+                                    <h2>Commissions & Payments</h2>
+                                    <button class="btn-primary">Save Changes</button>
+                                </header>
+                                <div class="card-body">
+                                    <div class="commission-grid">
+                                        <div class="slider-group">
+                                            <label for="commission-rate">Default Driver Commission Rate</label>
+                                            <div class="slider-container">
+                                                <input type="range" id="commission-rate" min="0" max="50" value="20">
+                                                <span class="slider-value">20%</span>
+                                            </div>
+                                        </div>
+                                        <label class="input-group">
+                                            <p>Payout Schedule</p>
+                                            <select>
+                                                <option>Daily</option>
+                                                <option selected>Weekly</option>
+                                                <option>Bi-Weekly</option>
+                                                <option>Monthly</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="api-key-container">
+                                        <label class="input-group">
+                                            <p>Payment Gateway API Key</p>
+                                            <div class="password-input">
+                                                <input type="password" value="sk_test_1234567890abcdefghijklmnop">
+                                                <span class="icon toggle-visibility">👁️</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- User Roles & Permissions Section -->
+                            <section class="card">
+                                <header class="card-header">
+                                    <h2>User Roles & Permissions</h2>
+                                    <button class="btn-primary">
+                                        <span class="icon">+</span>
+                                        Create New Role
+                                    </button>
+                                </header>
+                                <div class="table-container">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Role Name</th>
+                                                <th>Permissions</th>
+                                                <th>Users</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Administrator</td>
+                                                <td>All Access</td>
+                                                <td>3</td>
+                                                <td class="text-right">
+                                                    <a href="#" class="btn-link">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Dispatcher</td>
+                                                <td>Booking & Driver Management</td>
+                                                <td>12</td>
+                                                <td class="text-right">
+                                                    <a href="#" class="btn-link">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Support Staff</td>
+                                                <td>View Bookings, Manage Tickets</td>
+                                                <td>8</td>
+                                                <td class="text-right">
+                                                    <a href="#" class="btn-link">Edit</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
     </div>
+    
 
     <!-- Modal for Driver Details -->
     <div class="modal" id="driverModal">

@@ -499,3 +499,232 @@ function setupSearchHandlers() {
         loadPayments(filteredPayments);
     });
 }
+// System Settings JavaScript
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Commission Rate Slider
+    const commissionSlider = document.getElementById('commission-rate');
+    const sliderValue = document.querySelector('.slider-value');
+    
+    if (commissionSlider && sliderValue) {
+        // Update slider value display
+        commissionSlider.addEventListener('input', function() {
+            sliderValue.textContent = this.value + '%';
+        });
+    }
+    
+    // Password Visibility Toggle
+    const passwordInput = document.querySelector('.password-input input');
+    const toggleVisibility = document.querySelector('.toggle-visibility');
+    
+    if (passwordInput && toggleVisibility) {
+        toggleVisibility.addEventListener('click', function() {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                this.textContent = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                this.textContent = 'visibility';
+            }
+        });
+    }
+    
+    // Save Changes Buttons
+    const saveButtons = document.querySelectorAll('.btn-primary');
+    
+    saveButtons.forEach(button => {
+        // Skip the "Create New Role" button
+        if (button.textContent.trim().includes('Create New Role')) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                showNotification('Create New Role functionality coming soon!', 'info');
+            });
+        } else if (button.textContent.trim().includes('Save Changes')) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                saveSettings(this);
+            });
+        }
+    });
+    
+    // Save Settings Function
+    function saveSettings(button) {
+        // Get the section name from the card header
+        const card = button.closest('.card');
+        const sectionName = card.querySelector('.card-header h2').textContent;
+        
+        // Show loading state
+        const originalText = button.textContent;
+        button.textContent = 'Saving...';
+        button.disabled = true;
+        
+        // Simulate API call
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+            showNotification(`${sectionName} settings saved successfully!`, 'success');
+        }, 1000);
+    }
+    
+    // Notification System
+    function showNotification(message, type = 'success') {
+        // Remove existing notification if any
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        
+        // Add styles
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            background-color: ${type === 'success' ? '#10b981' : '#3b82f6'};
+            color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+            font-size: 0.875rem;
+            font-weight: 500;
+        `;
+        
+        // Add animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Append to body
+        document.body.appendChild(notification);
+        
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
+    }
+    
+    // Edit Role Links
+    const editLinks = document.querySelectorAll('tbody td a');
+    
+    editLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const row = this.closest('tr');
+            const roleName = row.querySelector('th').textContent;
+            showNotification(`Edit ${roleName} role functionality coming soon!`, 'info');
+        });
+    });
+    
+    // Input Validation for Fare Management
+    const fareInputs = document.querySelectorAll('.input-grid input[type="text"]');
+    
+    fareInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            // Allow only numbers and decimal point
+            this.value = this.value.replace(/[^0-9.]/g, '');
+            
+            // Allow only one decimal point
+            const parts = this.value.split('.');
+            if (parts.length > 2) {
+                this.value = parts[0] + '.' + parts.slice(1).join('');
+            }
+            
+            // Limit to 2 decimal places
+            if (parts[1] && parts[1].length > 2) {
+                this.value = parts[0] + '.' + parts[1].substring(0, 2);
+            }
+        });
+        
+        input.addEventListener('blur', function() {
+            // Format to 2 decimal places on blur
+            if (this.value) {
+                this.value = parseFloat(this.value).toFixed(2);
+            }
+        });
+    });
+    
+    // Surge Pricing Toggle
+    const surgePricingToggle = document.querySelector('.toggle-switch input[type="checkbox"]');
+    
+    if (surgePricingToggle) {
+        surgePricingToggle.addEventListener('change', function() {
+            const status = this.checked ? 'enabled' : 'disabled';
+            console.log(`Surge pricing ${status}`);
+            // You can add additional logic here
+        });
+    }
+    
+    // Payout Schedule Select
+    const payoutSchedule = document.querySelector('.input-group select');
+    
+    if (payoutSchedule) {
+        payoutSchedule.addEventListener('change', function() {
+            console.log(`Payout schedule changed to: ${this.value}`);
+            // You can add additional logic here
+        });
+    }
+    
+    // Form Data Collection Function (for future API integration)
+    function collectFormData() {
+        const formData = {
+            fareManagement: {
+                baseFare: document.querySelector('.input-grid input:nth-child(1)').value,
+                perKilometerRate: document.querySelector('.input-grid input:nth-child(2)').value,
+                perMinuteRate: document.querySelector('.input-grid input:nth-child(3)').value,
+                surgePricing: surgePricingToggle.checked
+            },
+            commissionsPayments: {
+                commissionRate: commissionSlider.value,
+                payoutSchedule: payoutSchedule.value,
+                apiKey: passwordInput.value
+            }
+        };
+        
+        return formData;
+    }
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        // Ctrl/Cmd + S to save (prevent default browser save)
+        if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            e.preventDefault();
+            const firstSaveButton = document.querySelector('.btn-primary');
+            if (firstSaveButton && firstSaveButton.textContent.includes('Save Changes')) {
+                firstSaveButton.click();
+            }
+        }
+    });
+    
+    console.log('System Settings initialized successfully');
+});
