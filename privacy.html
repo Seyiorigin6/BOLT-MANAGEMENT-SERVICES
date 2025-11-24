@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login — Bolt Management Services</title>
+  <title>Terms & Conditions — Bolt Management Services</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/public.css">
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="login-page">
-    
+
+  <div id="terms-page">
+
     <!-- Header -->
     <header>
             <div class="container header-container">
@@ -23,39 +23,47 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="help.html">Help</a></li>
+                        <li><a href="login.html" class="cta-button">Login</a></li>
                         <li><a href="register.html" class="cta-button">Register</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
-    <!-- Login Form Section -->
-    <section id="login-form-section">
-        <div class="container login-container">
-          <h1>Login</h1>
-          <p>Welcome back! Please enter your credentials to login.</p>
-          <form id="login-form">
+        <!-- Privacy Policy Content -->
+        <section id="privacy-content">
+          <div class="container">
+            <h1>Privacy Policy</h1>
+            <p>At Bolt Management Services, your privacy is important to us. This policy explains how   we collect, use, and protect your personal information.</p>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email">
-            <small class="error-message" id="email-error"></small>
+            <h2>1. Information We Collect</h2>
+            <p>We may collect personal information such as your name, email, phone number, payment  information, and location data when you use our services.</p>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password">
-            <small class="error-message" id="password-error"></small>
+            <h2>2. How We Use Your Information</h2>
+            <p>We use the information to provide and improve our services, process payments,    communicate with users, and ensure safety and security.</p>
 
-            <button type="submit" class="cta-button">Login</button>
+            <h2>3. Sharing Your Information</h2>
+            <p>We do not sell your information. We may share it with our verified drivers, service  providers, or as required by law.</p>
 
-            <p class="forgot-password"><a href="/forgotpassword.html">Forgot your password?</a></p>
-            <p class="login-footer-text">
-              Don't have an account? <a href="/register.html">Register here</a>
-            </p>
-          </form>
-        </div>
-    </section>
+            <h2>4. Cookies & Tracking</h2>
+            <p>Our website may use cookies to improve user experience, analyze traffic, and personalize     content.</p>
 
-    <!-- Footer -->
-    <footer>
+            <h2>5. Data Security</h2>
+            <p>We implement reasonable technical and organizational measures to protect your personal   data from unauthorized access or disclosure.</p>
+
+            <h2>6. Your Rights</h2>
+            <p>You have the right to access, update, or delete your personal information. Contact us if     you wish to exercise these rights.</p>
+
+            <h2>7. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Continued use of our services   implies acceptance of the updated policy.</p>
+
+            <h2>8. Contact</h2>
+            <p>If you have questions or concerns about your privacy, please reach out via our <a    href="contact.html">Contact Page</a>.</p>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
             <div class="container footer-container">
                 <div class="footer-links">
                     <ul>
@@ -81,5 +89,6 @@
         </footer>
         <!-- External JS (create js/main.js) -->
         <script src="js/public.js"></script>
+    </div>
 </body>
 </html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bolt — Contact</title>
+
+  <!-- Global CSS then public -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/public.css">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="contact-page">
+
+    <!-- Header -->
+    <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <h1>Bolt</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="help.html">Help</a></li>
+                        <li><a href="login.html" class="cta-button">Login</a></li>
+                        <li><a href="register.html" class="cta-button">Register</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+    <!-- Hero / Title -->
+    <section id="contact-hero">
+      <div class="container">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you — questions, feedback or help requests, send them below.</p>
+      </div>
+    </section>
+
+    <!-- Contact details + form -->
+    <section id="contact-info" class="u-mb-lg">
+      <div class="container" style="display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
+        <!-- Left: contact details -->
+        <div class="card" style="flex:1 1 320px; min-width:280px;">
+          <h2>Get in touch</h2>
+
+          <p><strong>Address</strong><br>
+          Bolt Management Services<br>
+          Babcock University Campus, Ilishan-Remo, Ogun State</p>
+
+          <p><strong>Phone</strong><br>
+          +234 800 000 0000</p>
+
+          <p><strong>Email</strong><br>
+          <a href="mailto:support@bolt.example">support@bolt.example</a></p>
+
+          <hr style="margin:1rem 0; border:none; border-top:1px solid #eee;">
+
+          <p style="font-size:0.95rem; color:#555;">
+            Office hours: Mon–Fri, 9:00 AM — 5:00 PM (WAT). For urgent matters outside office hours, use the in-app support chat.
+          </p>
+        </div>
+
+        <!-- Right: contact form -->
+        <div class="card" style="flex:1 1 420px; min-width:280px;">
+          <h2>Send a message</h2>
+
+          <form id="contact-form" aria-label="Contact form">
+            <label for="contact-name" style="display:block; font-weight:700; margin-bottom:6px;">Your name</label>
+            <input id="contact-name" name="name" type="text" placeholder="Your name" required>
+
+            <label for="contact-email" style="display:block; font-weight:700; margin:12px 0 6px;">Email</label>
+            <input id="contact-email" name="email" type="email" placeholder="you@example.com" required>
+
+            <label for="contact-message" style="display:block; font-weight:700; margin:12px 0 6px;">Message</label>
+            <textarea id="contact-message" name="message" rows="6" placeholder="Tell us how we can help..." required></textarea>
+
+            <div style="display:flex; gap:12px; align-items:center; margin-top:12px;">
+              <button type="submit" class="cta-button">Send message</button>
+              <span id="contact-status" aria-live="polite" style="font-size:0.95rem; color:var(--green);"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- office location on map-->
+    <section id="contact-map" class="u-mb-lg">
+        <h2 class="map-caption">Our Location on the Map</h2>
+        <div class="map-container">
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.985131715465!2d3.7157493731205973!3d6.892381318770626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bd81639e54ec3%3A0x9129b4a8c8367e52!2sBabcock%20University%20Ilishan%20Remo!5e0!3m2!1sen!2sng!4v1763903089781!5m2!1sen!2sng"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+            <div class="container footer-container">
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="help.html">Help</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-socials">
+                    <p>Follow us on:</p>
+                    <a href="https://www.tiktok.com/@bolt?lang=en" target="_blank">TikTok</a> |
+                    <a href="https://x.com/boltapp" target="_blank">X</a> |
+                    <a href="https://www.instagram.com/bolt_nigeria/?hl=en" target="_blank">Instagram</a>
+                </div>
+                <div class="footer-cta">
+                    <a href="https://play.google.com/store/apps/details?id=ee.mtakso.client&hl=en" class="cta-button" target="_blank">Get Bolt App</a>
+                    <a href="https://play.google.com/store/apps/details?id=ee.mtakso.driver&hl=en" class="cta-button" target="_blank">Get Bolt Drivers</a>
+                </div>
+                <p style="margin-top:1rem; opacity:0.8;">&copy; <span id="year"></span> Bolt Management Services</p>
+            </div>
+        </footer>
+
+  </div>
+
+  <!-- use your single public.js -->
+  <script src="js/public.js" defer></script>
+</body>
+</html>
