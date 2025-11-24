@@ -23,7 +23,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 html, body {
@@ -71,6 +71,7 @@ header .logo h1 {
     color: var(--green);
     font-size: 1.8rem;
 }
+
 
 /* Nav */
 nav ul {

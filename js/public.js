@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (userType === 'customer') {
         window.location.href = 'customer/customerhome.html';
       } else if (userType === 'driver') {
-        window.location.href = 'driver/driverdashboard.html';
+        window.location.href = 'driver/driver-dashboard.html';
       } else if (userType === 'admin') {
         window.location.href = 'admin/admindashboard.html';
       } else {

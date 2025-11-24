@@ -688,8 +688,8 @@ help, etc. */
     justify-content: center;
     align-items: center;
     padding: 6rem 2rem;
-    background: var(--green);
-    min-height: calc(100vh - 120px); /* leave space for header/footer */
+    background: var(--white);
+    min-height: calc(100vh - 120px);
 }
 
 .login-container {
@@ -887,8 +887,8 @@ help, etc. */
     justify-content: center;
     align-items: center;
     padding: 6rem 2rem;
-    background: var(--green);
-    min-height: calc(100vh - 120px); /* space for header/footer */
+    background: var(--white);
+    min-height: calc(100vh - 120px);
 }
 
 .register-container {
@@ -978,6 +978,8 @@ help, etc. */
         padding: 2rem 1rem;
     }
 }
+
+
 
 
 
