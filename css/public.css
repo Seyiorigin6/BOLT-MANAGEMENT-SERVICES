@@ -678,6 +678,10 @@ help, etc. */
   opacity: 0.8;
 }
 
+
+
+/*------------------------------Aunthentication section-------------------------------*/
+
 /* --------------------- Login Page --------------------------- */
 #login-form-section {
     display: flex;
@@ -789,5 +793,193 @@ help, etc. */
         padding: 2rem 1rem;
     }
 }
+
+.auth-header {
+    background: var(--green);
+    padding: 1.2rem;
+    text-align: center;
+    color: var(--white);
+}
+
+.auth-container {
+    max-width: 420px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.auth-container h2 {
+    margin-bottom: 0.5rem;
+}
+
+.subtext {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.4rem;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+.input-group small.error {
+    color: red;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 5px;
+    height: 14px;
+}
+
+.success {
+    color: green;
+    margin-top: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.back-login {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.back-login a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ----------------------- Forgot Password (same layout as login) ----------------------- */
+
+#forgot-page .success {
+  color: green;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+#forgot-page .hidden {
+  display: none;
+}
+
+/* --------------------- Register Page --------------------------- */
+#register-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 2rem;
+    background: var(--green);
+    min-height: calc(100vh - 120px); /* space for header/footer */
+}
+
+.register-container {
+    background: var(--white);
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.register-container h1 {
+    color: var(--green);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.register-container p {
+    color: var(--black);
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.register-container label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--black);
+}
+
+.register-container input,
+.register-container select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.register-container input:focus,
+.register-container select:focus {
+    border-color: var(--green);
+    outline: none;
+}
+
+.register-container button.cta-button {
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: var(--green);
+    text-decoration: underline;
+}
+
+.login-link a:hover {
+    opacity: 0.8;
+}
+
+/* Inline error messages */
+.error-message {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .register-container {
+        padding: 2rem 1rem;
+    }
+}
+
+
+
 
 

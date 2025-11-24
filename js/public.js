@@ -304,6 +304,100 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+  
+  /* -------------------- Forgot Password  -------------------- */
+  const page = document.getElementById("forgot-page");
+  if (!page) return;
 
+  const form = document.getElementById("forgot-form");
+  const emailInput = document.getElementById("fp-email");
+  const emailError = document.getElementById("fp-email-error");
+  const statusMsg = document.getElementById("fp-status");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Reset states
+    emailError.textContent = "";
+    statusMsg.classList.add("hidden");
+    statusMsg.textContent = "";
+
+    const email = emailInput.value.trim();
+    let valid = true;
+
+    if (email === "") {
+      emailError.textContent = "Please enter your email";
+      valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailError.textContent = "Please enter a valid email";
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    statusMsg.textContent = "Sending reset link...";
+    statusMsg.classList.remove("hidden");
+
+    setTimeout(() => {
+      statusMsg.textContent =
+        "If this email is registered, a reset link has been sent.";
+      form.reset();
+    }, 1000);
+  });
+
+});
+/*--------------------------Register-----------------------*/
+// Register form validation and user type dashboard redirection
+document.addEventListener('DOMContentLoaded', () => {
+  const registerForm = document.getElementById('register-form');
+  if (!registerForm) return;
+
+  registerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Get field values
+    const userType = document.getElementById('user-type').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const dob = document.getElementById('dob').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+    // Clear previous errors
+    document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
+    let hasError = false;
+
+    // Validation
+    if (!userType) { document.getElementById('user-type-error').textContent = 'User type is required'; hasError = true; }
+    if (!name) { document.getElementById('name-error').textContent = 'Name is required'; hasError = true; }
+    if (!phone) { document.getElementById('phone-error').textContent = 'Phone number is required'; hasError = true; }
+    if (!dob) { document.getElementById('dob-error').textContent = 'Date of birth is required'; hasError = true; }
+    if (!email) { document.getElementById('email-error').textContent = 'Email is required'; hasError = true; }
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      document.getElementById('email-error').textContent = 'Invalid email address';
+      hasError = true;
+    }
+    if (!password) { document.getElementById('password-error').textContent = 'Password is required'; hasError = true; }
+    if (!confirmPassword) { document.getElementById('confirm-password-error').textContent = 'Please confirm your password'; hasError = true; }
+    if (password && confirmPassword && password !== confirmPassword) {
+      document.getElementById('confirm-password-error').textContent = 'Passwords do not match';
+      hasError = true;
+    }
+
+    // If validation passes, redirect based on user type
+    if (!hasError) {
+      if (userType === 'customer') {
+        window.location.href = 'customer/customerhome.html';
+      } else if (userType === 'driver') {
+        window.location.href = 'driver/driverdashboard.html';
+      } else if (userType === 'admin') {
+        window.location.href = 'admin/admindashboard.html';
+      } else {
+        alert('Unknown user type');
+      }
+    }
+  });
 });
 
