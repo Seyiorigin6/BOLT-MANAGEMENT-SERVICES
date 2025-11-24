@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolt Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h1>⚡ BOLT</h1>
+                <p>Admin Dashboard</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-section="drivers">
+                    <span class="nav-icon">🚗</span>
+                    <span>Drivers</span>
+                </li>
+                <li class="nav-item" data-section="riders">
+                    <span class="nav-icon">👤</span>
+                    <span>Riders</span>
+                </li>
+                <li class="nav-item" data-section="rides">
+                    <span class="nav-icon">🗺️</span>
+                    <span>Active Rides</span>
+                </li>
+                <li class="nav-item" data-section="payments">
+                    <span class="nav-icon">💳</span>
+                    <span>Payments</span>
+                </li>
+                <li class="nav-item" data-section="reports">
+                    <span class="nav-icon">📈</span>
+                    <span>Reports</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h2>Admin Dashboard</h2>
+                <div class="admin-info">
+                    <div>
+                        <div style="font-weight: 600; color: #333;">Admin User</div>
+                        <div style="font-size: 12px; color: #888;">admin@bolt.com</div>
+                    </div>
+                    <div class="admin-avatar">A</div>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div class="content-section active" id="dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Drivers</h3>
+                        <div class="stat-value" id="totalDrivers">0</div>
+                        <div class="stat-change">↑ 12% from last month</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Rides</h3>
+                        <div class="stat-value" id="activeRides">0</div>
+                        <div class="stat-change">↑ 8% from yesterday</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Riders</h3>
+                        <div class="stat-value" id="totalRiders">0</div>
+                        <div class="stat-change">↑ 15% from last month</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Today's Revenue</h3>
+                        <div class="stat-value" id="todayRevenue">₦0</div>
+                        <div class="stat-change">↑ 23% from yesterday</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Rides</h3>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ride ID</th>
+                                <th>Rider</th>
+                                <th>Driver</th>
+                                <th>Status</th>
+                                <th>Fare</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentRidesTable">
+                            <tr>
+                                <td colspan="6" style="text-align: center; color: #999;">Loading data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Drivers Section -->
+            <div class="content-section" id="drivers">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Driver Management</h3>
+                        <input type="text" class="search-box" placeholder="Search drivers..." id="driverSearch">
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Driver ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>License</th>
+                                <th>Vehicle</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="driversTable">
+                            <tr>
+                                <td colspan="7" style="text-align: center; color: #999;">Loading drivers...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Riders Section -->
+            <div class="content-section" id="riders">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Rider Management</h3>
+                        <input type="text" class="search-box" placeholder="Search riders..." id="riderSearch">
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Rider ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Total Rides</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ridersTable">
+                            <tr>
+                                <td colspan="6" style="text-align: center; color: #999;">Loading riders...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Active Rides Section -->
+            <div class="content-section" id="rides">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Active Rides</h3>
+                        <button class="btn btn-primary" onclick="refreshRides()">🔄 Refresh</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ride ID</th>
+                                <th>Rider</th>
+                                <th>Driver</th>
+                                <th>Pickup</th>
+                                <th>Dropoff</th>
+                                <th>Distance</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activeRidesTable">
+                            <tr>
+                                <td colspan="8" style="text-align: center; color: #999;">Loading active rides...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Payments Section -->
+            <div class="content-section" id="payments">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Payment History</h3>
+                        <input type="text" class="search-box" placeholder="Search payments..." id="paymentSearch">
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Payment ID</th>
+                                <th>Ride ID</th>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsTable">
+                            <tr>
+                                <td colspan="6" style="text-align: center; color: #999;">Loading payments...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reports Section -->
+            <div class="content-section" id="reports">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">System Reports</h3>
+                        <button class="btn btn-primary" onclick="generateReport()">📥 Generate Report</button>
+                    </div>
+                    <div style="padding: 20px;">
+                        <h4 style="margin-bottom: 15px; color: #333;">Select Report Type:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
+                            <button class="btn btn-primary" onclick="generateDriverReport()">Driver Performance</button>
+                            <button class="btn btn-primary" onclick="generateRevenueReport()">Revenue Report</button>
+                            <button class="btn btn-primary" onclick="generateRideReport()">Ride Statistics</button>
+                            <button class="btn btn-primary" onclick="generatePaymentReport()">Payment Summary</button>
+                        </div>
+                        <div id="reportOutput" style="background: #f8f9fa; padding: 20px; border-radius: 8px; min-height: 200px;">
+                            <p style="color: #999; text-align: center;">Select a report type to generate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Driver Details -->
+    <div class="modal" id="driverModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Driver Details</h3>
+            </div>
+            <div id="driverModalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-small" onclick="closeModal('driverModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Rider Details -->
+    <div class="modal" id="riderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Rider Details</h3>
+            </div>
+            <div id="riderModalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-small" onclick="closeModal('riderModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Ride Details -->
+    <div class="modal" id="rideModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Ride Details</h3>
+            </div>
+            <div id="rideModalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-small" onclick="closeModal('rideModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>
