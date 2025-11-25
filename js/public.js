@@ -350,54 +350,78 @@ document.addEventListener('DOMContentLoaded', () => {
 // Register form validation and user type dashboard redirection
 document.addEventListener('DOMContentLoaded', () => {
   const registerForm = document.getElementById('register-form');
-  if (!registerForm) return;
+  const userTypeSelect = document.getElementById('user-type');
+  const licenceField = document.getElementById('licence-field');
 
+  if (!registerForm || !userTypeSelect || !licenceField) return;
+
+  // Hide license by default
+  licenceField.style.display = userTypeSelect.value === "driver" ? "block" : "none";
+
+  // Toggle license field
+  userTypeSelect.addEventListener('change', function () {
+      licenceField.style.display = this.value === "driver" ? "block" : "none";
+  });
+
+  // Form submit validation and redirect
   registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Get field values
-    const userType = document.getElementById('user-type').value.trim();
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const dob = document.getElementById('dob').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const confirmPassword = document.getElementById('confirm-password').value.trim();
+    const fields = {
+      'user-type': 'User type is required',
+      'name': 'Name is required',
+      'phone': 'Phone number is required',
+      'dob': 'Date of birth is required',
+      'email': 'Email is required',
+      'password': 'Password is required',
+      'confirm-password': 'Please confirm your password'
+    };
+
+    let hasError = false;
 
     // Clear previous errors
     document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
 
-    let hasError = false;
+    // Check each field
+    for (const id in fields) {
+      const input = document.getElementById(id);
+      if (!input) continue;
+      if (!input.value.trim()) {
+        const errorEl = document.getElementById(`${id}-error`);
+        if (errorEl) errorEl.textContent = fields[id];
+        hasError = true;
+      }
+    }
 
-    // Validation
-    if (!userType) { document.getElementById('user-type-error').textContent = 'User type is required'; hasError = true; }
-    if (!name) { document.getElementById('name-error').textContent = 'Name is required'; hasError = true; }
-    if (!phone) { document.getElementById('phone-error').textContent = 'Phone number is required'; hasError = true; }
-    if (!dob) { document.getElementById('dob-error').textContent = 'Date of birth is required'; hasError = true; }
-    if (!email) { document.getElementById('email-error').textContent = 'Email is required'; hasError = true; }
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    // Email format check
+    const email = document.getElementById('email').value.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       document.getElementById('email-error').textContent = 'Invalid email address';
       hasError = true;
     }
-    if (!password) { document.getElementById('password-error').textContent = 'Password is required'; hasError = true; }
-    if (!confirmPassword) { document.getElementById('confirm-password-error').textContent = 'Please confirm your password'; hasError = true; }
+
+    // Password match check
+    const password = document.getElementById('password').value.trim();
+    const confirmPassword = document.getElementById('confirm-password').value.trim();
     if (password && confirmPassword && password !== confirmPassword) {
       document.getElementById('confirm-password-error').textContent = 'Passwords do not match';
       hasError = true;
     }
 
-    // If validation passes, redirect based on user type
-    if (!hasError) {
-      if (userType === 'customer') {
-        window.location.href = 'customer/customerhome.html';
-      } else if (userType === 'driver') {
-        window.location.href = 'driver/driver-dashboard.html';
-      } else if (userType === 'admin') {
-        window.location.href = 'admin/admindashboard.html';
-      } else {
-        alert('Unknown user type');
-      }
+    if (hasError) return;
+
+    // Redirect based on user type
+    const userType = userTypeSelect.value.trim();
+    if (userType === 'customer') {
+      window.location.href = 'customer/customerhome.html';
+    } else if (userType === 'driver') {
+      window.location.href = 'driver/driver-dashboard.html';
+    } else {
+      alert('Unknown user type');
     }
   });
 });
+
+
+
 

@@ -202,6 +202,26 @@ select:focus {
     box-shadow: 0 0 0 4px rgba(4,146,58,0.06);
 }
 
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--green);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #059669;
+}
+
 /* --------- Responsive helpers --------- */
 @media (max-width: 992px) {
     .container { width: 94%; }
