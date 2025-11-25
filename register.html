@@ -36,15 +36,6 @@
         <p>Create your account and join Bolt today.</p>
         <form id="register-form">
 
-          <label for="user-type">User Type</label>
-          <select id="user-type" name="user-type">
-            <option value="">Select user type</option>
-            <option value="customer">Customer</option>
-            <option value="driver">Driver</option>
-            <option value="admin">Admin</option>
-          </select>
-          <small class="error-message" id="user-type-error"></small>
-
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" placeholder="Enter your full name">
           <small class="error-message" id="name-error"></small>
@@ -52,10 +43,6 @@
           <label for="phone">Phone Number</label>
           <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
           <small class="error-message" id="phone-error"></small>
-
-          <label for="dob">Date of Birth</label>
-          <input type="date" id="dob" name="dob">
-          <small class="error-message" id="dob-error"></small>
 
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="Enter your email">
@@ -68,6 +55,19 @@
           <label for="confirm-password">Confirm Password</label>
           <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
           <small class="error-message" id="confirm-password-error"></small>
+
+          <label for="user-type">Register as</label>
+          <select id="user-type" name="user-type">
+            <option value="customer" selected>Customer</option>
+            <option value="driver">Driver</option>
+          </select>
+          <small class="error-message" id="user-type-error"></small>
+
+          <div id="licence-field" style="display: none;">
+            <label for="licence-number">Licence Number</label>
+            <input type="text" id="licence-number" name="licence-number" placeholder="Enter your licence number">
+            <small class="error-message" id="licence-number-error"></small>
+          </div>
 
           <button type="submit" class="cta-button">Register</button>
 
@@ -106,6 +106,16 @@
 
     <!-- JS -->
     <script src="js/public.js"></script>
+    <script>
+      document.getElementById('user-type').addEventListener('change', function() {
+        const licenceField = document.getElementById('licence-field');
+        if (this.value === 'driver') {
+          licenceField.style.display = 'block';
+        } else {
+          licenceField.style.display = 'none';
+        }
+      });
+    </script>
   </div>
 </body>
 </html>
