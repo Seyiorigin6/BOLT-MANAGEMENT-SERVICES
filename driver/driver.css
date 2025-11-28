@@ -73,7 +73,7 @@ body {
 
 .status-chip.online {
     background: #d1fae5;
-    color: #065f46;
+    color: #04923a;
 }
 
 .page {
@@ -120,7 +120,7 @@ body {
 }
 
 .btn.primary {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: #04923a;
     color: white;
     box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
 }
