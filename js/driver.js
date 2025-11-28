@@ -34,7 +34,7 @@ function updateOnlineStatus() {
         statusChip.className = 'status-chip online';
     } else {
         toggleBtn.textContent = 'Go Online';
-        toggleBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        toggleBtn.style.background = 'linear-gradient(135deg, #04923a 0%, #04923a 100%)';
         statusChip.textContent = 'Offline';
         statusChip.className = 'status-chip offline';
     }
