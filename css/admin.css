@@ -32,7 +32,7 @@ body {
 }
 
 .logo h1 {
-    color: #10b981;
+    color: var(--green);
     font-size: 28px;
     font-weight: bold;
 }
@@ -531,7 +531,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #10b981;
+    background: var(--green);
     border-radius: 10px;
 }
 
