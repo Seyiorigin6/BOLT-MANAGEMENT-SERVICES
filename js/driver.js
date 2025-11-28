@@ -301,7 +301,7 @@ function addTestButton() {
     
     const testBtn = document.createElement('button');
     testBtn.className = 'btn secondary';
-    testBtn.textContent = 'Test Ride Request';
+    testBtn.textContent = 'Ride Request';
     testBtn.style.marginLeft = '1rem';
     testBtn.addEventListener('click', showRideRequest);
     
