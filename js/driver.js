@@ -93,7 +93,45 @@ function showRideRequest() {
                     <strong>15 mins</strong>
                 </div>
             </div>
+            <div class="request-passenger">
+                <div class="passenger-avatar">IM</div>
+                <div>
+                    <h3>Ibrahim Musa</h3>
+                    <p>⭐ 4.5 • 87 rides</p>
+                </div>
+            </div>
             
+            <div class="request-route">
+                <div class="request-location">
+                    <span class="location-icon">📍</span>
+                    <div>
+                        <span class="location-label">Pickup</span>
+                        <p>The Palms Shopping Mall, Lekki</p>
+                    </div>
+                </div>
+                <div class="request-location">
+                    <span class="location-icon">🎯</span>
+                    <div>
+                        <span class="location-label">Drop-off</span>
+                        <p>Ikeja GRA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="request-details">
+                <div class="detail-item">
+                    <span>Distance</span>
+                    <strong>18.7 km</strong>
+                </div>
+                <div class="detail-item">
+                    <span>Est. Fare</span>
+                    <strong>₦5,800</strong>
+                </div>
+                <div class="detail-item">
+                    <span>Est. Time</span>
+                    <strong>35 mins</strong>
+                </div>
+            </div>
             <div class="request-actions">
                 <button class="btn-reject">Reject</button>
                 <button class="btn-accept">Accept Ride</button>
