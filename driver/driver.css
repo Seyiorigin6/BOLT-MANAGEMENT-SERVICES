@@ -1302,7 +1302,7 @@ tr:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--green);
+    background: #04923a;
     border-radius: 10px;
 }
 
