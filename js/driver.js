@@ -93,6 +93,11 @@ function showRideRequest() {
                     <strong>15 mins</strong>
                 </div>
             </div>
+            <div class="request-actions">
+                <button class="btn-reject">Reject</button>
+                <button class="btn-accept">Accept Ride</button>
+            </div>
+
             <div class="request-passenger">
                 <div class="passenger-avatar">IM</div>
                 <div>
@@ -136,6 +141,50 @@ function showRideRequest() {
                 <button class="btn-reject">Reject</button>
                 <button class="btn-accept">Accept Ride</button>
             </div>
+            
+            <div class="request-passenger">
+                <div class="passenger-avatar">AO</div>
+                <div>
+                    <h3>Chiamaka Chukwu</h3>
+                    <p>⭐ 4.3 • 90 rides</p>
+                </div>
+            </div>
+            
+            <div class="request-route">
+                <div class="request-location">
+                    <span class="location-icon">📍</span>
+                    <div>
+                        <span class="location-label">Pickup</span>
+                        <p>1415 Adetokunbo Ademola Street, Victoria Island</p>
+                    </div>
+                </div>
+                <div class="request-location">
+                    <span class="location-icon">🎯</span>
+                    <div>
+                        <span class="location-label">Drop-off</span>
+                        <p>Plot B22, Chief Yesufu Oniru Road, Oniru</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="request-details">
+                <div class="detail-item">
+                    <span>Distance</span>
+                    <strong>5 km</strong>
+                </div>
+                <div class="detail-item">
+                    <span>Est. Fare</span>
+                    <strong>₦3,000</strong>
+                </div>
+                <div class="detail-item">
+                    <span>Est. Time</span>
+                    <strong>10 mins</strong>
+                </div>
+            </div>
+            <div class="request-actions">
+                <button class="btn-reject">Reject</button>
+                <button class="btn-accept">Accept Ride</button>
+            </div>
         </div>
     `;
     
@@ -163,6 +212,24 @@ function showRideRequest() {
         closeRideRequest();
         alert('Ride rejected. Waiting for next request...');
     });
+
+    // Close modal when clicking outside the card
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {  // only if the overlay itself is clicked
+            closeRideRequest();
+        }
+    });
+
+
+    // Add close button at the top-right
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'modal-close-btn';  // match the CSS
+    closeBtn.textContent = '×';
+    closeBtn.addEventListener('click', closeRideRequest);
+
+    // Prepend the button to the card so it’s the first child
+    modal.querySelector('.ride-request-card').prepend(closeBtn);
+
 }
 
 function closeRideRequest() {
@@ -177,6 +244,7 @@ function acceptRide() {
     // In a real app, you would redirect to current-ride page
     // window.location.href = 'driver-current-ride.html';
 }
+
 
 function initRideStatusButtons() {
     const completeBtn = document.querySelector('.ride-actions .btn.primary');
