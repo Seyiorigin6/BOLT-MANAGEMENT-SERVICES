@@ -1,0 +1,41 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies (if using pip install -r)
+# (requirements.txt IS tracked, but not node_modules equivalent)
+
+# Database (optional - if you want to exclude local DB dumps)
+*.sql.bak
+*.db
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
