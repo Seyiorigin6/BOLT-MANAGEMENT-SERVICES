@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Dropdown Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="customer.css" rel="stylesheet">
+    <style>
+        /* Notification Dropdown Styles */
+        .notification-container {
+            position: relative;
+        }
+
+        .notification-btn {
+            position: relative;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background-color: #DC3545;
+            color: white;
+            font-size: 0.625rem;
+            font-weight: 700;
+            min-width: 1.125rem;
+            height: 1.125rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 0.25rem;
+            border: 2px solid white;
+        }
+
+        .notification-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            width: 22rem;
+            max-height: 28rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e5e7eb;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .notification-dropdown.show {
+            display: flex;
+        }
+
+        .notification-dropdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .notification-dropdown-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .mark-read-btn {
+            background: none;
+            border: none;
+            color: #16a34a;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .mark-read-btn:hover {
+            background-color: #f3f4f6;
+        }
+
+        .notification-list {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 20rem;
+        }
+
+        .notification-item {
+            display: flex;
+            gap: 0.75rem;
+            padding: 1rem;
+            border-bottom: 1px solid #f3f4f6;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+
+        .notification-item:hover {
+            background-color: #f9fafb;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item.unread {
+            background-color: rgba(22, 163, 74, 0.1);
+        }
+
+        .notification-item.unread:hover {
+            background-color: rgba(22, 163, 74, 0.15);
+        }
+
+        .notification-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .notification-icon .material-symbols-outlined {
+            font-size: 1.25rem;
+        }
+
+        .notification-icon.success-bg {
+            background-color: rgba(11, 218, 94, 0.2);
+            color: #0bda5e;
+        }
+
+        .notification-icon.primary-bg {
+            background-color: rgba(22, 163, 74, 0.2);
+            color: #16a34a;
+        }
+
+        .notification-icon.warning-bg {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: #FFC107;
+        }
+
+        .notification-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .notification-title {
+            margin: 0 0 0.25rem 0;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .notification-text {
+            margin: 0 0 0.25rem 0;
+            font-size: 0.8125rem;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+
+        .notification-time {
+            margin: 0;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .notification-dropdown-footer {
+            padding: 0.75rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .view-all-link {
+            color: #16a34a;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .view-all-link:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body style="padding: 2rem; font-family: 'Inter', sans-serif;">
+
+    <h1>Notification Dropdown Demo</h1>
+    <p>Click the notification bell to see the dropdown:</p>
+
+    <div class="header-right" style="display: flex; gap: 1rem; align-items: center;">
+        <div class="notification-container">
+            <button class="notification-btn" id="notificationBtn"
+                style="position: relative; background: #f3f4f6; border: none; padding: 0.625rem; border-radius: 0.5rem; cursor: pointer;">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="notification-badge">3</span>
+            </button>
+
+            <div class="notification-dropdown" id="notificationDropdown">
+                <div class="notification-dropdown-header">
+                    <h3>Notifications</h3>
+                    <button class="mark-read-btn">Mark all as read</button>
+                </div>
+
+                <div class="notification-list">
+                    <div class="notification-item unread">
+                        <div class="notification-icon success-bg">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="notification-content">
+                            <p class="notification-title">Ride Completed</p>
+                            <p class="notification-text">Your ride to Central City Airport has been completed. ₦48.90
+                            </p>
+                            <p class="notification-time">5 minutes ago</p>
+                        </div>
+                    </div>
+
+                    <div class="notification-item unread">
+                        <div class="notification-icon primary-bg">
+                            <span class="material-symbols-outlined">local_offer</span>
+                        </div>
+                        <div class="notification-content">
+                            <p class="notification-title">New Reward Available</p>
+                            <p class="notification-text">You've earned a 10% discount on your next ride!</p>
+                            <p class="notification-time">2 hours ago</p>
+                        </div>
+                    </div>
+
+                    <div class="notification-item unread">
+                        <div class="notification-icon warning-bg">
+                            <span class="material-symbols-outlined">account_balance_wallet</span>
+                        </div>
+                        <div class="notification-content">
+                            <p class="notification-title">Low Wallet Balance</p>
+                            <p class="notification-text">Your wallet balance is ₦75.50. Add funds to continue riding.
+                            </p>
+                            <p class="notification-time">1 day ago</p>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon primary-bg">
+                            <span class="material-symbols-outlined">directions_car</span>
+                        </div>
+                        <div class="notification-content">
+                            <p class="notification-title">Ride Booking Confirmed</p>
+                            <p class="notification-text">Your ride to Downtown Mall is scheduled for 3:00 PM</p>
+                            <p class="notification-time">2 days ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notification-dropdown-footer">
+                    <a href="#" class="view-all-link">View all notifications</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle notification dropdown
+        const notificationBtn = document.getElementById('notificationBtn');
+        const notificationDropdown = document.getElementById('notificationDropdown');
+
+        notificationBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            notificationDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!notificationDropdown.contains(e.target) && e.target !== notificationBtn) {
+                notificationDropdown.classList.remove('show');
+            }
+        });
+
+        // Prevent dropdown from closing when clicking inside
+        notificationDropdown.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+
+</html>
