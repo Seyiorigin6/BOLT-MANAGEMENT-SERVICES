@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (valid){
         // Only redirect if both fields are valid
-      window.location.href = 'customer/customerhome.html';
+      window.location.href = 'login.html';
       }
     });
   }
@@ -413,9 +413,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Redirect based on user type
     const userType = userTypeSelect.value.trim();
     if (userType === 'customer') {
-      window.location.href = 'customer/customerhome.html';
+      window.location.href = 'login.html';
     } else if (userType === 'driver') {
-      window.location.href = 'driver/driver-dashboard.html';
+      window.location.href = 'login.html';
     } else {
       alert('Unknown user type');
     }
