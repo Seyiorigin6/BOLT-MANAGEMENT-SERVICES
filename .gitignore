@@ -40,5 +40,7 @@ dist/
 build/
 *.egg-info/
 #node 
-node_modules/
+cgi-nodejs/node_modules
+**/node_modules/
+
 
