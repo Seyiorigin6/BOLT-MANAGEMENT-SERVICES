@@ -18,42 +18,41 @@
 
 <body>
   <div class="app-container">
-    <div class="sidebar">
+    <aside class="sidebar">
       <div class="sidebar-inner">
         <div class="sidebar-top">
           <div class="sidebar-brand">
-            <div class="brand-logo" data-alt="CityRide company logo"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBsBYACxfnqchevZVQRGo20iXna0ptrpVyxoRavyv82MCnJol84MW1jkGZRRabP3S1YSOEP8Q9TFzZcetHXamjLYMvMh5VSoFM1T4QhUJW1c9MFYFdN81yJWqowpQLJ8Vz9MFzc5O2NX1c1ejS14SCTfaXdBpvjqaU2oCYfDRhAbAakR4x9_Km465d5yOMwvWsC-7RcnvP831KCuGKxmzr3m16Pq7lU3tP40qvmUgzCKI25NiQxHBlXiB5Xc8cYswEivK9D4MRKFuY-");'>
+            <div class="brand-logo-wrapper">
+              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FFC107" stroke="black" stroke-width="2"
+                  stroke-linejoin="round" />
+              </svg>
             </div>
-            <div class="brand-info">
-              <h1 class="brand-title">CityRide</h1>
-              <p class="brand-subtitle">Customer Portal</p>
-            </div>
+            <h1 class="brand-text">BOLT</h1>
           </div>
-
           <nav class="sidebar-nav">
-            <a href="customer-home.html" class="nav-link active">
-              <span class="material-symbols-outlined">dashboard</span>
+            <a href="customerhome.html" class="nav-link active">
+              <span class="material-symbols-outlined text-primary">dashboard</span>
               <p>Dashboard</p>
             </a>
             <a href="receipt.html" class="nav-link">
-              <span class="material-symbols-outlined">receipt_long</span>
+              <span class="material-symbols-outlined text-orange">receipt_long</span>
               <p>Receipts</p>
             </a>
             <a href="ridehistory.html" class="nav-link">
-              <span class="material-symbols-outlined">history</span>
+              <span class="material-symbols-outlined text-blue">history</span>
               <p>Ride History</p>
             </a>
             <a href="wallet.html" class="nav-link">
-              <span class="material-symbols-outlined">account_balance_wallet</span>
+              <span class="material-symbols-outlined text-success">account_balance_wallet</span>
               <p>Wallet</p>
             </a>
             <a href="#" class="nav-link">
-              <span class="material-symbols-outlined">group</span>
+              <span class="material-symbols-outlined text-purple">group</span>
               <p>Referrals</p>
             </a>
             <a href="settings.html" class="nav-link">
-              <span class="material-symbols-outlined">settings</span>
+              <span class="material-symbols-outlined text-gray">settings</span>
               <p>Settings</p>
             </a>
           </nav>
@@ -61,16 +60,16 @@
 
         <div class="sidebar-bottom">
           <a href="profile.html" class="nav-link">
-            <span class="material-symbols-outlined">account_circle</span>
+            <span class="material-symbols-outlined text-primary">account_circle</span>
             <p>Alex Grim</p>
           </a>
           <a href="#" class="nav-link">
-            <span class="material-symbols-outlined">logout</span>
+            <span class="material-symbols-outlined text-danger">logout</span>
             <p>Log Out</p>
           </a>
         </div>
       </div>
-    </div>
+    </aside>
 
     <div class="main-wrapper">
       <header class="header">
@@ -163,7 +162,7 @@
           </div>
           <button class="book-ride-btn">
             <span class="material-symbols-outlined">directions_car</span>
-            <span>Book a Ride</span>
+            <span><a href="bookride.html">Book a Ride</a></span>
           </button>
         </div>
 
@@ -239,75 +238,76 @@
                 </svg>
                 <div class="donut-center">
                   <span class="donut-value">34</span>
-                  <span class="donut-label">Total Rides</span>
+                  <span class="donut-label">Rides</span>
                 </div>
               </div>
-            </div>
-            <div class="chart-legend">
-              <div class="legend-item"><span class="legend-dot primary"></span><span>Standard</span></div>
-              <div class="legend-item"><span class="legend-dot success"></span><span>Premium</span></div>
-              <div class="legend-item"><span class="legend-dot warning"></span><span>XL</span></div>
-              <div class="legend-item"><span class="legend-dot gray"></span><span>Eco</span></div>
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <div class="legend-color" style="background-color: #16a34a;"></div>
+                  <p class="legend-text">Completed</p>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color" style="background-color: #0bda5e;"></div>
+                  <p class="legend-text">Scheduled</p>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color" style="background-color: #FFC107;"></div>
+                  <p class="legend-text">Canceled</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="activity-section">
-          <div class="activity-header">
-            <h3 class="activity-title">Recent Activity</h3>
+          <div class="section-header">
+            <h2 class="section-title">Recent Activity</h2>
+            <a href="ridehistory.html" class="view-all-link">View All</a>
           </div>
           <div class="table-wrapper">
             <table class="activity-table">
               <thead>
                 <tr>
-                  <th scope="col">Ride ID</th>
-                  <th scope="col">Destination</th>
                   <th scope="col">Date</th>
+                  <th scope="col">Ride Details</th>
+                  <th scope="col">Amount</th>
                   <th scope="col">Status</th>
-                  <th scope="col">Fare</th>
-                  <th scope="col"><span class="sr-only">Actions</span></th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">#RIDE-00745</th>
-                  <td>123 Maple Street</td>
-                  <td>2023-10-26</td>
-                  <td><span class="status-badge completed">Completed</span></td>
-                  <td>₦24.50</td>
-                  <td class="text-right"><a href="reciept.html" class="table-link">View</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">#RIDE-00744</th>
-                  <td>Central City Airport</td>
-                  <td>2023-10-25</td>
-                  <td><span class="status-badge completed">Completed</span></td>
+                  <td>Oct 24, 2023</td>
+                  <th scope="row">ID: #83291 / Downtown to Airport</th>
                   <td>₦48.90</td>
-                  <td class="text-right"><a href="reciept.html" class="table-link">View</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">#RIDE-00743</th>
-                  <td>Downtown Mall</td>
-                  <td>2023-10-25</td>
                   <td><span class="status-badge completed">Completed</span></td>
-                  <td>₦15.60</td>
-                  <td class="text-right"><a href="reciept.html" class="table-link">View</a></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <a href="#" class="table-link">View</a>
+                    </div>
+                  </td>
                 </tr>
                 <tr>
-                  <th scope="row">#RIDE-00742</th>
-                  <td>Riverfront Park</td>
-                  <td>2023-10-24</td>
-                  <td><span class="status-badge cancelled">Cancelled</span></td>
-                  <td>₦0.00</td>
-                  <td class="text-right"><a href="reciept.html" class="table-link">View</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">#RIDE-00741</th>
-                  <td>456 Oak Avenue</td>
-                  <td>2023-10-23</td>
+                  <td>Oct 22, 2023</td>
+                  <th scope="row">ID: #83290 / Northside to City Center</th>
+                  <td>₦24.50</td>
                   <td><span class="status-badge completed">Completed</span></td>
-                  <td>₦32.00</td>
-                  <td class="text-right"><a href="reciept.html" class="table-link">View</a></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <a href="#" class="table-link">View</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Oct 20, 2023</td>
+                  <th scope="row">ID: #83289 / West End to Mall</th>
+                  <td>₦15.20</td>
+                  <td><span class="status-badge cancelled">Canceled</span></td>
+                  <td>
+                    <div class="flex items-center gap-2">
+                      <a href="#" class="table-link">View</a>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>

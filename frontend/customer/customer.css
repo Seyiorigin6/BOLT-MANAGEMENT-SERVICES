@@ -2120,3 +2120,167 @@ body {
     font-weight: 600;
     font-size: 0.875rem;
 }
+/* ===================================
+   Booking Page
+   =================================== */
+.booking-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+}
+
+@media (min-width: 1024px) {
+    .booking-grid {
+        grid-template-columns: 2fr 3fr;
+    }
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+
+.booking-card {
+    background-color: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-6);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+
+.booking-card-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.vehicle-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+}
+
+.vehicle-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-3);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vehicle-option:hover {
+    border-color: var(--primary);
+    background-color: rgba(22, 163, 74, 0.05);
+}
+
+.vehicle-option.selected {
+    border: 2px solid var(--primary);
+    background-color: rgba(22, 163, 74, 0.1);
+}
+
+.vehicle-image {
+    width: 6rem;
+    height: 4rem;
+    object-fit: contain;
+}
+
+.vehicle-details {
+    flex: 1;
+}
+
+.vehicle-name {
+    font-weight: 700;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.vehicle-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    font-size: 0.875rem;
+    color: var(--subtext-light);
+    margin-top: 2px;
+}
+
+.vehicle-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.vehicle-meta-item .material-symbols-outlined {
+    font-size: 1rem;
+}
+
+.vehicle-price {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.fare-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    font-size: 0.875rem;
+    color: var(--subtext-light);
+}
+
+.fare-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fare-divider {
+    height: 1px;
+    background-color: var(--gray-200);
+    margin: var(--spacing-2) 0;
+}
+
+.fare-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-light);
+}
+
+.fare-total-label {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.fare-total-amount {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+}
+
+.map-container {
+    width: 100%;
+    height: 500px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 1024px) {
+    .map-container {
+        height: auto;
+    }
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
