@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const userSession = sessionStorage.getItem('bolt_user');
 
     if (!userSession) {
-        // No ID card found? Kick them out!
+        
         window.location.href = '../login.html'; 
-        return; // Stop running the script
+        return; 
     }
 
     const user = JSON.parse(userSession);
