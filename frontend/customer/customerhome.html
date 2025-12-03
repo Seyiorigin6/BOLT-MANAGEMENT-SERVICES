@@ -62,9 +62,11 @@
         <div class="sidebar-bottom">
           <a href="profile.html" class="nav-link">
             <span class="material-symbols-outlined">account_circle</span>
-            <p>Alex Grim</p>
+            <!-- ID ADDED HERE FOR THE SCRIPT TO FIND -->
+            <p id="user-name-sidebar">Loading...</p>
           </a>
-          <a href="#" class="nav-link">
+          <!-- ID ADDED HERE FOR LOGOUT FUNCTION -->
+          <a href="#" class="nav-link" id="logout-btn">
             <span class="material-symbols-outlined">logout</span>
             <p>Log Out</p>
           </a>
@@ -159,6 +161,7 @@
         <div class="dashboard-header">
           <div class="dashboard-title-section">
             <p class="dashboard-title">Dashboard</p>
+            <!-- Updated dynamic welcome message class -->
             <p class="dashboard-subtitle">Welcome back, here's an overview of your ride activity.</p>
           </div>
           <button class="book-ride-btn">
@@ -339,6 +342,9 @@
       e.stopPropagation();
     });
   </script>
+  
+  <!-- CONNECT THE DASHBOARD MANAGER -->
+  <script src="../js/cgi-dashboard.js"></script>
 </body>
 
 </html>
