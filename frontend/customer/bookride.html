@@ -1,169 +1,213 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Bolt  - Book a Ride</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="styleshee]p"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary": "#135bec",
-              "background-light": "#f6f6f8",
-              "background-dark": "#101622",
-              "card-light": "#ffffff",
-              "card-dark": "#1a2231",
-              "text-light": "#0d121b",
-              "text-dark": "#e0e6f0",
-              "subtext-light": "#4c669a",
-              "subtext-dark": "#94a3b8",
-              "border-light": "#cfd7e7",
-              "border-dark": "#334155"
-            },
-            fontFamily: {
-              "display": ["Inter", "sans-serif"]
-            },
-            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-          },
-        },
-      }
-    </script>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Bolt - Book a Ride</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <link href="customer.css" rel="stylesheet" />
 </head>
-<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
-<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-<div class="layout-container flex h-full grow flex-col">
-<!-- TopNavBar -->
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark px-6 sm:px-10 py-3 bg-card-light dark:bg-card-dark">
-<div class="flex items-center gap-4">
-<div class="size-6 text-primary">
-<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
-</svg>
-</div>
-<h2 class="text-text-light dark:text-text-dark text-lg font-bold leading-tight tracking-[-0.015em]">Bolt Management</h2>
-</div>
-<div class="hidden md:flex flex-1 justify-center gap-8">
-<div class="flex items-center gap-9">
-<a class="text-text-light dark:text-text-dark text-sm font-medium leading-normal" href="#">Dashboard</a>
-<a class="text-primary text-sm font-bold leading-normal" href="#">Book a Ride</a>
-<a class="text-text-light dark:text-text-dark text-sm font-medium leading-normal" href="#">My Rides</a>
-<a class="text-text-light dark:text-text-dark text-sm font-medium leading-normal" href="#">Payment</a>
-</div>
-</div>
-<div class="flex flex-1 justify-end items-center gap-4">
-<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-background-light dark:bg-background-dark text-subtext-light dark:text-subtext-dark gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDmpYSyqK2CPfxoo9MCY2h4M9XuaUuxx5xJLaIBnJZ9AfucYjNTGIvG7UdGCBkOWj-Rqkmif9jIeMNj4tiNADr9t7Lgsu7g8tYCOFLjRRGR4wLaeiT9ZYsxMRcRVCN8oJsBsdFxAXWMLa9w8Pup-e1G-SXYCbaCAczyLo_qxJrXwClgRJOno2tu3Vdo_d80WOVRKG-9GFnQ14u8UF5BWv2KBuCI70jnJc9ST5A8NkhpD2zoMDe7o_2Gh4uSU_6TLDkkc6J_FYqbltFH");'></div>
-</div>
-</header>
-<main class="flex-1 w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-<div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
-<!-- Left Panel: Booking Form -->
-<div class="lg:col-span-2 flex flex-col gap-6">
-<!-- PageHeading -->
-<div class="flex min-w-72 flex-col gap-2">
-<p class="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em]">Book a Ride</p>
-<p class="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal">Enter your details to book your next ride.</p>
-</div>
-<!-- Input Fields Card -->
-<div class="bg-card-light dark:bg-card-dark rounded-xl p-6 flex flex-col gap-4 shadow-sm">
-<!-- TextField: Pickup -->
-<label class="flex flex-col min-w-40 flex-1">
-<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2">Pickup Location</p>
-<div class="flex w-full flex-1 items-stretch rounded-lg">
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-subtext-light dark:placeholder:text-subtext-dark p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal" placeholder="Enter your pickup location" value="123 Main Street, Anytown"/>
-<div class="text-subtext-light dark:text-subtext-dark flex border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark items-center justify-center pr-[15px] rounded-r-lg border-l-0">
-<span class="material-symbols-outlined">my_location</span>
-</div>
-</div>
-</label>
-<!-- TextField: Destination -->
-<label class="flex flex-col min-w-40 flex-1">
-<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2">Destination</p>
-<div class="flex w-full flex-1 items-stretch rounded-lg">
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-subtext-light dark:placeholder:text-subtext-dark p-[15px] rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal" placeholder="Enter your destination" value="456 Oak Avenue, Sometown"/>
-<div class="text-subtext-light dark:text-subtext-dark flex border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark items-center justify-center pr-[15px] rounded-r-lg border-l-0">
-<span class="material-symbols-outlined">location_on</span>
-</div>
-</div>
-</label>
-</div>
-<!-- Vehicle Selection -->
-<div class="bg-card-light dark:bg-card-dark rounded-xl p-6 flex flex-col gap-4 shadow-sm">
-<h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em]">Choose a vehicle</h2>
-<div class="flex flex-col gap-3">
-<!-- Vehicle Option 1 (Selected) -->
-<div class="flex items-center gap-4 rounded-lg p-3 border-2 border-primary bg-primary/10 cursor-pointer">
-<img class="h-16 w-24 object-contain" data-alt="Standard sedan car" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ2VwcDHnmH0EclJDTFLWI_TrtQYvuqWHRjJiCUDKgJwLK9K52WO9N52aVtXlpAKQE7d6kOMCARRIZwON51-SGBJ4JXEp8IGBLTxiMniOhuXZ65vcDDJ78szGnu4Nzk1BdYikJPOgKwy0F2eg02lXzpK468bdV2-TXJKVDgJiYY0fxnK3YQTcx0vYgmBZafvbSsfqFttZiTuzkT6rSI0u67DPvV_GqNDuKyYG2rdccchBiZfqZ9fJodi14UaOm7S3_mpvIfP7p0-X7"/>
-<div class="flex-1">
-<p class="font-bold text-text-light dark:text-text-dark">Standard Sedan</p>
-<div class="flex items-center gap-3 text-sm text-subtext-light dark:text-subtext-dark">
-<div class="flex items-center gap-1"><span class="material-symbols-outlined text-base">person</span> 4</div>
-<div class="flex items-center gap-1"><span class="material-symbols-outlined text-base">work</span> 2</div>
-</div>
-</div>
-<p class="font-bold text-lg text-text-light dark:text-text-dark">$24.50</p>
-</div>
-<!-- Vehicle Option 2 -->
-<div class="flex items-center gap-4 rounded-lg p-3 border border-border-light dark:border-border-dark hover:border-primary/50 cursor-pointer">
-<img class="h-16 w-24 object-contain" data-alt="Executive SUV car" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP_KKCjYmfraKErgxMhVpEiS2IpIopC6cVhp7zefR5I0YzVDKGUmCa6LW3NRiEnP0n7ybMIpUjEV6-Ih_08Kawq36WmsxIDU-q-0ls_JmxlJ8zS2ejQstg4ROB1kop5ZBX3tyNBn5p38Q5tRvC67KjtL4FpGAevFUVSbRJz7Fgv_L_ck2IN7bu0rrJe_dKUJS_BqxxPtTANs05tthh9yCV7GHd_cwfMH7mjg865UOayZAmBeUuD-HDolqwrYWyDDfrirbB7H5WXTqL"/>
-<div class="flex-1">
-<p class="font-bold text-text-light dark:text-text-dark">Executive SUV</p>
-<div class="flex items-center gap-3 text-sm text-subtext-light dark:text-subtext-dark">
-<div class="flex items-center gap-1"><span class="material-symbols-outlined text-base">person</span> 6</div>
-<div class="flex items-center gap-1"><span class="material-symbols-outlined text-base">work</span> 4</div>
-</div>
-</div>
-<p class="font-bold text-lg text-text-light dark:text-text-dark">$38.00</p>
-</div>
-<!-- Vehicle Option 3 -->
-<div class="flex items-center gap-4 rounded-lg p-3 border border-border-light dark:border-border-dark hover:border-primary/50 cursor-pointer">
-<img class="h-16 w-24 object-contain" data-alt="Large Van" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNwgck6vq4_pi0PaQlIx6PVqUcfBurBJDtb0yMhR8RXfTnS7_8hdG-kvKHOflacNjoz0cxxUyweyIutu7iABhUS_tvFn94ntK53Cg6RGMf6iYL_zBRfrbOawQKe7QHVaImTy03K6ZUeolebLj4lp8G0qC06t4_XFCYVsJQsCfNnPPHgsc4TM1YLv6ng5uofO7ng-YVn1nQRC1mQtG1oaanc740Irk6qM_77j5ixu_Vs-eq5uehMQtbfgiSC_ICpry7w7vMdnkzoHpV"/>
-<div class="flex-1">
-<p class="font-bold text-text-light dark:text-text-dark">Van</p>
-<div class="flex items-center gap-3 text-sm text-subtext-light dark:text-subtext-dark">
-<div class="flex items-center gap-1"><span class="material-symbols-outlined text-base">person</span> 8</div>
-<div class="flex items-center gap-1"><span class="material-symbols-outlined text-base">work</span> 6</div>
-</div>
-</div>
-<p class="font-bold text-lg text-text-light dark:text-text-dark">$45.75</p>
-</div>
-</div>
-</div>
-<!-- Fare Details & CTA -->
-<div class="bg-card-light dark:bg-card-dark rounded-xl p-6 flex flex-col gap-4 shadow-sm">
-<h3 class="text-text-light dark:text-text-dark text-lg font-bold">Fare Details</h3>
-<div class="flex flex-col gap-2 text-subtext-light dark:text-subtext-dark text-sm">
-<div class="flex justify-between"><span>Base Fare</span><span>$21.00</span></div>
-<div class="flex justify-between"><span>Booking Fee</span><span>$1.50</span></div>
-<div class="flex justify-between"><span>Taxes &amp; Surcharges</span><span>$2.00</span></div>
-</div>
-<div class="border-t border-border-light dark:border-border-dark my-2"></div>
-<div class="flex justify-between items-center text-text-light dark:text-text-dark">
-<span class="text-lg font-bold">Total Estimate</span>
-<span class="text-2xl font-black tracking-tight">$24.50</span>
-</div>
-<button class="w-full mt-4 flex items-center justify-center rounded-lg h-14 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">Confirm Ride</button>
-</div>
-</div>
-<!-- Right Panel: Map -->
-<div class="lg:col-span-3 h-[500px] lg:h-auto w-full rounded-xl overflow-hidden shadow-sm">
-<div class="w-full h-full bg-cover bg-center" data-alt="An interactive map showing a driving route between two points in a city." data-location="City map with route from point A to point B" style="background-image: url('https://placeholder.pics/svg/300');">
-</div>
-</div>
-</div>
-</main>
-</div>
-</div>
-</body></html>
+
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <div class="sidebar-brand">
+            <div class="brand-logo-wrapper">
+              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FFC107" stroke="black" stroke-width="2"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h1 class="brand-text">BOLT</h1>
+          </div>
+          <nav class="nav-list">
+            <a class="nav-link" href="customerhome.html">
+              <span class="material-symbols-outlined">dashboard</span>
+              <p>Dashboard</p>
+            </a>
+            <a class="nav-link active" href="bookride.html">
+              <span class="material-symbols-outlined">directions_car</span>
+              <p>Book a Ride</p>
+            </a>
+            <a class="nav-link" href="ridehistory.html">
+              <span class="material-symbols-outlined">history</span>
+              <p>My Rides</p>
+            </a>
+            <a class="nav-link" href="payment.html">
+              <span class="material-symbols-outlined">payment</span>
+              <p>Payment</p>
+            </a>
+          </nav>
+        </div>
+        <div class="sidebar-bottom">
+          <a class="nav-link" href="#">
+            <span class="material-symbols-outlined">logout</span>
+            <p>Log Out</p>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="header">
+        <div class="header-left">
+          <label class="search-wrapper">
+            <div class="search-container">
+              <div class="search-icon-wrapper">
+                <span class="material-symbols-outlined">search</span>
+              </div>
+              <input class="search-input" placeholder="Search..." value="" />
+            </div>
+          </label>
+        </div>
+
+        <div class="header-right">
+          <div class="notification-container">
+            <button class="notification-btn">
+              <span class="material-symbols-outlined">notifications</span>
+            </button>
+          </div>
+
+          <a href="profile.html" class="user-avatar" data-alt="User avatar"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDqDRXv556NLPlxVTQyHGDKkhBcZrNiOd3j6QjwjqTVEXuR3N0MT8UpuSFyrPPmGccaRdGtESdPH5pr0BADI_HZ5ZbE3kaB9diOTVg1-xJzaJDpMG1b-Pvmw6j70khBCoz7_VfeTlzdkjWXoqQctb80WiUbdt0GUsvr3SvQCpne-Ko1zUnYd4ROpo7dZbPBWJjCLZZGiYtIBRrblXp9KRr0PnyjcSHEK9VikFGytZRb5K8ry11ZbZ9OerHVkBe1_DzW6vHyKBNd5e-i");'></a>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <div class="dashboard-header">
+          <div class="dashboard-title-section">
+            <p class="dashboard-title">Book a Ride</p>
+            <p class="dashboard-subtitle">Enter your details to book your next ride.</p>
+          </div>
+        </div>
+
+        <div class="booking-grid">
+          <!-- Left Panel: Booking Form -->
+          <div class="booking-form">
+            <!-- Input Fields Card -->
+            <div class="booking-card">
+              <div class="form-group">
+                <label class="form-label">Pickup Location</label>
+                <div style="display: flex; align-items: stretch;">
+                  <input class="form-input" type="text" value="123 Main Street, Anytown"
+                    placeholder="Enter your pickup location"
+                    style="border-radius: var(--radius-default) 0 0 var(--radius-default); border-right: 0;">
+                  <div
+                    style="display: flex; align-items: center; justify-content: center; padding: 0 1rem; border: 1px solid var(--gray-300); border-left: 0; border-radius: 0 var(--radius-default) var(--radius-default) 0; background-color: var(--white);">
+                    <span class="material-symbols-outlined" style="color: var(--subtext-light);">my_location</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Destination</label>
+                <div style="display: flex; align-items: stretch;">
+                  <input class="form-input" type="text" value="456 Oak Avenue, Sometown"
+                    placeholder="Enter your destination"
+                    style="border-radius: var(--radius-default) 0 0 var(--radius-default); border-right: 0;">
+                  <div
+                    style="display: flex; align-items: center; justify-content: center; padding: 0 1rem; border: 1px solid var(--gray-300); border-left: 0; border-radius: 0 var(--radius-default) var(--radius-default) 0; background-color: var(--white);">
+                    <span class="material-symbols-outlined" style="color: var(--subtext-light);">location_on</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vehicle Selection -->
+            <div class="booking-card">
+              <h2 class="booking-card-title">Choose a vehicle</h2>
+              <div class="vehicle-list">
+                <!-- Vehicle Option 1 (Selected) -->
+                <div class="vehicle-option selected">
+                  <img class="vehicle-image" alt="Standard sedan car"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ2VwcDHnmH0EclJDTFLWI_TrtQYvuqWHRjJiCUDKgJwLK9K52WO9N52aVtXlpAKQE7d6kOMCARRIZwON51-SGBJ4JXEp8IGBLTxiMniOhuXZ65vcDDJ78szGnu4Nzk1BdYikJPOgKwy0F2eg02lXzpK468bdV2-TXJKVDgJiYY0fxnK3YQTcx0vYgmBZafvbSsfqFttZiTuzkT6rSI0u67DPvV_GqNDuKyYG2rdccchBiZfqZ9fJodi14UaOm7S3_mpvIfP7p0-X7" />
+                  <div class="vehicle-details">
+                    <p class="vehicle-name">Standard Sedan</p>
+                    <div class="vehicle-meta">
+                      <div class="vehicle-meta-item">
+                        <span class="material-symbols-outlined">person</span> 4
+                      </div>
+                      <div class="vehicle-meta-item">
+                        <span class="material-symbols-outlined">work</span> 2
+                      </div>
+                    </div>
+                  </div>
+                  <p class="vehicle-price">$24.50</p>
+                </div>
+
+                <!-- Vehicle Option 2 -->
+                <div class="vehicle-option">
+                  <img class="vehicle-image" alt="Executive SUV car"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP_KKCjYmfraKErgxMhVpEiS2IpIopC6cVhp7zefR5I0YzVDKGUmCa6LW3NRiEnP0n7ybMIpUjEV6-Ih_08Kawq36WmsxIDU-q-0ls_JmxlJ8zS2ejQstg4ROB1kop5ZBX3tyNBn5p38Q5tRvC67KjtL4FpGAevFUVSbRJz7Fgv_L_ck2IN7bu0rrJe_dKUJS_BqxxPtTANs05tthh9yCV7GHd_cwfMH7mjg865UOayZAmBeUuD-HDolqwrYWyDDfrirbB7H5WXTqL" />
+                  <div class="vehicle-details">
+                    <p class="vehicle-name">Executive SUV</p>
+                    <div class="vehicle-meta">
+                      <div class="vehicle-meta-item">
+                        <span class="material-symbols-outlined">person</span> 6
+                      </div>
+                      <div class="vehicle-meta-item">
+                        <span class="material-symbols-outlined">work</span> 4
+                      </div>
+                    </div>
+                  </div>
+                  <p class="vehicle-price">$38.00</p>
+                </div>
+
+                <!-- Vehicle Option 3 -->
+                <div class="vehicle-option">
+                  <img class="vehicle-image" alt="Large Van"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNwgck6vq4_pi0PaQlIx6PVqUcfBurBJDtb0yMhR8RXfTnS7_8hdG-kvKHOflacNjoz0cxxUyweyIutu7iABhUS_tvFn94ntK53Cg6RGMf6iYL_zBRfrbOawQKe7QHVaImTy03K6ZUeolebLj4lp8G0qC06t4_XFCYVsJQsCfNnPPHgsc4TM1YLv6ng5uofO7ng-YVn1nQRC1mQtG1oaanc740Irk6qM_77j5ixu_Vs-eq5uehMQtbfgiSC_ICpry7w7vMdnkzoHpV" />
+                  <div class="vehicle-details">
+                    <p class="vehicle-name">Van</p>
+                    <div class="vehicle-meta">
+                      <div class="vehicle-meta-item">
+                        <span class="material-symbols-outlined">person</span> 8
+                      </div>
+                      <div class="vehicle-meta-item">
+                        <span class="material-symbols-outlined">work</span> 6
+                      </div>
+                    </div>
+                  </div>
+                  <p class="vehicle-price">$45.75</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fare Details & CTA -->
+            <div class="booking-card">
+              <h3 class="booking-card-title">Fare Details</h3>
+              <div class="fare-details">
+                <div class="fare-row"><span>Base Fare</span><span>$21.00</span></div>
+                <div class="fare-row"><span>Booking Fee</span><span>$1.50</span></div>
+                <div class="fare-row"><span>Taxes & Surcharges</span><span>$2.00</span></div>
+              </div>
+              <div class="fare-divider"></div>
+              <div class="fare-total">
+                <span class="fare-total-label">Total Estimate</span>
+                <span class="fare-total-amount">$24.50</span>
+              </div>
+              <button class="btn btn-primary"
+                style="width: 100%; margin-top: var(--spacing-4); height: 3.5rem; font-size: 1.125rem; font-weight: 700;">Confirm
+                Ride</button>
+            </div>
+          </div>
+
+          <!-- Right Panel: Map -->
+          <div class="map-container">
+            <div class="map-image" data-alt="An interactive map showing a driving route between two points in a city."
+              style="background-image: url('booking_map_route.png');"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,160 +1,135 @@
 <!DOCTYPE html>
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Settings - Bolt Management</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 24
-        }
-    </style>
-<script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#16a34a",
-                        "background-light": "#ffffff",
-                        "background-dark": "#101622",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Settings - Bolt Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <link href="customer.css" rel="stylesheet" />
 </head>
-<body class="bg-background-light font-display">
-<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-<div class="flex flex-1">
-<aside class="flex w-64 flex-col border-r border-slate-200 bg-slate-50 p-4">
-<div class="flex h-full flex-col justify-between">
-<div class="flex flex-col gap-4">
-<div class="flex items-center gap-3">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="John Doe's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdKfi9Ybv53maUCmtRO7IloyysYW84sy0Gy5zQWPXZjNs5Y_kjLolNj1xkk0TOYJi_fWHiJrNYoZJ1-kGfWy38tmEN6Xw_opsY7TffMPOq6Tu1kKmLg-sS1Vm7Who7YLoa8S4yGprHveHRRz4j2mgoA7-FeKwusueEuWq9MCfBa9hmqKsnbDa4Si8MPumMM7ao5WmjLdz0UanSyrRq6iphrYKUxMdK2BED1rlqAF9NxBBAHL-oNDCKo9k1iPmwPGxUju-vpJ0r-03W");'></div>
-<div class="flex flex-col">
-<h1 class="text-slate-900 text-base font-medium leading-normal">John Doe</h1>
-<p class="text-slate-500 text-sm font-normal leading-normal">Bolt Management Inc.</p>
-</div>
-</div>
-<nav class="flex flex-col gap-2 mt-4">
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="#">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">person</span>
-<p class="text-sm font-medium leading-normal">Profile</p>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200/60 transition-colors" href="#">
-<span class="material-symbols-outlined text-slate-600">tune</span>
-<p class="text-slate-600 text-sm font-medium leading-normal">Preferences</p>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200/60 transition-colors" href="#">
-<span class="material-symbols-outlined text-slate-600">notifications</span>
-<p class="text-slate-600 text-sm font-medium leading-normal">Notifications</p>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200/60 transition-colors" href="#">
-<span class="material-symbols-outlined text-slate-600">verified_user</span>
-<p class="text-slate-600 text-sm font-medium leading-normal">Security</p>
-</a>
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200/60 transition-colors" href="#">
-<span class="material-symbols-outlined text-slate-600">help_center</span>
-<p class="text-slate-600 text-sm font-medium leading-normal">Support</p>
-</a>
-</nav>
-</div>
-<div class="flex flex-col gap-1">
-<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-200/60 transition-colors" href="#">
-<span class="material-symbols-outlined text-slate-600">logout</span>
-<p class="text-slate-600 text-sm font-medium leading-normal">Log Out</p>
-</a>
-</div>
-</div>
-</aside>
-<main class="flex-1 bg-white p-8">
-<div class="max-w-4xl mx-auto">
-<div class="flex flex-wrap justify-between gap-3 mb-8">
-<div class="flex min-w-72 flex-col gap-2">
-<h1 class="text-slate-900 text-3xl font-bold tracking-tight">Profile</h1>
-<p class="text-slate-500 text-base font-normal leading-normal">Update your photo and personal details.</p>
-</div>
-</div>
-<div class="flex p-6 rounded-xl border border-slate-200 bg-white @container">
-<div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
-<div class="flex gap-4 items-center">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-24 w-24" data-alt="John Doe's profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxwnBYbl5S63aN4o8V9wOba6uoplxvj1K8FKILx-Rl47vMjsikmOhdxEtTn9LypRdFndCe6UKPt6lw7RFcFp8H8E_n2nnF6ojZeDmTLGe8TuwKvbFLEF39PGZXYbbN_dwwn2wb0J-TKsIeaj_owC0Fbk6LgbUrna4jXd-efgDnfiHJIcipaklxY9F4hnR90yo7tif3elFbWhKtxxNQtH7Ej33fhsNLzhNDZAX5bD7XYhGNu4QlXGHzDLSHBDhjekuGp7trdklBD_yN");'></div>
-<div class="flex flex-col justify-center">
-<p class="text-slate-900 text-xl font-bold leading-tight">John Doe</p>
-<p class="text-slate-500 text-base font-normal leading-normal">john.doe@boltmgt.com</p>
-</div>
-</div>
-<div class="flex w-full gap-3 @[480px]:w-auto">
-<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium leading-normal flex-1 @[480px]:flex-auto transition-colors">
-<span class="truncate">Upload new picture</span>
-</button>
-<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-red-100 text-red-600 hover:bg-red-200 text-sm font-medium leading-normal flex-1 @[480px]:flex-auto transition-colors">
-<span class="truncate">Delete</span>
-</button>
-</div>
-</div>
-</div>
-<div class="mt-8 p-6 rounded-xl border border-slate-200 bg-white">
-<h2 class="text-xl font-bold text-slate-900">Personal Information</h2>
-<p class="text-slate-500 text-sm mt-1">Update your personal details here.</p>
-<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-<label class="flex flex-col w-full">
-<p class="text-slate-700 text-sm font-medium leading-normal pb-2">Your Name</p>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 bg-white focus:border-primary h-12 placeholder:text-slate-400 px-4 text-sm font-normal leading-normal transition-colors" placeholder="John Doe" value="John Doe"/>
-</label>
-<label class="flex flex-col w-full">
-<p class="text-slate-700 text-sm font-medium leading-normal pb-2">Company Name</p>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 bg-white focus:border-primary h-12 placeholder:text-slate-400 px-4 text-sm font-normal leading-normal transition-colors" placeholder="Bolt Management Inc." value="Bolt Management Inc."/>
-</label>
-<label class="flex flex-col w-full col-span-1 md:col-span-2">
-<p class="text-slate-700 text-sm font-medium leading-normal pb-2">Email address</p>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 bg-white focus:border-primary h-12 placeholder:text-slate-400 px-4 text-sm font-normal leading-normal transition-colors" placeholder="john.doe@boltmgt.com" value="john.doe@boltmgt.com"/>
-</label>
-<label class="flex flex-col w-full">
-<p class="text-slate-700 text-sm font-medium leading-normal pb-2">Language</p>
-<select class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 bg-white focus:border-primary h-12 px-4 text-sm font-normal leading-normal appearance-none transition-colors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDEYTsXfGosOW2VZWDJrNy8GzneYwJPOVa17O088Fo0wT1QWMJy6Yk45p7esSGw4JWhM1dH4-DbW_qXaEdC9S8XWS_-CHcsO1po4rlTzquFB9lU_otZNfPIq6QuUObxH_sQNnYFVI3DbRDHYmGwNWaN9dVBqfLL3PYK5TAjl_HoqUC9b22i3uIHlrlEVRf8j5j6-r82hDr05Iyn04YM5oNBQ3auemsEICGk_3-LRkFRXqQYZFY_lmqS8_gi6_WRy4EFLRT1B41WVyQr"); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem;'>
-<option>English (United States)</option>
-<option>Spanish</option>
-<option>French</option>
-</select>
-</label>
-<label class="flex flex-col w-full">
-<p class="text-slate-700 text-sm font-medium leading-normal pb-2">Timezone</p>
-<select class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 bg-white focus:border-primary h-12 px-4 text-sm font-normal leading-normal appearance-none transition-colors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDEYTsXfGosOW2VZWDJrNy8GzneYwJPOVa17O088Fo0wT1QWMJy6Yk45p7esSGw4JWhM1dH4-DbW_qXaEdC9S8XWS_-CHcsO1po4rlTzquFB9lU_otZNfPIq6QuUObxH_sQNnYFVI3DbRDHYmGwNWaN9dVBqfLL3PYK5TAjl_HoqUC9b22i3uIHlrlEVRf8j5j6-r82hDr05Iyn04YM5oNBQ3auemsEICGk_3-LRkFRXqQYZFY_lmqS8_gi6_WRy4EFLRT1B41WVyQr"); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem;'>
-<option>(GMT-05:00) Eastern Time</option>
-<option>(GMT-06:00) Central Time</option>
-<option>(GMT-07:00) Mountain Time</option>
-<option>(GMT-08:00) Pacific Time</option>
-</select>
-</label>
-</div>
-<div class="flex justify-end gap-3 mt-8 border-t border-slate-200 pt-6">
-<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium leading-normal transition-colors">
-<span class="truncate">Cancel</span>
-</button>
-<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-primary/90 text-white text-sm font-medium leading-normal transition-colors">
-<span class="truncate">Save Changes</span>
-</button>
-</div>
-</div>
-</div>
-</main>
-</div>
-</div>
-</body></html>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-inner">
+                <div class="sidebar-top">
+                    <div class="sidebar-brand">
+                        <div class="brand-logo-wrapper">
+                            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FFC107" stroke="black"
+                                    stroke-width="2" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <h1 class="brand-text">BOLT</h1>
+                    </div>
+                    <nav class="nav-list">
+                        <a class="nav-link" href="customerhome.html">
+                            <span class="material-symbols-outlined">dashboard</span>
+                            <p>Dashboard</p>
+                        </a>
+                        <a class="nav-link" href="ridehistory.html">
+                            <span class="material-symbols-outlined">history</span>
+                            <p>Ride History</p>
+                        </a>
+                        <a class="nav-link" href="wallet.html">
+                            <span class="material-symbols-outlined">account_balance_wallet</span>
+                            <p>Wallet</p>
+                        </a>
+                        <a class="nav-link active" href="settings.html">
+                            <span class="material-symbols-outlined">settings</span>
+                            <p>Settings</p>
+                        </a>
+                    </nav>
+                </div>
+                <div class="sidebar-bottom">
+                    <a class="nav-link" href="#">
+                        <span class="material-symbols-outlined">logout</span>
+                        <p>Log Out</p>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="profile-header">
+                <div class="profile-user-info">
+                    <div class="profile-avatar-wrapper">
+                        <div class="profile-avatar" data-alt="User avatar image"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDqDRXv556NLPlxVTQyHGDKkhBcZrNiOd3j6QjwjqTVEXuR3N0MT8UpuSFyrPPmGccaRdGtESdPH5pr0BADI_HZ5ZbE3kaB9diOTVg1-xJzaJDpMG1b-Pvmw6j70khBCoz7_VfeTlzdkjWXoqQctb80WiUbdt0GUsvr3SvQCpne-Ko1zUnYd4ROpo7dZbPBWJjCLZZGiYtIBRrblXp9KRr0PnyjcSHEK9VikFGytZRb5K8ry11ZbZ9OerHVkBe1_DzW6vHyKBNd5e-i");'>
+                        </div>
+                        <button class="profile-avatar-edit">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+                    </div>
+                    <div class="profile-user-details">
+                        <h1 class="profile-user-name">John Doe</h1>
+                        <p class="profile-user-email">john.doe@boltmgt.com</p>
+                    </div>
+                </div>
+                <div class="btn-group" style="margin: 0; padding: 0; border: none;">
+                    <button class="btn btn-secondary">Upload new picture</button>
+                    <button class="btn btn-danger-light">Delete</button>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <div class="profile-section-header">
+                    <h2 class="profile-section-title">Personal Information</h2>
+                    <p class="profile-section-description">Update your personal details here.</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <input class="form-input" type="text" value="John Doe" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Company Name</label>
+                        <input class="form-input" type="text" value="Bolt Management Inc."
+                            placeholder="Bolt Management Inc.">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email address</label>
+                    <input class="form-input" type="email" value="john.doe@boltmgt.com"
+                        placeholder="john.doe@boltmgt.com">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Language</label>
+                        <select class="form-select">
+                            <option>English (United States)</option>
+                            <option>Spanish</option>
+                            <option>French</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Timezone</label>
+                        <select class="form-select">
+                            <option>(GMT-05:00) Eastern Time</option>
+                            <option>(GMT-06:00) Central Time</option>
+                            <option>(GMT-07:00) Mountain Time</option>
+                            <option>(GMT-08:00) Pacific Time</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-secondary">Cancel</button>
+                    <button class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

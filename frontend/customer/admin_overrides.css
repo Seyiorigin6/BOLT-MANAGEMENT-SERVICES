@@ -1,0 +1,111 @@
+/* ===================================
+   Admin Dashboard Theme Overrides
+   =================================== */
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    border-right: none;
+    padding: 20px 0;
+    z-index: 100;
+}
+
+.sidebar-inner {
+    padding: 0;
+}
+
+.sidebar-brand {
+    padding: 0 20px 30px;
+    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: 20px;
+    gap: 12px;
+}
+
+.brand-text {
+    color: #04923a;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+.nav-link {
+    padding: 15px 20px;
+    border-radius: 0;
+    color: #555;
+    border-left: 4px solid transparent;
+}
+
+.nav-link:hover {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-left: 4px solid #10b981;
+    padding-left: 16px;
+}
+
+.nav-link.active {
+    background: rgba(16, 185, 129, 0.1);
+    color: #04923a;
+    border-left: 4px solid #04923a;
+    padding-left: 16px;
+}
+
+.nav-link .material-symbols-outlined {
+    font-size: 20px;
+    color: inherit !important;
+}
+
+/* Header */
+.header {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container {
+    width: 300px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    height: auto;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    padding: 12px 20px 12px 45px;
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+}
+
+.search-input:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.search-container:focus-within {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.search-icon-wrapper {
+    background: transparent;
+    border: none;
+    left: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    height: auto;
+    width: auto;
+}
