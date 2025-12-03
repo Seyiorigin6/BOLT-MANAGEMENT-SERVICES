@@ -1,349 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bolt - Dashboard</title>
-
-  <link href="https://fonts.googleapis.com" rel="preconnect" />
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    rel="stylesheet" />
+  <title>Bolt - Book a Ride</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <link href="customer.css" rel="stylesheet" />
+  <style>
+    /* Quick Normalization Overrides */
+    .booking-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+    }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151; }
+    .form-select { 
+        width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; 
+        border-radius: 8px; font-size: 1rem; 
+    }
+    .price-display {
+        font-size: 1.5rem; font-weight: 800; color: #10b981; 
+        margin-top: 1rem; display: none;
+    }
+    .book-btn {
+        background: #10b981; color: white; width: 100%; padding: 1rem;
+        border: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem;
+        cursor: pointer; transition: background 0.2s;
+    }
+    .book-btn:hover { background: #059669; }
+
+    /* Status Badges */
+    .status-badge {
+        padding: 4px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: 600;
+        text-transform: capitalize;
+    }
+    .status-badge.requested { background: #e0f2fe; color: #0369a1; } /* Blue */
+    .status-badge.accepted { background: #fef3c7; color: #d97706; } /* Yellow */
+    .status-badge.started { background: #dbeafe; color: #1e40af; } /* Dark Blue */
+    .status-badge.completed { background: #dcfce7; color: #15803d; } /* Green */
+    .status-badge.cancelled { background: #fee2e2; color: #b91c1c; } /* Red */
+  </style>
 </head>
 
 <body>
   <div class="app-container">
-    <aside class="sidebar">
+    <!-- SIDEBAR (Kept Simple) -->
+    <div class="sidebar">
       <div class="sidebar-inner">
         <div class="sidebar-top">
-          <div class="sidebar-brand">
-            <div class="brand-logo-wrapper">
-              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FFC107" stroke="black" stroke-width="2"
-                  stroke-linejoin="round" />
-              </svg>
-            </div>
-            <h1 class="brand-text">BOLT</h1>
+          <div class="brand-info" style="padding: 20px;">
+            <h1 class="brand-title" style="font-size: 1.5rem;">⚡ Bolt</h1>
+            <p class="brand-subtitle">Ride Manager</p>
           </div>
           <nav class="sidebar-nav">
-            <a href="customerhome.html" class="nav-link active">
-              <span class="material-symbols-outlined text-primary">dashboard</span>
-              <p>Dashboard</p>
-            </a>
-            <a href="receipt.html" class="nav-link">
-              <span class="material-symbols-outlined text-orange">receipt_long</span>
-              <p>Receipts</p>
+            <a href="#" class="nav-link active">
+              <span class="material-symbols-outlined">directions_car</span>
+              <p>Book Ride</p>
             </a>
             <a href="ridehistory.html" class="nav-link">
-              <span class="material-symbols-outlined text-blue">history</span>
-              <p>Ride History</p>
-            </a>
-            <a href="wallet.html" class="nav-link">
-              <span class="material-symbols-outlined text-success">account_balance_wallet</span>
-              <p>Wallet</p>
-            </a>
-            <a href="#" class="nav-link">
-              <span class="material-symbols-outlined text-purple">group</span>
-              <p>Referrals</p>
-            </a>
-            <a href="settings.html" class="nav-link">
-              <span class="material-symbols-outlined text-gray">settings</span>
-              <p>Settings</p>
+              <span class="material-symbols-outlined">history</span>
+              <p>History</p>
             </a>
           </nav>
         </div>
-
         <div class="sidebar-bottom">
-          <a href="profile.html" class="nav-link">
-            <span class="material-symbols-outlined text-primary">account_circle</span>
-            <!-- ID ADDED HERE FOR THE SCRIPT TO FIND -->
-            <p id="user-name-sidebar">Loading...</p>
-          </a>
-          <a href="#" class="nav-link">
-            <span class="material-symbols-outlined text-danger">logout</span>
-            <p>Log Out</p>
-          </a>
+            <a href="#" class="nav-link"><p id="user-name-sidebar">User</p></a>
+            <a href="#" class="nav-link" id="logout-btn">
+                <span class="material-symbols-outlined">logout</span><p>Log Out</p>
+            </a>
         </div>
       </div>
-    </aside>
+    </div>
 
+    <!-- MAIN CONTENT -->
     <div class="main-wrapper">
       <header class="header">
-        <div class="header-left">
-          <label class="search-wrapper">
-            <div class="search-container">
-              <div class="search-icon-wrapper">
-                <span class="material-symbols-outlined">search</span>
-              </div>
-              <input class="search-input" placeholder="Search ride history..." value="" />
-            </div>
-          </label>
-        </div>
-
-        <div class="header-right">
-          <div class="notification-container">
-            <button class="notification-btn" id="notificationBtn">
-              <span class="material-symbols-outlined">notifications</span>
-              <span class="notification-badge">3</span>
-            </button>
-
-            <div class="notification-dropdown" id="notificationDropdown">
-              <div class="notification-dropdown-header">
-                <h3>Notifications</h3>
-                <button class="mark-read-btn">Mark all as read</button>
-              </div>
-
-              <div class="notification-list">
-                <div class="notification-item unread">
-                  <div class="notification-icon success-bg">
-                    <span class="material-symbols-outlined">check_circle</span>
-                  </div>
-                  <div class="notification-content">
-                    <p class="notification-title">Ride Completed</p>
-                    <p class="notification-text">Your ride to Central City Airport has been completed. ₦48.90</p>
-                    <p class="notification-time">5 minutes ago</p>
-                  </div>
-                </div>
-
-                <div class="notification-item unread">
-                  <div class="notification-icon primary-bg">
-                    <span class="material-symbols-outlined">local_offer</span>
-                  </div>
-                  <div class="notification-content">
-                    <p class="notification-title">New Reward Available</p>
-                    <p class="notification-text">You've earned a 10% discount on your next ride!</p>
-                    <p class="notification-time">2 hours ago</p>
-                  </div>
-                </div>
-
-                <div class="notification-item unread">
-                  <div class="notification-icon warning-bg">
-                    <span class="material-symbols-outlined">account_balance_wallet</span>
-                  </div>
-                  <div class="notification-content">
-                    <p class="notification-title">Low Wallet Balance</p>
-                    <p class="notification-text">Your wallet balance is ₦75.50. Add funds to continue riding.</p>
-                    <p class="notification-time">1 day ago</p>
-                  </div>
-                </div>
-
-                <div class="notification-item">
-                  <div class="notification-icon primary-bg">
-                    <span class="material-symbols-outlined">directions_car</span>
-                  </div>
-                  <div class="notification-content">
-                    <p class="notification-title">Ride Booking Confirmed</p>
-                    <p class="notification-text">Your ride to Downtown Mall is scheduled for 3:00 PM</p>
-                    <p class="notification-time">2 days ago</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="notification-dropdown-footer">
-                <a href="notifications.html" class="view-all-link">View all notifications</a>
-              </div>
-            </div>
-          </div>
-
-          <a href="profile.html" class="user-avatar" data-alt="User avatar"
-            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSOg8ez5rErHhs5olup2kxf6PnclSUebsAeuibyf75lP84ZBwfyGS7K3d-Qwbn9pFPmNdDg1aZPIFsZJIgLakRlz8fB9DI3imOHMSA76W7A4qZG_SsofL0lP-fwAmyhkx6Q2mfft5XF_PgoZRUviqal_C9Y6fgAwa3qI3kvzrp4HEdHMj1B9hjBN4uiw9tOJZINP6UBp_G1gJni8kAqpo6a_rKG58REd-CcqX7NfNCoSan9q0kIbDzroyqtveLwAGuBG-XfRJ2FH2W");'></a>
-        </div>
+        <h2>Dashboard</h2>
       </header>
 
       <main class="main-content">
-        <div class="dashboard-header">
-          <div class="dashboard-title-section">
-            <p class="dashboard-title">Dashboard</p>
-            <!-- Updated dynamic welcome message class -->
-            <p class="dashboard-subtitle">Welcome back, here's an overview of your ride activity.</p>
-          </div>
-          <button class="book-ride-btn">
-            <span class="material-symbols-outlined">directions_car</span>
-            <span><a href="bookride.html">Book a Ride</a></span>
-          </button>
+        
+        <!-- SECTION 1: BOOKING ENGINE -->
+        <div class="booking-container">
+            <h3 style="margin-bottom: 1.5rem;">Where to?</h3>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label class="form-label">Pickup Location</label>
+                    <select id="pickup" class="form-select" required>
+                        <option value="">Select Pickup...</option>
+                        <!-- Options filled by JS -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Destination</label>
+                    <select id="dropoff" class="form-select" required>
+                        <option value="">Select Destination...</option>
+                        <!-- Options filled by JS -->
+                    </select>
+                </div>
+
+                <div id="price-preview" class="price-display">
+                    Est. Fare: ₦<span id="fare-amount">0</span>
+                </div>
+
+                <button type="submit" class="book-btn" id="book-btn">Request Bolt</button>
+            </form>
         </div>
 
-        <div class="stats-grid">
-          <div class="stat-card">
-            <p class="stat-label">Total Rides Taken</p>
-            <p class="stat-value">128</p>
-            <p class="stat-change">+5 rides this month</p>
-          </div>
-          <div class="stat-card">
-            <p class="stat-label">Total Spent</p>
-            <p class="stat-value">₦1,450.75</p>
-            <p class="stat-change">-₦120.50 vs last month</p>
-          </div>
-          <div class="stat-card">
-            <p class="stat-label">Wallet Balance</p>
-            <p class="stat-value">₦75.50</p>
-            <a href="wallet.html" class="stat-link">Add Funds</a>
-          </div>
-          <div class="stat-card">
-            <p class="stat-label">Active Rewards</p>
-            <p class="stat-value">4</p>
-            <p class="stat-change">+1 new reward</p>
-          </div>
-        </div>
-
-        <div class="charts-grid">
-          <div class="chart-card chart-large">
-            <div class="chart-header">
-              <p class="chart-title">Rides Over Time</p>
-              <div class="chart-meta">
-                <p class="chart-meta-label">Last 7 Days</p>
-                <p class="chart-meta-value">+15.2%</p>
-              </div>
-            </div>
-            <div class="bar-chart">
-              <div class="bar" style="height: 90%;"></div>
-              <p class="bar-label">Mon</p>
-              <div class="bar" style="height: 70%;"></div>
-              <p class="bar-label">Tue</p>
-              <div class="bar" style="height: 40%;"></div>
-              <p class="bar-label">Wed</p>
-              <div class="bar" style="height: 55%;"></div>
-              <p class="bar-label">Thu</p>
-              <div class="bar" style="height: 20%;"></div>
-              <p class="bar-label">Fri</p>
-              <div class="bar" style="height: 35%;"></div>
-              <p class="bar-label">Sat</p>
-              <div class="bar" style="height: 75%;"></div>
-              <p class="bar-label">Sun</p>
-            </div>
-          </div>
-
-          <div class="chart-card chart-small">
-            <div class="chart-header">
-              <p class="chart-title">Ride Types</p>
-              <div class="chart-meta">
-                <p class="chart-meta-label">This Month</p>
-                <p class="chart-meta-value">+3.1%</p>
-              </div>
-            </div>
-            <div class="donut-chart-wrapper">
-              <div class="donut-chart">
-                <svg viewBox="0 0 36 36">
-                  <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"
-                    stroke="#e5e7eb" stroke-width="3"></path>
-                  <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="70, 100"
-                    stroke-dashoffset="0" stroke="#16a34a" stroke-width="3"></path>
-                  <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="20, 100"
-                    stroke-dashoffset="-70" stroke="#0bda5e" stroke-width="3"></path>
-                  <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke-dasharray="10, 100"
-                    stroke-dashoffset="-90" stroke="#FFC107" stroke-width="3"></path>
-                </svg>
-                <div class="donut-center">
-                  <span class="donut-value">34</span>
-                  <span class="donut-label">Rides</span>
-                </div>
-              </div>
-              <div class="chart-legend">
-                <div class="legend-item">
-                  <div class="legend-color" style="background-color: #16a34a;"></div>
-                  <p class="legend-text">Completed</p>
-                </div>
-                <div class="legend-item">
-                  <div class="legend-color" style="background-color: #0bda5e;"></div>
-                  <p class="legend-text">Scheduled</p>
-                </div>
-                <div class="legend-item">
-                  <div class="legend-color" style="background-color: #FFC107;"></div>
-                  <p class="legend-text">Canceled</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <!-- SECTION 2: RECENT HISTORY -->
         <div class="activity-section">
-          <div class="section-header">
-            <h2 class="section-title">Recent Activity</h2>
-            <a href="ridehistory.html" class="view-all-link">View All</a>
-          </div>
-          <div class="table-wrapper">
-            <table class="activity-table">
-              <thead>
-                <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">Ride Details</th>
-                  <th scope="col">Amount</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Oct 24, 2023</td>
-                  <th scope="row">ID: #83291 / Downtown to Airport</th>
-                  <td>₦48.90</td>
-                  <td><span class="status-badge completed">Completed</span></td>
-                  <td>
-                    <div class="flex items-center gap-2">
-                      <a href="#" class="table-link">View</a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Oct 22, 2023</td>
-                  <th scope="row">ID: #83290 / Northside to City Center</th>
-                  <td>₦24.50</td>
-                  <td><span class="status-badge completed">Completed</span></td>
-                  <td>
-                    <div class="flex items-center gap-2">
-                      <a href="#" class="table-link">View</a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Oct 20, 2023</td>
-                  <th scope="row">ID: #83289 / West End to Mall</th>
-                  <td>₦15.20</td>
-                  <td><span class="status-badge cancelled">Canceled</span></td>
-                  <td>
-                    <div class="flex items-center gap-2">
-                      <a href="#" class="table-link">View</a>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+            <h3 class="activity-title">Your Recent Rides</h3>
+            <div class="table-wrapper">
+                <table class="activity-table">
+                    <thead>
+                        <tr>
+                            <!-- Columns matched to DB Schema -->
+                            <th>Date</th>
+                            <th>Pickup</th>
+                            <th>Dropoff</th>
+                            <th>Fare</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ride-history-body">
+                        <!-- Filled by JS -->
+                        <tr><td colspan="5">Loading history...</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
       </main>
     </div>
   </div>
 
+  <!-- CORRECTED LINK: pointing to cgi-dashboard.js -->
+  <script src="../js/cgi-dashboard.js"></script>
+  
   <script>
-    // Toggle notification dropdown
-    const notificationBtn = document.getElementById('notificationBtn');
-    const notificationDropdown = document.getElementById('notificationDropdown');
+    // --- INTEGRATED BOOKING & HISTORY LOGIC ---
+    document.addEventListener('DOMContentLoaded', async () => {
+        const userSession = JSON.parse(sessionStorage.getItem('bolt_user'));
+        
+        // --- 1. Load Locations (Dropdowns) ---
+        const pickupSelect = document.getElementById('pickup');
+        const dropoffSelect = document.getElementById('dropoff');
 
-    notificationBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      notificationDropdown.classList.toggle('show');
-    });
+        try {
+            const res = await fetch('http://localhost:8000/cgi-script/cgi-bin/book_ride.js');
+            const data = await res.json();
+            
+            if(data.status === 'success') {
+                data.locations.forEach(loc => {
+                    const opt = `<option value="${loc.id}">${loc.name}</option>`;
+                    pickupSelect.innerHTML += opt;
+                    dropoffSelect.innerHTML += opt;
+                });
+            }
+        } catch(e) { console.error("Failed to load locations"); }
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function (e) {
-      if (!notificationDropdown.contains(e.target) && e.target !== notificationBtn) {
-        notificationDropdown.classList.remove('show');
-      }
-    });
+        // --- 2. Load Ride History (Matches DB Schema) ---
+        const loadRideHistory = async () => {
+            const tbody = document.getElementById('ride-history-body');
+            try {
+                // Fetching from the new endpoint
+                const res = await fetch(`http://localhost:8000/cgi-script/cgi-bin/get_rides.js?user_id=${userSession.id}`);
+                const result = await res.json();
 
-    // Prevent dropdown from closing when clicking inside
-    notificationDropdown.addEventListener('click', function (e) {
-      e.stopPropagation();
+                if(result.status === 'success' && result.data.length > 0) {
+                    tbody.innerHTML = result.data.map(ride => `
+                        <tr>
+                            <td>${new Date(ride.requested_at).toLocaleDateString()}</td>
+                            <td>${ride.pickup_location}</td>
+                            <td>${ride.dropoff_location}</td>
+                            <td style="font-weight:bold;">₦${ride.fare_amount}</td>
+                            <td>
+                                <span class="status-badge ${ride.status.toLowerCase()}">${ride.status}</span>
+                            </td>
+                        </tr>
+                    `).join('');
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px;">No rides yet. Request your first Bolt above!</td></tr>';
+                }
+            } catch(e) {
+                console.error(e);
+                tbody.innerHTML = '<tr><td colspan="5" style="color: red; text-align:center;">Failed to load history.</td></tr>';
+            }
+        };
+        
+        // Initial Load
+        loadRideHistory();
+
+        // --- 3. Handle Booking Submission ---
+        document.getElementById('booking-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('book-btn');
+            btn.textContent = "Processing...";
+            btn.disabled = true;
+
+            const payload = {
+                user_id: userSession.id,
+                pickup_id: pickupSelect.value,
+                dropoff_id: dropoffSelect.value
+            };
+
+            try {
+                const res = await fetch('http://localhost:8000/cgi-script/cgi-bin/book_ride.js', {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                const result = await res.json();
+
+                if(result.status === 'success') {
+                    alert(`✅ ${result.message}\nFare: ₦${result.fare}`);
+                    // Refresh history without full reload
+                    loadRideHistory();
+                    document.getElementById('booking-form').reset();
+                } else {
+                    alert('❌ ' + result.message);
+                }
+            } catch(err) {
+                alert('Server Error');
+            } finally {
+                btn.textContent = "Request Bolt";
+                btn.disabled = false;
+            }
+        });
     });
   </script>
-  
-  <!-- CONNECT THE DASHBOARD MANAGER -->
-  <script src="../js/cgi-dashboard.js"></script>
 </body>
-
 </html>

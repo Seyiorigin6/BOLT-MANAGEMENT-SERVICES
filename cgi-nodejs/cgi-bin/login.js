@@ -27,7 +27,7 @@ const getBody = async () => {
 
 const sendResponse = (status, message, data = null) => {
     console.log("Content-Type: application/json");
-    console.log("");
+    console.log(""); // Header/Body separator
     console.log(JSON.stringify({ status, message, ...data }));
 };
 
@@ -39,40 +39,87 @@ const main = async () => {
         const body = await getBody();
         const { email, password } = body;
 
+        // 1. Basic Validation
         if (!email || !password) {
             return sendResponse('error', 'Email and password required');
         }
 
         connection = await mysql.createConnection(dbConfig);
 
-        // Find User
-        const [rows] = await connection.execute(
+        // --- CHECK 1: IS IT AN ADMIN? (Priority) ---
+        const [adminRows] = await connection.execute(
+            'SELECT * FROM admins WHERE email = ?', 
+            [email]
+        );
+
+        if (adminRows.length > 0) {
+            const user = adminRows[0];
+            const isMatch = await bcrypt.compare(password, user.password_hash);
+
+            if (isMatch) {
+                return sendResponse('success', 'Admin Login successful', {
+                    user: {
+                        id: user.admin_id,
+                        name: user.name,
+                        email: user.email,
+                        type: 'admin' // Special badge for redirection
+                    }
+                });
+            }
+        }
+
+        // --- CHECK 2: IS IT A RIDER? ---
+        const [riderRows] = await connection.execute(
             'SELECT * FROM riders WHERE email = ?', 
             [email]
         );
 
-        if (rows.length === 0) {
-            return sendResponse('error', 'Invalid email or password');
-        }
+        if (riderRows.length > 0) {
+            const user = riderRows[0];
+            const isMatch = await bcrypt.compare(password, user.password_hash);
 
-        const user = rows[0];
-
-        // Verify Password
-        const isMatch = await bcrypt.compare(password, user.password_hash);
-
-        if (!isMatch) {
-            return sendResponse('error', 'Invalid email or password');
-        }
-
-        // Success
-        sendResponse('success', 'Login successful', {
-            user: {
-                id: user.rider_id,
-                name: user.name,
-                email: user.email,
-                phone: user.phone
+            if (isMatch) {
+                return sendResponse('success', 'Login successful', {
+                    user: {
+                        id: user.rider_id, 
+                        name: user.name,
+                        email: user.email,
+                        phone: user.phone,
+                        type: 'rider' 
+                    }
+                });
+            } else {
+                return sendResponse('error', 'Invalid email or password');
             }
-        });
+        }
+
+        // --- CHECK 3: IS IT A DRIVER? ---
+        const [driverRows] = await connection.execute(
+            'SELECT * FROM drivers WHERE email = ?', 
+            [email]
+        );
+
+        if (driverRows.length > 0) {
+            const user = driverRows[0];
+            const isMatch = await bcrypt.compare(password, user.password_hash);
+
+            if (isMatch) {
+                return sendResponse('success', 'Login successful', {
+                    user: {
+                        id: user.driver_id, 
+                        name: user.name,
+                        email: user.email,
+                        phone: user.phone,
+                        type: 'driver' 
+                    }
+                });
+            } else {
+                return sendResponse('error', 'Invalid email or password');
+            }
+        }
+
+        // --- CHECK 4: NOT FOUND ANYWHERE ---
+        return sendResponse('error', 'Invalid email or password');
 
     } catch (error) {
         console.error("Login Error:", error);
