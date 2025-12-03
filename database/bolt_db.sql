@@ -173,7 +173,7 @@ INSERT INTO `riders` (`rider_id`, `name`, `phone`, `email`, `created_at`) VALUES
 CREATE TABLE `rides` (
   `ride_id` int(11) NOT NULL,
   `rider_id` int(11) NOT NULL,
-  driver_id int(11) DEFAULT NULL,
+  `driver_id` int(11) DEFAULT NULL,
   `pickup_location` varchar(255) DEFAULT NULL,
   `dropoff_location` varchar(255) DEFAULT NULL,
   `distance_km` decimal(10,2) DEFAULT NULL,

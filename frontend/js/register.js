@@ -62,15 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(JSON.stringify(payload, null, 2));
 
         try {
-            console.log('Fetching from: http://localhost:8000/cgi-script/cgi-bin/register.cgi');
+            // --- CHANGE 1: Updated to point to .js file ---
+            const targetUrl = 'http://localhost:8000/cgi-script/cgi-bin/register.js';
+            console.log(`Fetching from: ${targetUrl}`);
             
-            const res = await fetch('http://localhost:8000/cgi-script/cgi-bin/register.cgi', {
+            const res = await fetch(targetUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
-
-     
 
             console.log('=== RESPONSE STATUS ===');
             console.log('Status:', res.status);
@@ -93,6 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 licenceField.style.display = 'none';
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
+                
+                // Optional: Redirect to login
+                // window.location.href = '../login.html'; 
             } else {
                 console.error('✗ Server returned error:', result.message);
                 // map server error to fields when possible
@@ -113,7 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('=== FETCH ERROR ===');
             console.error('Error:', err);
             console.error('Error message:', err.message);
-            alert('❌ Network/Server error: ' + err.message + '\n\nMake sure:\n1. Server is running (python -m http.server --cgi 8000)\n2. CGI endpoint exists: cgi-script/cgi-bin/register.cgi\n3. Check console (F12) for details');
+            
+            // --- CHANGE 2: Updated error message for Node server ---
+            alert('❌ Network/Server error: ' + err.message + '\n\nMake sure:\n1. Server is running (node server.js inside backend-node folder)\n2. CGI endpoint exists: backend-node/cgi-bin/register.js\n3. Check console (F12) for details');
+            
             submitButton.textContent = originalText;
             submitButton.disabled = false;
         }
