@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — Bolt Management Services</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/public.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="login-page">
+    
+    <!-- Header -->
+    <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <h1>⚡Bolt</h1>
+                </div>
+            </div>
+        </header>
+
+    <!-- Login Form Section -->
+    <section id="login-form-section">
+        <div class="container login-container">
+          <h1>Login</h1>
+          <p>Welcome back Admin! Please enter your credentials to login.</p>
+          <form id="login-form">
+            <div id="login-error" class="error-message"></div> <!-- general error message -->
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <small class="error-message" id="email-error"></small>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+            <small class="error-message" id="password-error"></small>
+
+            <button type="submit" class="cta-button">Login</button>
+            <input type="hidden" name="role" value="admin">
+
+            <p class="forgot-password"><a href="forgotpassword.html">Forgot your password?</a></p>
+          </form>
+        </div>
+    </section>
+
+    
+        <!-- External JS-->
+        <script src="../js/public.js"></script>
+</body>
+</html>

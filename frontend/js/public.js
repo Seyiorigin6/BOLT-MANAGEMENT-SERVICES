@@ -275,9 +275,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // Clear previous errors
       document.getElementById('email-error').textContent = '';
       document.getElementById('password-error').textContent = '';
+      const loginError = document.getElementById('login-error');
+      loginError.textContent = '';
 
       const email = loginForm.email.value.trim();
       const password = loginForm.password.value.trim();
+      const role = loginForm.role ? loginForm.role.value : 'user'; // default to 'user'
       let valid = true;
 
       // Email validation
@@ -293,17 +296,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!password) {
         document.getElementById('password-error').textContent = 'Password is required';
         valid = false;
-      } else if (password.length < 6) {
+      } else if (role === 'user' && password.length < 6) { // only enforce length for normal users
         document.getElementById('password-error').textContent = 'Password must be at least 6  characters';
         valid = false;
       }
 
-      if (valid){
-        // Only redirect if both fields are valid
-      window.location.href = 'customer/customerhome.html';
+      if (!valid) return;
+
+      // Role-based credential check
+      if (role === 'admin') {
+        if (email === 'admin@bolt.com' && password === 'admin123') {
+          window.location.href = 'admindashboard.html';
+        } else {
+          loginError.textContent = 'Invalid admin credentials';
+        }
+      } else {
+          window.location.href = 'customer/customerhome.html';
+        }
       }
     });
   }
+
   
   /* -------------------- Forgot Password  -------------------- */
   const page = document.getElementById("forgot-page");
