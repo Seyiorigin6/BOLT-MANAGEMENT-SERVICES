@@ -10,6 +10,8 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     rel="stylesheet" />
   <link href="customer.css" rel="stylesheet" />
+  <script src="bookride-fix.js"></script>
+  <script src="home.js"></script>
 </head>
 
 <body>
@@ -29,26 +31,26 @@
           </div>
           <nav class="nav-list">
             <a class="nav-link" href="customerhome.html">
-              <span class="material-symbols-outlined">dashboard</span>
+              <span class="nav-icon">📊</span>
               <p>Dashboard</p>
             </a>
             <a class="nav-link active" href="bookride.html">
-              <span class="material-symbols-outlined">directions_car</span>
+              <span class="nav-icon">🚗</span>
               <p>Book a Ride</p>
             </a>
             <a class="nav-link" href="ridehistory.html">
-              <span class="material-symbols-outlined">history</span>
+              <span class="nav-icon">🗺️</span>
               <p>My Rides</p>
             </a>
             <a class="nav-link" href="payment.html">
-              <span class="material-symbols-outlined">payment</span>
+              <span class="nav-icon">💳</span>
               <p>Payment</p>
             </a>
           </nav>
         </div>
         <div class="sidebar-bottom">
           <a class="nav-link" href="#">
-            <span class="material-symbols-outlined">logout</span>
+            <span class="nav-icon">🚪</span>
             <p>Log Out</p>
           </a>
         </div>
@@ -193,9 +195,10 @@
                 <span class="fare-total-label">Total Estimate</span>
                 <span class="fare-total-amount">$24.50</span>
               </div>
-              <button class="btn btn-primary"
-                style="width: 100%; margin-top: var(--spacing-4); height: 3.5rem; font-size: 1.125rem; font-weight: 700;">Confirm
-                Ride</button>
+
+              <a href="rideprogress.html" class="btn btn-primary"
+                ;style="width: 100%; margin-top: var(--spacing-4); height: 3.5rem; font-size: 1.125rem; font-weight: 700;">Confirm
+                Ride</a>
             </div>
           </div>
 
