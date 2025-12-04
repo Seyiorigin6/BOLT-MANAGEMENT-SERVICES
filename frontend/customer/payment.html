@@ -1,168 +1,294 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
-  rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-  rel="stylesheet" />
-<link href="customer.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bolt - Payment</title>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <link href="customer.css" rel="stylesheet" />
 </head>
 
-<body class="payment-page">
+<body>
   <div class="app-container">
-    <div class="main-wrapper">
-      <!-- Top Navigation -->
-      <header class="top-navbar">
-        <div class="nav-left">
-          <div class="brand-logo-wrapper" style="width: 2rem; height: 2rem;">
-            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FFC107" stroke="black" stroke-width="2"
-                stroke-linejoin="round" />
-            </svg>
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <div class="sidebar-brand">
+            <div class="brand-logo-wrapper">
+              <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FFC107" stroke="black" stroke-width="2"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h1 class="brand-text">BOLT</h1>
           </div>
-          <h2 class="brand-text" style="font-size: 1.25rem;">BOLT</h2>
+          <nav class="sidebar-nav">
+            <a href="customerhome.html" class="nav-link">
+              <span class="nav-icon">📊</span>
+              <p>Dashboard</p>
+            </a>
+            <a href="receipt.html" class="nav-link">
+              <span class="nav-icon">🧾</span>
+              <p>Receipts</p>
+            </a>
+            <a href="ridehistory.html" class="nav-link">
+              <span class="nav-icon">🗺️</span>
+              <p>Ride History</p>
+            </a>
+            <a href="wallet.html" class="nav-link">
+              <span class="nav-icon">💰</span>
+              <p>Wallet</p>
+            </a>
+            <a href="payment.html" class="nav-link active">
+              <span class="nav-icon">💳</span>
+              <p>Payment</p>
+            </a>
+            <a href="settings.html" class="nav-link">
+              <span class="nav-icon">⚙️</span>
+              <p>Settings</p>
+            </a>
+          </nav>
         </div>
-        <nav class="nav-center">
-          <a class="nav-link-top" href="customerhome.html">Dashboard</a>
-          <a class="nav-link-top" href="ridehistory.html">Rides</a>
-          <a class="nav-link-top active" href="payment.html">Payments</a>
-          <a class="nav-link-top" href="#">Support</a>
-        </nav>
-        <div class="nav-right">
-          <button class="btn-book">Book a Ride</button>
-          <button class="btn-icon-only">
-            <span class="material-symbols-outlined text-gray">notifications</span>
-          </button>
-          <div class="profile-pic-sm"
-            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxnHh8_G-VdSHoBmpkZS55tIWN4t1BjoKNCkZcbM6qvv9hw-VsaVFs996rRaVYMgjvakRb6rYsVo7Pry2zNU3zLLqHKLgM2tD3Tm5zmtaypDe9x3RmitLoNbE2majXqD7cgqJQEbnxlAY2L76NAvkBbOPDURj100o2wj_syWjDr-YZr4R4wjCWzR3hul2JINaYNc4O6E7sQvdQFoH1F8czzubq2qBZgivpwU961rFWpSoy0Weu0-JqO-3oHq4ng41DjlQ1mi0X4jey');">
+
+        <div class="sidebar-bottom">
+          <a href="profile.html" class="nav-link">
+            <span class="nav-icon">👤</span>
+            <p>Alex Grim</p>
+          </a>
+          <a href="#" class="nav-link">
+            <span class="nav-icon">🚪</span>
+            <p>Log Out</p>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="header">
+        <div class="header-left">
+          <label class="search-wrapper">
+            <div class="search-container">
+              <div class="search-icon-wrapper">
+                <span class="material-symbols-outlined">search</span>
+              </div>
+              <input class="search-input" placeholder="Search transactions..." value="" />
+            </div>
+          </label>
+        </div>
+
+        <div class="header-right">
+          <div class="notification-container">
+            <button class="notification-btn" id="notificationBtn">
+              <span class="material-symbols-outlined">notifications</span>
+              <span class="notification-badge">3</span>
+            </button>
+
+            <div class="notification-dropdown" id="notificationDropdown">
+              <div class="notification-dropdown-header">
+                <h3>Notifications</h3>
+                <button class="mark-read-btn">Mark all as read</button>
+              </div>
+
+              <div class="notification-list">
+                <div class="notification-item unread">
+                  <div class="notification-icon success-bg">
+                    <span class="material-symbols-outlined">check_circle</span>
+                  </div>
+                  <div class="notification-content">
+                    <p class="notification-title">Payment Successful</p>
+                    <p class="notification-text">Your payment of ₦24.50 was processed successfully</p>
+                    <p class="notification-time">5 minutes ago</p>
+                  </div>
+                </div>
+
+                <div class="notification-item unread">
+                  <div class="notification-icon primary-bg">
+                    <span class="material-symbols-outlined">local_offer</span>
+                  </div>
+                  <div class="notification-content">
+                    <p class="notification-title">New Reward Available</p>
+                    <p class="notification-text">You've earned a 10% discount on your next ride!</p>
+                    <p class="notification-time">2 hours ago</p>
+                  </div>
+                </div>
+
+                <div class="notification-item unread">
+                  <div class="notification-icon warning-bg">
+                    <span class="material-symbols-outlined">account_balance_wallet</span>
+                  </div>
+                  <div class="notification-content">
+                    <p class="notification-title">Low Wallet Balance</p>
+                    <p class="notification-text">Your wallet balance is ₦75.50. Add funds to continue riding.</p>
+                    <p class="notification-time">1 day ago</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="notification-dropdown-footer">
+                <a href="notifications.html" class="view-all-link">View all notifications</a>
+              </div>
+            </div>
           </div>
+
+          <a href="profile.html" class="user-avatar" data-alt="User avatar"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSOg8ez5rErHhs5olup2kxf6PnclSUebsAeuibyf75lP84ZBwfyGS7K3d-Qwbn9pFPmNdDg1aZPIFsZJIgLakRlz8fB9DI3imOHMSA76W7A4qZG_SsofL0lP-fwAmyhkx6Q2mfft5XF_PgoZRUviqal_C9Y6fgAwa3qI3kvzrp4HEdHMj1B9hjBN4uiw9tOJZINP6UBp_G1gJni8kAqpo6a_rKG58REd-CcqX7NfNCoSan9q0kIbDzroyqtveLwAGuBG-XfRJ2FH2W");'></a>
         </div>
       </header>
 
-      <!-- Main Content -->
       <main class="main-content">
-        <div class="page-container">
-          <!-- Page Heading -->
-          <div class="page-heading-section">
-            <h1 class="page-title-large">Complete Your Payment</h1>
-            <p class="page-subtitle-text">Please review the details below and select a payment method to complete your
+        <div class="page-header">
+          <div class="page-title-wrapper">
+            <h1 class="page-title">Complete Your Payment</h1>
+            <p class="page-subtitle">Please review the details below and select a payment method to complete your
               transaction.</p>
           </div>
+        </div>
 
-          <!-- Main Content Grid -->
-          <div class="payment-page-grid">
-            <!-- Left Column: Payment Details -->
-            <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
-              <h2 class="section-title-md">Payment for Your Recent Ride</h2>
-              <!-- Card -->
-              <div class="payment-details-card">
-                <div class="payment-map-header"
-                  style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-WlCGDiPGOfUMvDjYlD1ga9821gdZC7AA-jWDdmMaNf5d915H0sv1NR45AWDqmi_pe9OhNbjTCNs1OMKFXtanyK76FDb5gdiwiS89H53dVrKfQkjjDWpoTVNisQOFbQ4nzrk5mSg2yAtb15hMRChthy6FxHqPzs6u4itS5Uq7-aylq9fBgKZpfx4vA3RTUNUCdAvLuLg9TjVOECnfIF2hnMoA7MfqwvDCvEp565XL2itJhTUSrR8F0yVztio7qCBoeKBPTfwDnDAv');">
-                </div>
-                <div class="payment-info-body">
-                  <div class="payment-trip-details">
-                    <p class="payment-trip-date">Ride on Aug 15, 2024</p>
-                    <p class="payment-trip-location">From: 123 Main St, Downtown</p>
-                    <p class="payment-trip-location">To: 456 Oak Ave, Suburbia</p>
-                    <p class="payment-trip-breakdown">Base Fare: $15.00, Distance: $7.50, Fees: $2.00</p>
-                  </div>
-                  <div class="payment-summary">
-                    <p class="payment-summary-label">Total Amount Due</p>
-                    <p class="payment-summary-amount">$24.50</p>
-                  </div>
-                </div>
+        <!-- Main Content Grid -->
+        <div class="payment-page-grid">
+          <!-- Left Column: Payment Details -->
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
+            <h2 class="section-title-md">Payment for Your Recent Ride</h2>
+            <!-- Card -->
+            <div class="payment-details-card">
+              <div class="payment-map-header"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-WlCGDiPGOfUMvDjYlD1ga9821gdZC7AA-jWDdmMaNf5d915H0sv1NR45AWDqmi_pe9OhNbjTCNs1OMKFXtanyK76FDb5gdiwiS89H53dVrKfQkjjDWpoTVNisQOFbQ4nzrk5mSg2yAtb15hMRChthy6FxHqPzs6u4itS5Uq7-aylq9fBgKZpfx4vA3RTUNUCdAvLuLg9TjVOECnfIF2hnMoA7MfqwvDCvEp565XL2itJhTUSrR8F0yVztio7qCBoeKBPTfwDnDAv');">
               </div>
-            </div>
-
-            <!-- Right Column: Payment Method -->
-            <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
-              <h2 class="section-title-md">Select Payment Method</h2>
-              <div class="payment-selection-card">
-                <div class="payment-method-options">
-                  <label class="payment-method-option selected">
-                    <input type="radio" name="payment-method" class="payment-method-radio" checked />
-                    <img
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-wTP3dsF451Omt47xw47a6UYbhuf18MOiZlcp5IoaHZKYd7BFS1AD28koN1ZjQ_3dlwrfLRDFD62RnWJK6TrPzuEbvVNvC96CkIMdlk6wzwf4Qatwm7rA8JPyLrKf3eGImF9eQ_xsZ7TVA61sxRYEOaqJDP2QQfQaP0e6gnVcjyNScHdremtCEkJRlxTuJL1I4TPPekA_6TVm-JeYcyUHzTUFCwpnXPbEzBZesJj7xv_GjbzgXMjSUiqqey8Dn1mTuBwjkZqo1oM2"
-                      alt="Visa Logo" class="payment-method-logo" />
-                    <span class="payment-method-label">Visa ending in 1234</span>
-                  </label>
-                  <label class="payment-method-option">
-                    <input type="radio" name="payment-method" class="payment-method-radio" />
-                    <img
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxIPptmfY0ibPMBlRW4nfxYEK5fIUvuOnPTCc4SADSpzTw0llIFuxDr4bxGEHIx0dM3MmCaMiq8pHV8XEGwRlPu3t25Casb65HGtqWC-rigYoVTzGwXST-6CKdQ6rNjgGEFzTYoUMXSe1yLiRwX4_sbMAzfOYzGPX_S3GiP_IZDn4Za7mEXqFMF1HcW4c7mKeqK4ZNPJRj44PjwSJ74QvQcrlejJPi_CcsqnsMzSQ0mn04MZu5G44P7DoitL6_BhrhPWTkayRqCLAt"
-                      alt="PayPal Logo" class="payment-method-logo" />
-                    <span class="payment-method-label">PayPal</span>
-                  </label>
+              <div class="payment-info-body">
+                <div class="payment-trip-details">
+                  <p class="payment-trip-date">Ride on Aug 15, 2024</p>
+                  <p class="payment-trip-location">From: 123 Main St, Downtown</p>
+                  <p class="payment-trip-location">To: 456 Oak Ave, Suburbia</p>
+                  <p class="payment-trip-breakdown">Base Fare: 15.00, Distance: 7.50, Fees: 2.00</p>
                 </div>
-                <button class="add-payment-btn">
-                  <span class="material-symbols-outlined">add_circle</span>
-                  <span>Add New Payment Method</span>
-                </button>
-                <div class="pay-now-container">
-                  <button class="pay-now-btn">
-                    Pay $24.50 Now
-                  </button>
-                </div>
-                <div class="secure-badge">
-                  <span class="material-symbols-outlined text-success" style="font-size: 1rem;">lock</span>
-                  <p class="secure-text">Secure SSL Connection</p>
-                  <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP1LWI5T3BBBh2g6gLurXMa_lWYR4_cb4OWEWfxcF5g2vnBgF9Gnwh2oGP0gayYcpsocpEoOB76QQFpRG1rAQaszjS17ob3yw811DiAC7oScVg3vpStvhijA49_7zZnRMD-CQ_QZ1KCg7ISTJgHZdQv1l6uDKOY8VCScwgG87NWLxY-OXWlJaU7xlLp2cQZmefJBejIKRD7r7VrIENmG_MJEbNhaTQLjeg70FSQ2vnr9367eQLC5F3bmASot-NOLiPu0u6wAB5EtX4"
-                    alt="Mastercard Logo" class="secure-logo" />
-                  <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfJUQxUA5ZjRBTPFTu-lngp2B9PJite6n6nImhZp9m-3VRgVWN4qjuzjMSK2SxsfdflGNP3_A4MIKfUKjYFkQd5YLqB9hX8HRzQG2WTkECYMUvWEiXnU9-OtHtB35_DvIlSGzc_1PT2LNzajwzrpXNu4CXJVjulcr_MuGSbXQYhilElI5a7Ge60UDoTYTC4o-HMboL4CEuaMWSth1BeSvvjfT_y2Uo5Y_yxk-SVcYZSWeqaa-pttR0O8RKX75jandhTsaZuojAdz0i"
-                    alt="American Express Logo" class="secure-logo" />
+                <div class="payment-summary">
+                  <p class="payment-summary-label">Total Amount Due</p>
+                  <p class="payment-summary-amount">24.50</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Transaction History Section -->
-          <div class="transaction-history-container">
-            <h2 class="section-title-md">Transaction History</h2>
-            <div class="activity-section">
-              <div style="border-bottom: 1px solid var(--gray-200);">
-                <nav class="transaction-tabs">
-                  <a href="#" class="transaction-tab active">Pending</a>
-                  <a href="#" class="transaction-tab">Completed</a>
-                </nav>
+          <!-- Right Column: Payment Method -->
+          <div style="display: flex; flex-direction: column; gap: var(--spacing-6);">
+            <h2 class="section-title-md">Select Payment Method</h2>
+            <div class="payment-selection-card">
+              <div class="payment-method-options">
+                <label class="payment-method-option selected">
+                  <input type="radio" name="payment-method" class="payment-method-radio" checked />
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-wTP3dsF451Omt47xw47a6UYbhuf18MOiZlcp5IoaHZKYd7BFS1AD28koN1ZjQ_3dlwrfLRDFD62RnWJK6TrPzuEbvVNvC96CkIMdlk6wzwf4Qatwm7rA8JPyLrKf3eGImF9eQ_xsZ7TVA61sxRYEOaqJDP2QQfQaP0e6gnVcjyNScHdremtCEkJRlxTuJL1I4TPPekA_6TVm-JeYcyUHzTUFCwpnXPbEzBZesJj7xv_GjbzgXMjSUiqqey8Dn1mTuBwjkZqo1oM2"
+                    alt="Visa Logo" class="payment-method-logo" />
+                  <span class="payment-method-label">Visa ending in 1234</span>
+                </label>
+                <label class="payment-method-option">
+                  <input type="radio" name="payment-method" class="payment-method-radio" />
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxIPptmfY0ibPMBlRW4nfxYEK5fIUvuOnPTCc4SADSpzTw0llIFuxDr4bxGEHIx0dM3MmCaMiq8pHV8XEGwRlPu3t25Casb65HGtqWC-rigYoVTzGwXST-6CKdQ6rNjgGEFzTYoUMXSe1yLiRwX4_sbMAzfOYzGPX_S3GiP_IZDn4Za7mEXqFMF1HcW4c7mKeqK4ZNPJRj44PjwSJ74QvQcrlejJPi_CcsqnsMzSQ0mn04MZu5G44P7DoitL6_BhrhPWTkayRqCLAt"
+                    alt="PayPal Logo" class="payment-method-logo" />
+                  <span class="payment-method-label">PayPal</span>
+                </label>
               </div>
-              <div class="table-wrapper">
-                <table class="activity-table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Ride Details</th>
-                      <th class="text-right">Amount</th>
-                      <th style="text-align: center;">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Aug 15, 2024</td>
-                      <td>Downtown to Suburbia</td>
-                      <td class="text-right" style="font-weight: 500;">$24.50</td>
-                      <td style="text-align: center;">
-                        <span class="status-badge warning"
-                          style="background-color: #fff3cd; color: #856404;">Pending</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Aug 12, 2024</td>
-                      <td>Airport to City Center</td>
-                      <td class="text-right" style="font-weight: 500;">$35.10</td>
-                      <td style="text-align: center;">
-                        <span class="status-badge cancelled">Failed</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+              <button class="add-payment-btn">
+                <span class="material-symbols-outlined">add_circle</span>
+                <span>Add New Payment Method</span>
+              </button>
+              <div class="pay-now-container">
+                <button class="pay-now-btn">
+                  Pay 24.50 Now
+                </button>
               </div>
+              <div class="secure-badge">
+                <span class="material-symbols-outlined text-success" style="font-size: 1rem;">lock</span>
+                <p class="secure-text">Secure SSL Connection</p>
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP1LWI5T3BBBh2g6gLurXMa_lWYR4_cb4OWEWfxcF5g2vnBgF9Gnwh2oGP0gayYcpsocpEoOB76QQFpRG1rAQaszjS17ob3yw811DiAC7oScVg3vpStvhijA49_7zZnRMD-CQ_QZ1KCg7ISTJgHZdQv1l6uDKOY8VCScwgG87NWLxY-OXWlJaU7xlLp2cQZmefJBejIKRD7r7VrIENmG_MJEbNhaTQLjeg70FSQ2vnr9367eQLC5F3bmASot-NOLiPu0u6wAB5EtX4"
+                  alt="Mastercard Logo" class="secure-logo" />
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfJUQxUA5ZjRBTPFTu-lngp2B9PJite6n6nImhZp9m-3VRgVWN4qjuzjMSK2SxsfdflGNP3_A4MIKfUKjYFkQd5YLqB9hX8HRzQG2WTkECYMUvWEiXnU9-OtHtB35_DvIlSGzc_1PT2LNzajwzrpXNu4CXJVjulcr_MuGSbXQYhilElI5a7Ge60UDoTYTC4o-HMboL4CEuaMWSth1BeSvvjfT_y2Uo5Y_yxk-SVcYZSWeqaa-pttR0O8RKX75jandhTsaZuojAdz0i"
+                  alt="American Express Logo" class="secure-logo" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaction History Section -->
+        <div class="transaction-history-container">
+          <h2 class="section-title-md">Transaction History</h2>
+          <div class="activity-section">
+            <div style="border-bottom: 1px solid var(--gray-200);">
+              <nav class="transaction-tabs">
+                <a href="#" class="transaction-tab active">Pending</a>
+                <a href="#" class="transaction-tab">Completed</a>
+              </nav>
+            </div>
+            <div class="table-wrapper">
+              <table class="activity-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Ride Details</th>
+                    <th class="text-right">Amount</th>
+                    <th style="text-align: center;">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Aug 15, 2024</td>
+                    <td>Downtown to Suburbia</td>
+                    <td class="text-right" style="font-weight: 500;">24.50</td>
+                    <td style="text-align: center;">
+                      <span class="status-badge warning"
+                        style="background-color: #fff3cd; color: #856404;">Pending</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Aug 12, 2024</td>
+                    <td>Airport to City Center</td>
+                    <td class="text-right" style="font-weight: 500;">35.10</td>
+                    <td style="text-align: center;">
+                      <span class="status-badge cancelled">Failed</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </main>
     </div>
   </div>
-  
-  <script src="home.js"></script>
+
+  <script>
+    // Toggle notification dropdown
+    const notificationBtn = document.getElementById('notificationBtn');
+    const notificationDropdown = document.getElementById('notificationDropdown');
+
+    notificationBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      notificationDropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!notificationDropdown.contains(e.target) && e.target !== notificationBtn) {
+        notificationDropdown.classList.remove('show');
+      }
+    });
+
+    // Prevent dropdown from closing when clicking inside
+    notificationDropdown.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+  </script>
 </body>
 
 </html>

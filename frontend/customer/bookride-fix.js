@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update fare details based on selected vehicle
     function updateFareDetails(vehiclePrice) {
-      // Parse the price (remove $ and convert to number)
-      const totalPrice = parseFloat(vehiclePrice.replace('$', ''));
+      // Parse the price (remove ₦ and convert to number)
+      const totalPrice = parseFloat(vehiclePrice.replace('₦', ''));
 
       // Calculate breakdown (you can adjust these percentages)
       const baseFare = (totalPrice * 0.857).toFixed(2); // ~85.7% of total
@@ -76,9 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update the fare details in the DOM
       const fareRows = document.querySelectorAll('.fare-row');
       if (fareRows.length >= 3) {
-        fareRows[0].querySelector('span:last-child').textContent = `$${baseFare}`;
-        fareRows[1].querySelector('span:last-child').textContent = `$${bookingFee}`;
-        fareRows[2].querySelector('span:last-child').textContent = `$${taxes}`;
+        fareRows[0].querySelector('span:last-child').textContent = `₦${baseFare}`;
+        fareRows[1].querySelector('span:last-child').textContent = `₦${bookingFee}`;
+        fareRows[2].querySelector('span:last-child').textContent = `₦${taxes}`;
       }
 
       // Update total
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
           pickup: pickup,
           destination: destination,
           vehicle: selectedVehicle?.querySelector('.vehicle-name')?.textContent || 'Standard',
-          fare: fare || '$24.50',
+          fare: fare || '24.50',
           timestamp: new Date().toISOString()
         };
 
