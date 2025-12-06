@@ -313,11 +313,8 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
           window.location.href = 'customer/customerhome.html';
         }
-      }
     });
   }
-
-  
   /* -------------------- Forgot Password  -------------------- */
   const page = document.getElementById("forgot-page");
   if (!page) return;
@@ -358,10 +355,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
   });
 
-});
 /*--------------------------Register-----------------------*/
 // Register form validation and user type dashboard redirection
-document.addEventListener('DOMContentLoaded', () => {
   const registerForm = document.getElementById('register-form');
   const userTypeSelect = document.getElementById('user-type');
   const licenceField = document.getElementById('licence-field');
@@ -434,7 +429,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-
-
-
