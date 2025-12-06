@@ -1,33 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 Login Script Loaded'); 
+
     const form = document.getElementById('login-form');
 
-    // Safety check: if form doesn't exist, don't run the code
-    if (!form) return;
+    // Safety check
+    if (!form) {
+        console.error('❌ Error: Login form not found! Check your HTML id="login-form"');
+        return;
+    }
 
     const submitButton = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', async (e) => {
-        // --- 1. STOP THE REFRESH (Crucial) ---
-        // This stops the browser from reloading the page automatically
+        console.log('⚡ Submit Button Clicked');
         e.preventDefault();
 
-        // --- 2. UI Feedback (Loading State) ---
+        // --- UI Feedback ---
         const originalText = submitButton.textContent;
-        submitButton.disabled = true;           // Prevent double-clicks
-        submitButton.textContent = 'Logging in...'; 
-        submitButton.style.opacity = '0.7';     // Visual "disabled" look
+        submitButton.disabled = true;           
+        submitButton.textContent = 'Verifying...'; 
+        submitButton.style.opacity = '0.7';     
         
-        // Clear previous error messages
+        // Clear errors
         const emailError = document.getElementById('email-error');
         const passError = document.getElementById('password-error');
         if (emailError) emailError.textContent = '';
         if (passError) passError.textContent = '';
 
-        // --- 3. Collect Data ---
+        // --- Collect Data ---
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
 
-        // Basic client-side validation
+        // Validation
         if (!email || !password) {
             if (!email && emailError) emailError.textContent = 'Email is required';
             if (!password && passError) passError.textContent = 'Password is required';
@@ -36,7 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            // --- 4. Send to Node.js Backend ---
+            console.log('📡 Asking Backend to check File Cabinets...');
+            
+            // --- Send to Node.js Backend ---
             const res = await fetch('http://localhost:8000/cgi-script/cgi-bin/login.js', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -44,39 +50,45 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const result = await res.json();
-            console.log(res.json)
+            console.log('📦 Backend Reply:', result); 
 
-            // --- 5. Handle Response ---
+            // --- Handle Response ---
             if (result.status === 'success') {
-                console.log('✓ Login successful:', result.user);
+                const user = result.user;
+                console.log(`✅ User Found! Role identified as: [ ${user.type.toUpperCase()} ]`);
                 
-                // Store user session
-                sessionStorage.setItem('bolt_user', JSON.stringify(result.user));
+                // Store session
+                sessionStorage.setItem('bolt_user', JSON.stringify(user));
                 
-                // Show success on button
+                // UI Success
                 submitButton.textContent = 'Success!';
-                submitButton.style.backgroundColor = '#4CAF50'; // Green
+                submitButton.style.backgroundColor = '#4CAF50'; 
 
-                // Redirect based on user type (using localhost:8000)
-                // setTimeout(() => {
-                //     if (result.user.type === 'rider') {
-                //         window.location.href = 'http://localhost:8000/frontend/customer/customerhome.html';
-                //     } else {
-                //         window.location.href = 'http://localhost:8000/frontend/driver/driver-dashboard.html';
-                //     }
-                // }, 500);
-                 setTimeout(() => {
-                        window.location.href = 'http://localhost:8000/frontend/customer/customerhome.html';
-                   
-                }, 500); // Small delay to let user see "Success!"
+                // --- REDIRECT LOGIC ---
+                setTimeout(() => {
+                    let target = '';
+                    
+                    if (user.type === 'rider') {
+                        target = 'http://localhost:8000/frontend/customer/customerhome.html';
+                    } else if (user.type === 'driver') {
+                        target = 'http://localhost:8000/frontend/driver/driver-dashboard.html';
+                    } else if (user.type === 'admin') {
+                        target = 'http://localhost:8000/frontend/admin/admindashboard.html'; // Admin Path
+                    } else {
+                        alert('⚠️ Account type unknown. Contact support.');
+                        resetButton(submitButton, originalText);
+                        return;
+                    }
+                    
+                    console.log(`➡️ Redirecting to: ${target}`);
+                    window.location.href = target;
+                }, 800); 
 
             } else {
-                // Show Error from Backend
-                console.error('Login failed:', result.message);
+                // Backend said No
+                console.error('❌ Login Failed:', result.message);
                 
                 const msg = (result.message || '').toLowerCase();
-                
-                // Map errors to specific fields if possible
                 if (msg.includes('email') || msg.includes('user')) {
                     if (emailError) emailError.textContent = result.message;
                 } else if (msg.includes('password')) {
@@ -85,22 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('❌ ' + result.message);
                 }
                 
-                // Reset button so they can try again
                 resetButton(submitButton, originalText);
             }
 
         } catch (err) {
-            console.error('Fetch Error:', err);
-            alert('❌ Connection Error: Ensure Node server is running (node server.js)');
+            console.error('🔥 Connection Failed:', err);
+            alert('❌ Server not responding. Is "node server.js" running?');
             resetButton(submitButton, originalText);
         }
     });
 });
 
-// Helper to reset button state
 function resetButton(button, originalText) {
     button.disabled = false;
     button.textContent = originalText;
     button.style.opacity = '1';
-    button.style.backgroundColor = ''; // Reset color
+    button.style.backgroundColor = ''; 
 }

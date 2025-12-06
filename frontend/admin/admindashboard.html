@@ -4,427 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bolt Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="../css/admin.css">
+    <style>
+        /* Restored Visual Style */
+        body { font-family: 'Inter', sans-serif; display: flex; height: 100vh; margin: 0; background: #f8f9fa; color: #333; }
+        
+        /* White Sidebar (Original Style) */
+        .sidebar { width: 250px; background: #ffffff; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; }
+        .logo { padding: 24px; font-size: 24px; font-weight: 800; color: #10b981; border-bottom: 1px solid #f3f4f6; }
+        .logo span { color: #333; }
+        
+        .nav-menu { list-style: none; padding: 20px 10px; margin: 0; }
+        .nav-item { padding: 12px 16px; margin-bottom: 5px; cursor: pointer; display: flex; align-items: center; gap: 12px; border-radius: 8px; color: #4b5563; font-weight: 500; transition: 0.2s; }
+        .nav-item:hover { background: #f3f4f6; color: #10b981; }
+        .nav-item.active { background: #ecfdf5; color: #10b981; font-weight: 600; }
+        .nav-item.logout { margin-top: auto; border-top: 1px solid #f3f4f6; color: #ef4444; border-radius: 0; padding: 20px; }
+        .nav-item.logout:hover { background: #fef2f2; }
+
+        .main-content { flex: 1; padding: 32px; overflow-y: auto; }
+        .content-section { display: none; animation: fadeIn 0.3s ease; }
+        .content-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* 4-Column Grid for Revenue Card */
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
+        .stat-card { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border: 1px solid #e5e7eb; }
+        .stat-value { font-size: 32px; font-weight: 700; color: #111827; margin: 8px 0; }
+        .stat-label { color: #6b7280; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: separate; border-spacing: 0; background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb; }
+        th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid #f3f4f6; }
+        th { background: #f9fafb; font-weight: 600; color: #374151; font-size: 13px; }
+        tr:last-child td { border-bottom: none; }
+        
+        .btn-delete { background: #fee2e2; color: #991b1b; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: 0.2s; }
+        .btn-delete:hover { background: #fecaca; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="logo">
-                <h1>⚡ BOLT</h1>
-                <p>Admin Dashboard</p>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item active" data-section="dashboard">
-                    <span class="nav-icon">📊</span>
-                    <span>Dashboard</span>
-                </li>
-                <li class="nav-item" data-section="drivers">
-                    <span class="nav-icon">🚗</span>
-                    <span>Drivers</span>
-                </li>
-                <li class="nav-item" data-section="riders">
-                    <span class="nav-icon">👤</span>
-                    <span>Riders</span>
-                </li>
-                <li class="nav-item" data-section="rides">
-                    <span class="nav-icon">🗺️</span>
-                    <span>Active Rides</span>
-                </li>
-                <li class="nav-item" data-section="payments">
-                    <span class="nav-icon">💳</span>
-                    <span>Payments</span>
-                </li>
-                <li class="nav-item" data-section="reports">
-                    <span class="nav-icon">📈</span>
-                    <span>Reports</span>
-                </li>
-                <li class="nav-item" data-section="settings">
-                    <span class="nav-icon">⚙️</span>
-                    <span>Settings</span>
-                </li>
-            </ul>
-        </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="header">
-                <h2>Admin Dashboard</h2>
-                <div class="admin-info">
-                    <div>
-                        <div style="font-weight: 600; color: #333;">Admin User</div>
-                        <div style="font-size: 12px; color: #888;">admin@bolt.com</div>
-                    </div>
-                    <div class="admin-avatar">A</div>
-                </div>
-            </div>
-
-            <!-- Dashboard Section -->
-            <div class="content-section active" id="dashboard">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>Total Drivers</h3>
-                        <div class="stat-value" id="totalDrivers">0</div>
-                        <div class="stat-change">↑ 12% from last month</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Active Rides</h3>
-                        <div class="stat-value" id="activeRides">0</div>
-                        <div class="stat-change">↑ 8% from yesterday</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Total Riders</h3>
-                        <div class="stat-value" id="totalRiders">0</div>
-                        <div class="stat-change">↑ 15% from last month</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Today's Revenue</h3>
-                        <div class="stat-value" id="todayRevenue">₦0</div>
-                        <div class="stat-change">↑ 23% from yesterday</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Recent Rides</h3>
-                    </div>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Ride ID</th>
-                                <th>Rider</th>
-                                <th>Driver</th>
-                                <th>Status</th>
-                                <th>Fare</th>
-                                <th>Time</th>
-                            </tr>
-                        </thead>
-                        <tbody id="recentRidesTable">
-                            <tr>
-                                <td colspan="6" style="text-align: center; color: #999;">Loading data...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Drivers Section -->
-            <div class="content-section" id="drivers">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Driver Management</h3>
-                        <input type="text" class="search-box" placeholder="Search drivers..." id="driverSearch">
-                    </div>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Driver ID</th>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>License</th>
-                                <th>Vehicle</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="driversTable">
-                            <tr>
-                                <td colspan="7" style="text-align: center; color: #999;">Loading drivers...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Riders Section -->
-            <div class="content-section" id="riders">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Rider Management</h3>
-                        <input type="text" class="search-box" placeholder="Search riders..." id="riderSearch">
-                    </div>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Rider ID</th>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Total Rides</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="ridersTable">
-                            <tr>
-                                <td colspan="6" style="text-align: center; color: #999;">Loading riders...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Active Rides Section -->
-            <div class="content-section" id="rides">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Active Rides</h3>
-                        <button class="btn btn-primary" onclick="refreshRides()">🔄 Refresh</button>
-                    </div>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Ride ID</th>
-                                <th>Rider</th>
-                                <th>Driver</th>
-                                <th>Pickup</th>
-                                <th>Dropoff</th>
-                                <th>Distance</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="activeRidesTable">
-                            <tr>
-                                <td colspan="8" style="text-align: center; color: #999;">Loading active rides...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Payments Section -->
-            <div class="content-section" id="payments">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Payment History</h3>
-                        <input type="text" class="search-box" placeholder="Search payments..." id="paymentSearch">
-                    </div>
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Payment ID</th>
-                                <th>Ride ID</th>
-                                <th>Amount</th>
-                                <th>Method</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="paymentsTable">
-                            <tr>
-                                <td colspan="6" style="text-align: center; color: #999;">Loading payments...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Reports Section -->
-            <div class="content-section" id="reports">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">System Reports</h3>
-                        <button class="btn btn-primary" onclick="generateReport()">📥 Generate Report</button>
-                    </div>
-                    <div style="padding: 20px;">
-                        <h4 style="margin-bottom: 15px; color: #333;">Select Report Type:</h4>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px;">
-                            <button class="btn btn-primary" onclick="generateDriverReport()">Driver Performance</button>
-                            <button class="btn btn-primary" onclick="generateRevenueReport()">Revenue Report</button>
-                            <button class="btn btn-primary" onclick="generateRideReport()">Ride Statistics</button>
-                            <button class="btn btn-primary" onclick="generatePaymentReport()">Payment Summary</button>
-                        </div>
-                        <div id="reportOutput" style="background: #f8f9fa; padding: 20px; border-radius: 8px; min-height: 200px;">
-                            <p style="color: #999; text-align: center;">Select a report type to generate</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             <!-- Settings Section -->
-            <div class="content-section" id="settings">
-                <div class="settings-wrapper">
-                    <section class="system-settings">
-                        <div class="container">
-                            <!-- Page Header -->
-                            <div class="section-header">
-                                <h1>System Settings</h1>
-                                <p>Manage fare, payment, and system configurations.</p>
-                            </div>
-
-                            <!-- Fare Management Section -->
-                            <section class="card">
-                                <header class="card-header">
-                                    <h2>Fare Management</h2>
-                                    <button class="btn-primary">Save Changes</button>
-                                </header>
-                                <div class="card-body">
-                                    <div class="input-grid">
-                                        <label class="input-group">
-                                            <p>Base Fare (₦)</p>
-                                            <input type="text" value="5000">
-                                        </label>
-                                        <label class="input-group">
-                                            <p>Per-Kilometer Rate (₦)</p>
-                                            <input type="text" value="200">
-                                        </label>
-                                        <label class="input-group">
-                                            <p>Per-Minute Rate (₦)</p>
-                                            <input type="text" value="50">
-                                        </label>
-                                    </div>
-                                    <div class="surge-pricing-container">
-                                        <div class="toggle-card">
-                                            <div class="toggle-info">
-                                                <p class="toggle-title">Enable Surge Pricing</p>
-                                                <p class="toggle-desc">Automatically adjust prices during peak demand.</p>
-                                            </div>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- Commissions & Payments Section -->
-                            <section class="card">
-                                <header class="card-header">
-                                    <h2>Commissions & Payments</h2>
-                                    <button class="btn-primary">Save Changes</button>
-                                </header>
-                                <div class="card-body">
-                                    <div class="commission-grid">
-                                        <div class="slider-group">
-                                            <label for="commission-rate">Default Driver Commission Rate</label>
-                                            <div class="slider-container">
-                                                <input type="range" id="commission-rate" min="0" max="50" value="20">
-                                                <span class="slider-value">20%</span>
-                                            </div>
-                                        </div>
-                                        <label class="input-group">
-                                            <p>Payout Schedule</p>
-                                            <select>
-                                                <option>Daily</option>
-                                                <option selected>Weekly</option>
-                                                <option>Bi-Weekly</option>
-                                                <option>Monthly</option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                    <div class="api-key-container">
-                                        <label class="input-group">
-                                            <p>Payment Gateway API Key</p>
-                                            <div class="password-input">
-                                                <input type="password" value="sk_test_1234567890abcdefghijklmnop">
-                                                <span class="icon toggle-visibility">👁️</span>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </section>
-
-                            <!-- User Roles & Permissions Section -->
-                            <section class="card">
-                                <header class="card-header">
-                                    <h2>User Roles & Permissions</h2>
-                                    <button class="btn-primary">
-                                        <span class="icon">+</span>
-                                        Create New Role
-                                    </button>
-                                </header>
-                                <div class="table-container">
-                                    <table class="data-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Role Name</th>
-                                                <th>Permissions</th>
-                                                <th>Users</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Administrator</td>
-                                                <td>All Access</td>
-                                                <td>3</td>
-                                                <td class="text-right">
-                                                    <a href="#" class="btn-link">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Dispatcher</td>
-                                                <td>Booking & Driver Management</td>
-                                                <td>12</td>
-                                                <td class="text-right">
-                                                    <a href="#" class="btn-link">Edit</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Support Staff</td>
-                                                <td>View Bookings, Manage Tickets</td>
-                                                <td>8</td>
-                                                <td class="text-right">
-                                                    <a href="#" class="btn-link">Edit</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </section>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    <!-- Modal for Driver Details -->
-    <div class="modal" id="driverModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Driver Details</h3>
-            </div>
-            <div id="driverModalBody">
-                <!-- Dynamic content will be inserted here -->
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger btn-small" onclick="closeModal('driverModal')">Close</button>
-            </div>
-        </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">⚡ <span>BOLT Admin</span></div>
+        <ul class="nav-menu">
+            <li class="nav-item active" onclick="showSection('dashboard')">
+                <span class="material-symbols-outlined">dashboard</span> Dashboard
+            </li>
+            <li class="nav-item" onclick="showSection('drivers')">
+                <span class="material-symbols-outlined">directions_car</span> Drivers
+            </li>
+            <li class="nav-item" onclick="showSection('riders')">
+                <span class="material-symbols-outlined">group</span> Riders
+            </li>
+            <li class="nav-item logout" onclick="logout()">
+                <span class="material-symbols-outlined">logout</span> Log Out
+            </li>
+        </ul>
     </div>
 
-    <!-- Modal for Rider Details -->
-    <div class="modal" id="riderModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Rider Details</h3>
-            </div>
-            <div id="riderModalBody">
-                <!-- Dynamic content will be inserted here -->
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger btn-small" onclick="closeModal('riderModal')">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Ride Details -->
-    <div class="modal" id="rideModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Ride Details</h3>
-            </div>
-            <div id="rideModalBody">
-                <!-- Dynamic content will be inserted here -->
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger btn-small" onclick="closeModal('rideModal')">Close</button>
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- DASHBOARD SECTION -->
+        <div id="dashboard" class="content-section active">
+            <h2 style="margin-bottom: 24px;">System Overview</h2>
+            <div class="stats-grid">
+                <!-- Added Revenue Card Back -->
+                <div class="stat-card">
+                    <div class="stat-label">Total Revenue</div>
+                    <div class="stat-value" id="count-revenue" style="color: #10b981;">₦0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Rides</div>
+                    <div class="stat-value" id="count-rides">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Drivers</div>
+                    <div class="stat-value" id="count-drivers">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Riders</div>
+                    <div class="stat-value" id="count-riders">0</div>
+                </div>
             </div>
         </div>
+
+        <!-- DRIVERS SECTION -->
+        <div id="drivers" class="content-section">
+            <h2 style="margin-bottom: 24px;">Driver Management</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>License</th>
+                        <!-- Added Vehicle Column -->
+                        <th>Vehicle</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="drivers-table">
+                    <tr><td colspan="6">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RIDERS SECTION -->
+        <div id="riders" class="content-section">
+            <h2 style="margin-bottom: 24px;">Rider Management</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="riders-table">
+                    <tr><td colspan="5">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
-    <script src="../js/admin.js"></script>
+    <!-- UPDATED: ADMIN LOGIC SCRIPT -->
+    <script src="../js/cgi-admin-logic.js"></script>
 </body>
 </html>

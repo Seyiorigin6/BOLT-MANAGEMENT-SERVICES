@@ -39,6 +39,7 @@ CREATE TABLE drivers (
   name VARCHAR(255) NOT NULL,
   phone VARCHAR(20) UNIQUE NOT NULL,
   email VARCHAR(255) UNIQUE,
+  password_hash VARCHAR(255) UNIQUE NOT NULL,
   license_number VARCHAR(255) UNIQUE NOT NULL,
   availability ENUM('Available', 'Unavailable') DEFAULT 'Available',
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP

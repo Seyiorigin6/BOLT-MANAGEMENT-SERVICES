@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,21 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Driver Dashboard</title>
     <link rel="stylesheet" href="../css/driver.css">
+    <style>
+        /* Essential Styles */
+        .btn-accept { 
+            background: #10b981; color: white; border: none; padding: 5px 10px; 
+            border-radius: 4px; cursor: pointer; font-weight: bold;
+        }
+        .status-chip { padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; background: #dcfce7; color: #15803d; }
+        .logout-link { color: #ef4444; text-decoration: none; font-weight: 600; margin-left: 15px; border: 1px solid #ef4444; padding: 5px 10px; border-radius: 5px; }
+        
+        /* VEHICLE SECTION STYLES */
+        .vehicle-section {
+            background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-left: 5px solid #10b981;
+        }
+        .vehicle-form { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px; align-items: end; }
+        .v-input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        .btn-save-car { background: #3b82f6; color: white; border: none; padding: 9px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        
+        .vehicle-info { display: flex; align-items: center; gap: 20px; }
+        .v-label { font-size: 0.8rem; color: #666; display: block; }
+        .v-value { font-weight: bold; font-size: 1.1rem; }
+    </style>
 </head>
 <body>
     <header class="topbar">
-        <div class="logo-area">
-          <div class=""></div>
-          <span class="logo-text">⚡️Bolt Driver</span>
-        </div>
-
+        <div class="logo-area"><span class="logo-text">⚡️Bolt Driver</span></div>
         <nav class="nav-links">
-         <a href="driver-dashboard.html">Dashboard</a>
-         <a href="driver-current-ride.html">Current Ride</a>
-         <a href="driver-account.html">Account</a>
+            <a href="#" class="active">Dashboard</a>
+            <a href="#" id="logout-btn" class="logout-link">Log Out</a>
         </nav>
         <div class="driver-mini">
-            <span class="driver-name">Hi, Temitayo</span>
+            <span class="driver-name" id="driver-name-display">Loading...</span>
             <span class="status-chip online">Online</span>
         </div>
     </header>
@@ -28,86 +46,81 @@
         <section class="page-header">
             <div>
                 <h1>Dashboard</h1>
-                <p class="page-subtitle">Today's summary of trips and earnings.</p> 
+                <p class="page-subtitle">Your activity summary.</p> 
             </div>
-            <button class="btn primary">Go Online</button>
         </section>
         
+        <!-- STATS CARDS -->
         <section class="cards">
             <div class="card">
-                <div class="card-header">
-                    <div class="card-icon earnings">💰</div>
-                    <h3>Earnings</h3>
-                </div>
-                <p>₦12,000</p>
-                <span class="card-note">+₦2,000 vs yesterday</span>
+                <div class="card-header"><div class="card-icon earnings">💰</div><h3>Earnings</h3></div>
+                <p id="total-earnings">₦0.00</p>
+                <span class="card-note">Total revenue</span>
             </div>
-        
             <div class="card">
-                <div class="card-header">
-                    <div class="card-icon trips">🚗</div>
-                    <h3>Trips</h3>
-                </div>
-                <p>10</p>
-                <span class="card-note">3 trips in last hour</span>
+                <div class="card-header"><div class="card-icon trips">🚗</div><h3>Trips</h3></div>
+                <p id="total-trips">0</p>
+                <span class="card-note">Completed rides</span>
             </div>
-        
             <div class="card">
-                <div class="card-header">
-                    <div class="card-icon ratings">⭐</div>
-                    <h3>Ratings</h3>
-                </div>
-                <p>4.5</p>
-                <span class="card-note">Based on 200 trips</span>
+                <div class="card-header"><div class="card-icon ratings">⭐</div><h3>Rating</h3></div>
+                <p>5.0</p>
+                <span class="card-note">Standard</span>
             </div>
         </section>
-    
-        <section class="recent-rides">
-            <div class="section-head">
-                <h2>Recent-rides</h2>
-                <span class="section-caption">Last 5 completed trips</span>
+
+        <!-- VEHICLE MANAGEMENT SECTION (New) -->
+        <section id="vehicle-container" class="vehicle-section">
+            <h3>🚗 Vehicle Details</h3>
+            
+            <!-- STATE A: Display Info (Hidden by default) -->
+            <div id="vehicle-display" style="display:none; margin-top: 10px;">
+                <div class="vehicle-info">
+                    <div><span class="v-label">Plate Number</span><span class="v-value" id="d-plate">---</span></div>
+                    <div><span class="v-label">Model</span><span class="v-value" id="d-model">---</span></div>
+                    <div><span class="v-label">Color</span><span class="v-value" id="d-color">---</span></div>
+                    <div style="margin-left: auto; color: #10b981; font-weight: bold; background: #ecfdf5; padding: 5px 10px; border-radius: 20px;">✓ Verified</div>
+                </div>
             </div>
 
+            <!-- STATE B: Add Vehicle Form (Hidden by default) -->
+            <form id="vehicle-form" style="display:none; margin-top: 10px;">
+                <p style="grid-column: 1/-1; color: #666; margin-bottom: 5px;">You need to add a vehicle to accept rides.</p>
+                <div>
+                    <label class="v-label">Plate Number</label>
+                    <input type="text" id="plate_number" class="v-input" placeholder="LAG-123-XY" required>
+                </div>
+                <div>
+                    <label class="v-label">Car Model</label>
+                    <input type="text" id="model" class="v-input" placeholder="Toyota Corolla" required>
+                </div>
+                <div>
+                    <label class="v-label">Color</label>
+                    <input type="text" id="color" class="v-input" placeholder="Silver" required>
+                </div>
+                <button type="submit" class="btn-save-car">Save Vehicle</button>
+            </form>
+        </section>
+    
+        <!-- NEW REQUESTS -->
+        <section class="recent-rides">
+            <div class="section-head"><h2>New Requests</h2><span class="section-caption">Available rides near you</span></div>
             <table>
-                <tr>
-                    <th>Time</th>
-                    <th>Pickup</th>
-                    <th>Destination</th>
-                    <th>Fare</th>
-                </tr>
-                <tr>
-                    <td>9:00</td>
-                    <td>Ogudu</td>
-                    <td>Ikeja</td>
-                    <td>1,500</td>
-                </tr>
-                <tr>
-                    <td>10:30</td>
-                    <td>Yaba</td>
-                    <td>Berger</td>
-                    <td>2,500</td>
-                </tr>
-                <tr>
-                    <td>11:10</td>
-                    <td>Ojota</td>
-                    <td>VI</td>
-                    <td>4,000</td>
-                </tr>
-                <tr>
-                    <td>12:30</td>
-                    <td>VI</td>
-                    <td>Lekki Phase 1</td>
-                    <td>2,800</td>
-                </tr>
-                <tr>
-                    <td>13:20</td>
-                    <td>Lekki</td>
-                    <td>Ajah</td>
-                    <td>3,000</td>
-                </tr>
+                <thead><tr><th>Pickup</th><th>Destination</th><th>Fare</th><th>Action</th></tr></thead>
+                <tbody id="requests-body"><tr><td colspan="4">Searching...</td></tr></tbody>
+            </table>
+        </section>
+
+        <!-- HISTORY -->
+        <section class="recent-rides" style="margin-top: 2rem;">
+            <div class="section-head"><h2>Ride History</h2><span class="section-caption">Your accepted trips</span></div>
+            <table>
+                <thead><tr><th>Date</th><th>Pickup</th><th>Destination</th><th>Fare</th><th>Status</th></tr></thead>
+                <tbody id="history-body"><tr><td colspan="5">Loading...</td></tr></tbody>
             </table>
         </section>
     </main>
-     <script src="../js/driver.js"></script>
+
+    <script src="../js/cgi-driver.js"></script>
 </body>
 </html>
