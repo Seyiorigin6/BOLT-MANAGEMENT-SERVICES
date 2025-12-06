@@ -67,14 +67,14 @@ function showRideRequest() {
                     <span class="location-icon">📍</span>
                     <div>
                         <span class="location-label">Pickup</span>
-                        <p>15 Admiralty Way, Lekki Phase 1</p>
+                        <p>Lagos</p>
                     </div>
                 </div>
                 <div class="request-location">
                     <span class="location-icon">🎯</span>
                     <div>
                         <span class="location-label">Drop-off</span>
-                        <p>Plot 1234, Adeola Odeku St, VI</p>
+                        <p>Kano</p>
                     </div>
                 </div>
             </div>
@@ -82,15 +82,15 @@ function showRideRequest() {
             <div class="request-details">
                 <div class="detail-item">
                     <span>Distance</span>
-                    <strong>8.5 km</strong>
+                    <strong>977 km</strong>
                 </div>
                 <div class="detail-item">
                     <span>Est. Fare</span>
-                    <strong>₦3,500</strong>
+                    <strong>₦150,00</strong>
                 </div>
                 <div class="detail-item">
                     <span>Est. Time</span>
-                    <strong>15 mins</strong>
+                    <strong>16 Hours</strong>
                 </div>
             </div>
             <div class="request-actions">
@@ -111,14 +111,14 @@ function showRideRequest() {
                     <span class="location-icon">📍</span>
                     <div>
                         <span class="location-label">Pickup</span>
-                        <p>The Palms Shopping Mall, Lekki</p>
+                        <p>Abuja</p>
                     </div>
                 </div>
                 <div class="request-location">
                     <span class="location-icon">🎯</span>
                     <div>
                         <span class="location-label">Drop-off</span>
-                        <p>Ikeja GRA</p>
+                        <p>Ogun</p>
                     </div>
                 </div>
             </div>
@@ -126,15 +126,15 @@ function showRideRequest() {
             <div class="request-details">
                 <div class="detail-item">
                     <span>Distance</span>
-                    <strong>18.7 km</strong>
+                    <strong>759 km</strong>
                 </div>
                 <div class="detail-item">
                     <span>Est. Fare</span>
-                    <strong>₦5,800</strong>
+                    <strong>₦125,000</strong>
                 </div>
                 <div class="detail-item">
                     <span>Est. Time</span>
-                    <strong>35 mins</strong>
+                    <strong>13 Hours</strong>
                 </div>
             </div>
             <div class="request-actions">
@@ -155,14 +155,14 @@ function showRideRequest() {
                     <span class="location-icon">📍</span>
                     <div>
                         <span class="location-label">Pickup</span>
-                        <p>1415 Adetokunbo Ademola Street, Victoria Island</p>
+                        <p>Lagos</p>
                     </div>
                 </div>
                 <div class="request-location">
                     <span class="location-icon">🎯</span>
                     <div>
                         <span class="location-label">Drop-off</span>
-                        <p>Plot B22, Chief Yesufu Oniru Road, Oniru</p>
+                        <p>Ogun</p>
                     </div>
                 </div>
             </div>
@@ -170,15 +170,15 @@ function showRideRequest() {
             <div class="request-details">
                 <div class="detail-item">
                     <span>Distance</span>
-                    <strong>5 km</strong>
+                    <strong>77 km</strong>
                 </div>
                 <div class="detail-item">
                     <span>Est. Fare</span>
-                    <strong>₦3,000</strong>
+                    <strong>₦75,000</strong>
                 </div>
                 <div class="detail-item">
                     <span>Est. Time</span>
-                    <strong>10 mins</strong>
+                    <strong>1 Hour 30 mins</strong>
                 </div>
             </div>
             <div class="request-actions">
