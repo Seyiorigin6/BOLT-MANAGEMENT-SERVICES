@@ -3,7 +3,7 @@
    =================================== */
 :root {
     /* Colors */
-    --primary: #16a34a;
+    --primary:#04923a;
     --primary-light: rgba(22, 163, 74, 0.2);
     --primary-hover: rgba(22, 163, 74, 0.9);
     --success: #0bda5e;
@@ -122,11 +122,11 @@ body {
     flex-shrink: 0;
 }
 
-.brand-logo-wrapper {
+/*.brand-logo-wrapper {
     width: 2rem;
     height: 2rem;
     flex-shrink: 0;
-}
+}*/
 
 .brand-text {
     color: var(--text-light);
