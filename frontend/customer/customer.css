@@ -45,6 +45,7 @@
 
 * {
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
@@ -129,12 +130,10 @@ body {
 }*/
 
 .brand-text {
-    color: var(--text-light);
-    font-size: 1.5rem;
-    font-weight: 800;
+    color: var(--primary);
+    font-size: 1.8rem;
     line-height: 1;
     margin: 0;
-    letter-spacing: 0.05em;
 }
 
 .brand-logo {
