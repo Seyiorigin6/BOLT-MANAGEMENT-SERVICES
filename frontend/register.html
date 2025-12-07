@@ -105,6 +105,128 @@
         </footer>
   </div>
   <!-- JS -->
-  <script src="js/public.js"></script>
+  <script>
+    /* -------------------- Register -------------------- */
+    (function () {
+      const registerForm = document.getElementById('register-form');
+      if (!registerForm) return; // not on register page -> exit
+    
+      const userTypeSelect = document.getElementById('user-type');
+      const licenceField = document.getElementById('licence-field');
+      const licenceInput = document.getElementById('licence-number');
+    
+      // ensure licence wrapper visibility matches current selection
+      if (userTypeSelect && licenceField) {
+        licenceField.style.display = userTypeSelect.value === 'driver' ? 'block' : 'none';
+        userTypeSelect.addEventListener('change', () => {
+          licenceField.style.display = userTypeSelect.value === 'driver' ? 'block' : 'none';
+        });
+      }
+    
+      // helper: show inline error
+      function showError(id, message) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = message;
+      }
+      function clearErrors() {
+        registerForm.querySelectorAll('.error-message').forEach(e => e.textContent = '');
+      }
+    
+      // simple localStorage users store for development (NOT secure, only for dev)
+      function getUsers() {
+        try {
+          return JSON.parse(localStorage.getItem('bolt_users') || '[]');
+        } catch (e) {
+          return [];
+        }
+      }
+      function saveUser(user) {
+        const users = getUsers();
+        users.push(user);
+        localStorage.setItem('bolt_users', JSON.stringify(users));
+      }
+      function isEmailTaken(email) {
+        return getUsers().some(u => u.email.toLowerCase() === email.toLowerCase());
+      }
+    
+      registerForm.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        clearErrors();
+      
+        // grab values
+        const name = (document.getElementById('name')?.value || '').trim();
+        const phone = (document.getElementById('phone')?.value || '').trim();
+        const email = (document.getElementById('email')?.value || '').trim();
+        const password = (document.getElementById('password')?.value || '').trim();
+        const confirmPassword = (document.getElementById('confirm-password')?.value || '').trim();
+        const userType = (document.getElementById('user-type')?.value || '').trim();
+        const licenceNumber = (document.getElementById('licence-number')?.value || '').trim();
+      
+        let hasError = false;
+      
+        // required checks
+        if (!name) { showError('name-error', 'Name is required'); hasError = true; }
+        if (!phone) { showError('phone-error', 'Phone number is required'); hasError = true; }
+        if (!email) { showError('email-error', 'Email is required'); hasError = true; }
+        if (!password) { showError('password-error', 'Password is required'); hasError = true; }
+        if (!confirmPassword) { showError('confirm-password-error', 'Please confirm password');     hasError = true; }
+        if (!userType) { showError('user-type-error', 'Please select a user type'); hasError = true; }
+      
+        // email format
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showError('email-error', 'Invalid email address'); hasError = true;
+        }
+      
+        // password length & match
+        if (password && password.length < 6) {
+          showError('password-error', 'Password must be at least 6 characters'); hasError = true;
+        }
+        if (password && confirmPassword && password !== confirmPassword) {
+          showError('confirm-password-error', 'Passwords do not match'); hasError = true;
+        }
+      
+        // licence required for drivers
+        if (userType === 'driver') {
+          if (!licenceNumber) {
+            showError('licence-number-error', 'Licence number is required for drivers'); hasError =     true;
+          }
+        }
+      
+        if (hasError) {
+          // stop and show errors
+          return;
+        }
+      
+        // Check if email already registered (dev)
+        if (isEmailTaken(email)) {
+          showError('email-error', 'This email is already registered');
+          return;
+        }
+      
+        // Save user to localStorage for dev testing (not secure)
+        const newUser = {
+          id: 'U' + Date.now(),
+          name,
+          phone,
+          email,
+          password,       // NOTE: in production you would NEVER store plain passwords
+          userType,
+          licenceNumber: userType === 'driver' ? licenceNumber : '',
+          createdAt: new Date().toISOString()
+        };
+        saveUser(newUser);
+      
+        // Redirect to user-type dashboard (adjust paths to your project)
+        if (userType === 'customer') {
+          window.location.href = 'customer/customerhome.html';
+        } else if (userType === 'driver') {
+          window.location.href = 'driver/driver-dashboard.html';
+        } else {
+          window.location.href = 'index.html';
+        }
+      });
+    })();
+
+  </script>
 </body>
 </html>
